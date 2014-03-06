@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap 
+            PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+            "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+ 
+<sqlMap namespace="todo">
+<!--
+    <resultMap id="todo" class="todo.domain.model.Todo">
+        <result property="todoId" column="todo_id" />
+        <result property="todoTitle" column="todo_title" />
+        <result property="finished" column="finished" />
+        <result property="createdAt" column="created_at" />
+    </resultMap>
+
+    <select id="findOne" parameterClass="java.lang.String"
+        resultMap="todo"><![CDATA[
+SELECT todo_id, 
+       todo_title, 
+       finished, 
+       created_at 
+FROM   todo 
+WHERE  todo_id = #value# 
+]]></select>
+
+    <select id="findAll" resultMap="todo"><![CDATA[
+SELECT todo_id, 
+       todo_title, 
+       finished, 
+       created_at 
+FROM   todo 
+]]></select>
+
+    <insert id="create" parameterClass="todo.domain.model.Todo"><![CDATA[
+INSERT INTO todo 
+            (todo_id, 
+             todo_title, 
+             finished, 
+             created_at) 
+VALUES      ( #todoId#, 
+             #todoTitle#, 
+             #finished#, 
+             #createdAt# )
+]]></insert>
+
+    <update id="update" parameterClass="todo.domain.model.Todo"><![CDATA[
+UPDATE todo 
+SET    todo_title = #todoTitle#, 
+       finished = #finished#, 
+       created_at = #createdAt# 
+WHERE  todo_id = #todoId# 
+]]></update>
+
+    <delete id="delete" parameterClass="todo.domain.model.Todo"><![CDATA[
+DELETE FROM todo 
+WHERE  todo_id = #todoId# 
+]]></delete>
+
+    <select id="countByFinished" parameterClass="java.lang.Boolean"
+        resultClass="java.lang.Long"><![CDATA[
+SELECT COUNT(*)
+FROM   todo 
+WHERE  finished = #value# 
+]]></select>
+
+    <select id="exists" parameterClass="java.lang.String"
+        resultClass="java.lang.Long"><![CDATA[
+SELECT COUNT(*)
+FROM   todo 
+WHERE  todo_id = #value#
+]]></select>
+-->
+</sqlMap>
