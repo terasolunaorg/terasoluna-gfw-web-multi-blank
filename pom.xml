@@ -266,7 +266,7 @@
         <org.apache.maven.plugins.maven-war-plugin.version>2.2</org.apache.maven.plugins.maven-war-plugin.version>
         <org.apache.maven.plugins.version>2.5</org.apache.maven.plugins.version>
         <org.apache.maven.wagon.version>1.0-beta-7</org.apache.maven.wagon.version>
-        <org.apache.tomcat.maven.version>2.0-SNAPSHOT</org.apache.tomcat.maven.version>
+        <org.apache.tomcat.maven.version>2.2</org.apache.tomcat.maven.version>
         <org.codehaus.mojo.emma-maven-plugin.version>1.0-alpha-3</org.codehaus.mojo.emma-maven-plugin.version>
         <org.codehaus.mojo.version>2.5</org.codehaus.mojo.version>
         <org.mockito.version>1.9.0</org.mockito.version>
@@ -274,6 +274,6 @@
         <postgresql.version>9.1-901.jdbc4</postgresql.version>
         <selenium.version>2.39.0</selenium.version>
         <tiles.version>2.2.2</tiles.version>
-        <tomcat.api.version>7.0.40</tomcat.api.version>
+        <tomcat.api.version>7.0.53</tomcat.api.version>
     </properties>
 </project>
