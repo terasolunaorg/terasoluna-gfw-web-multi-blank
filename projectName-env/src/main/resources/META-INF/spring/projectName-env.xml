@@ -44,4 +44,10 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
           REMOVE THIS LINE IF YOU USE MyBatis2  -->
+    <!--  REMOVE THIS LINE IF YOU USE MyBatis3
+    <bean id="transactionManager"
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+          REMOVE THIS LINE IF YOU USE MyBatis3  -->
 </beans>
