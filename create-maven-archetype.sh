@@ -12,6 +12,14 @@ mv projectName-domain/src/main/resources/META-INF/spring/projectName-infra.xml p
 mv projectName-domain/src/main/resources/META-INF/spring/projectName-codelist.xml projectName-domain/src/main/resources/META-INF/spring/__rootArtifactId__-codelist.xml
 mv projectName-env/src/main/resources/META-INF/spring/projectName-env.xml projectName-env/src/main/resources/META-INF/spring/__rootArtifactId__-env.xml
 mv projectName-env/src/main/resources/META-INF/spring/projectName-infra.properties projectName-env/src/main/resources/META-INF/spring/__rootArtifactId__-infra.properties
+
+if [ -d src/main/resources/xxxxxx ];then
+  echo "rename to __packageInPathFormat__"
+  mkdir -p projectName-domain/src/main/resources/__packageInPathFormat__
+  mv projectName-domain/src/main/resources/xxxxxx/yyyyyy/zzzzzz/domain src/main/resources/__packageInPathFormat__/
+  rm -rf projectName-domain/src/main/resources/xxxxxx
+fi
+
 rm -rf infra
 rm -rf `/usr/bin/find . -name '.svn' -type d`
 mvn archetype:create-from-project

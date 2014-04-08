@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="xxxxxx.yyyyyy.zzzzzz.domain.repository.sample.SampleRepository">
+
+<!--  
+
+    <resultMap id="resultMap-Todo" type="Todo">
+        <result property="todoId" column="todo_id" />
+        <result property="todoTitle" column="todo_title" />
+        <result property="finished" column="finished" />
+        <result property="createdAt" column="created_at" />
+    </resultMap>
+
+    <select id="findOne" parameterType="java.lang.String" resultMap="resultMap-Todo">
+    <![CDATA[
+        SELECT
+            todo_id, 
+            todo_title, 
+            finished, 
+            created_at 
+        FROM
+            todo 
+        WHERE
+            todo_id = #{value}
+    ]]>
+    </select>
+
+    <select id="findAll" resultMap="resultMap-Todo">
+    <![CDATA[
+        SELECT
+            todo_id, 
+            todo_title, 
+            finished, 
+            created_at 
+        FROM
+            todo 
+    ]]>
+    </select>
+
+    <insert id="create" parameterType="Todo">
+    <![CDATA[
+        INSERT INTO todo
+        (
+            todo_id, 
+            todo_title, 
+            finished, 
+            created_at
+        ) 
+        VALUES
+        (
+            #{todoId}, 
+            #{todoTitle}, 
+            #{finished}, 
+            #{createdAt}
+        )
+    ]]>
+    </insert>
+
+    <update id="update" parameterType="Todo">
+    <![CDATA[
+        UPDATE
+            todo 
+        SET
+            todo_title = #{todoTitle}, 
+            finished = #{finished}, 
+            created_at = #{createdAt} 
+        WHERE
+            todo_id = #{todoId}
+    ]]>
+    </update>
+
+    <delete id="delete" parameterType="Todo">
+    <![CDATA[
+        DELETE FROM todo 
+        WHERE
+            todo_id = #{todoId}
+    ]]>
+    </delete>
+
+    <select id="countByFinished" parameterType="java.lang.Boolean" resultType="java.lang.Long">
+    <![CDATA[
+        SELECT
+            COUNT(*)
+        FROM
+            todo 
+        WHERE
+            finished = #{value}
+    ]]>
+    </select>
+
+    <select id="exists" parameterType="java.lang.String" resultType="java.lang.Long">
+    <![CDATA[
+        SELECT
+            COUNT(*)
+        FROM
+            todo 
+        WHERE
+            todo_id = #{value}
+    ]]>
+    </select>
+
+-->
+
+</mapper>
