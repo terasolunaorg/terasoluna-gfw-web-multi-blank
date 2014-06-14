@@ -35,7 +35,9 @@
         <property name="exceptionMappings">
             <map>
                 <entry key="ResourceNotFoundException" value="e.xx.fw.5001" />
+                <entry key="InvalidTransactionTokenException" value="e.xx.fw.7001" />
                 <entry key="BusinessException" value="e.xx.fw.8001" />
+                <entry key=".DataAccessException" value="e.xx.fw.9002" />
             </map>
         </property>
         <property name="defaultExceptionCode" value="e.xx.fw.9001" />
