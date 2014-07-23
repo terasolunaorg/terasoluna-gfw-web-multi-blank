@@ -12,7 +12,7 @@
     <div class="error">
       <c:choose>
         <c:when test="${empty exceptionCode}">
-          <spring:message code="w.xx.fw.8001" />
+          <spring:message code="e.xx.fw.8001" />
         </c:when>
         <c:otherwise>
       [${f:h(exceptionCode)}] <spring:message code="${exceptionCode}" />
