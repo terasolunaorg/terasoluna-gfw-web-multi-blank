@@ -25,7 +25,7 @@ mvn archetype:generate\
 
 ### multi blank project with MyBatis2
 
-To create multi blank project with JPA (Spring Data JPA)
+To create multi blank project with MyBatis2
 
 #### for CommandPrompt
 ```
