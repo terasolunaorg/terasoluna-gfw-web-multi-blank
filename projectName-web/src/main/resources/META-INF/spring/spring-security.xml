@@ -18,7 +18,7 @@
         <sec:csrf />
         <sec:access-denied-handler ref="accessDeniedHandler"/>
         <sec:custom-filter ref="userIdMDCPutFilter" after="ANONYMOUS_FILTER"/>
-        <sec:session-management session-authentication-strategy-ref="sessionAuthenticationStrategy" />
+        <sec:session-management />
     </sec:http>
     <sec:authentication-manager></sec:authentication-manager>
 
@@ -51,24 +51,6 @@
                 <property name="errorPage"
                     value="/WEB-INF/views/common/error/accessDeniedError.jsp" />
             </bean>
-        </constructor-arg>
-    </bean>
-
-    <bean id="csrfTokenRepository"
-        class="org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository" />
-
-    <bean id="sessionAuthenticationStrategy"
-        class="org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy">
-        <constructor-arg index="0">
-            <list>
-                <bean
-                    class="org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy" />
-                <bean
-                    class="org.springframework.security.web.csrf.CsrfAuthenticationStrategy">
-                    <constructor-arg index="0"
-                        ref="csrfTokenRepository" />
-                </bean>
-            </list>
         </constructor-arg>
     </bean>
 
