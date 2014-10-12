@@ -4,16 +4,16 @@
 
 <mapper namespace="xxxxxx.yyyyyy.zzzzzz.domain.repository.sample.SampleRepository">
 
-<!--  
+<!--
 
-    <resultMap id="resultMap-Todo" type="Todo">
-        <result property="todoId" column="todo_id" />
+    <resultMap id="todoResultMap" type="Todo">
+        <id property="todoId" column="todo_id" />
         <result property="todoTitle" column="todo_title" />
         <result property="finished" column="finished" />
         <result property="createdAt" column="created_at" />
     </resultMap>
 
-    <select id="findOne" parameterType="java.lang.String" resultMap="resultMap-Todo">
+    <select id="findOne" parameterType="string" resultMap="todoResultMap">
     <![CDATA[
         SELECT
             todo_id, 
@@ -23,11 +23,11 @@
         FROM
             todo 
         WHERE
-            todo_id = #{value}
+            todo_id = #{todoId}
     ]]>
     </select>
 
-    <select id="findAll" resultMap="resultMap-Todo">
+    <select id="findAll" resultMap="todoResultMap">
     <![CDATA[
         SELECT
             todo_id, 
@@ -79,25 +79,25 @@
     ]]>
     </delete>
 
-    <select id="countByFinished" parameterType="java.lang.Boolean" resultType="java.lang.Long">
+    <select id="countByFinished" parameterType="boolean" resultType="long">
     <![CDATA[
         SELECT
             COUNT(*)
         FROM
             todo 
         WHERE
-            finished = #{value}
+            finished = #{finished}
     ]]>
     </select>
 
-    <select id="exists" parameterType="java.lang.String" resultType="java.lang.Long">
+    <select id="exists" parameterType="string" resultType="long">
     <![CDATA[
         SELECT
             COUNT(*)
         FROM
             todo 
         WHERE
-            todo_id = #{value}
+            todo_id = #{todoId}
     ]]>
     </select>
 
