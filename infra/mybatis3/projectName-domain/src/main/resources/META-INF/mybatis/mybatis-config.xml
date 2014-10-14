@@ -3,12 +3,32 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+    <!-- See http://mybatis.github.io/mybatis-3/configuration.html#settings -->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true" />
+        <setting name="lazyLoadingEnabled" value="true" />
+        <setting name="aggressiveLazyLoading" value="false" />
+<!--
+        <setting name="defaultExecutorType" value="REUSE" />
+        <setting name="jdbcTypeForNull" value="NULL" />
+        <setting name="proxyFactory" value="JAVASSIST" />
+        <setting name="localCacheScope" value="STATEMENT" />
+-->
+    </settings>
+
     <typeAliases>
         <package name="xxxxxx.yyyyyy.zzzzzz.domain.model" />
-    </typeAliases>
+        <package name="xxxxxx.yyyyyy.zzzzzz.domain.repository" />
 <!--
-    <typeHandlers>
         <package name="xxxxxx.yyyyyy.zzzzzz.infra.mybatis.typehandler" />
-    </typeHandlers>
 -->
+    </typeAliases>
+
+    <typeHandlers>
+<!--
+        <package name="xxxxxx.yyyyyy.zzzzzz.infra.mybatis.typehandler" />
+-->
+    </typeHandlers>
+
 </configuration>
