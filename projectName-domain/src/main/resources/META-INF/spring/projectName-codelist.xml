@@ -5,7 +5,7 @@
 
     <bean id="jdbcTemplateForCodeList" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource" />
-        <property name="fetchSize" value="${codelist.jdbc.fetchSize:0}" />
+        <property name="fetchSize" value="${codelist.jdbc.fetchSize:1000}" />
     </bean>
 
     <bean id="AbstractJdbcCodeList"
