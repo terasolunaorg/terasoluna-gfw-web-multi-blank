@@ -196,6 +196,15 @@
                 <version>${project.version}</version>
             </dependency>
 
+            <!-- Begin Servlet API & JSP API -->
+            <dependency>
+                <groupId>org.apache.tomcat</groupId>
+                <artifactId>tomcat-jsp-api</artifactId>
+                <version>${tomcat.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- End Servlet API & JSP API -->
+
             <!-- == Begin Database == -->
 <!--             <dependency> -->
 <!--                 <groupId>postgresql</groupId> -->
