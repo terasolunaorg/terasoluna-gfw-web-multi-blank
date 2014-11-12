@@ -233,16 +233,6 @@
             <!-- == End Database == -->
         </dependencies>
     </dependencyManagement>
-    <distributionManagement>
-        <repository>
-            <id>terasoluna-gfw-releases</id>
-            <url>http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>terasoluna-gfw-snapshots</id>
-            <url>http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
     <properties>
         <com.google.code.maven-license-plugin.version>1.4.0</com.google.code.maven-license-plugin.version>
         <com.h2database.version>1.3.156</com.h2database.version>
