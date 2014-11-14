@@ -77,7 +77,7 @@
     </bean>
 
     <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
-        <property name="order" value="1" />
+        <property name="order" value="0" />
     </bean>
 
     <bean id="requestDataValueProcessor"
