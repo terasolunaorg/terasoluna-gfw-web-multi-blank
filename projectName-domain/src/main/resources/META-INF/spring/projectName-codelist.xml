@@ -3,5 +3,22 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="jdbcTemplateForCodeList" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource" />
+        <property name="fetchSize" value="${codelist.jdbc.fetchSize:1000}" />
+    </bean>
+
+    <bean id="AbstractJdbcCodeList"
+          class="org.terasoluna.gfw.common.codelist.JdbcCodeList" abstract="true">
+        <property name="jdbcTemplate" ref="jdbcTemplateForCodeList" />
+    </bean>
+
+    <!-- Example for usage of AbstractJdbcCodeList
+    <bean id="CL_SAMPLE" parent="AbstractJdbcCodeList">
+        <property name="querySql" value="SELECT code, code_name FROM t_sample_codes ORDER BY code" />
+        <property name="valueColumn" value="code" />
+        <property name="labelColumn" value="code_name" />
+    </bean>
+    -->
 
 </beans>
