@@ -170,7 +170,7 @@
                 <artifactId>findbugs-maven-plugin</artifactId>
                 <version>${org.codehaus.mojo.version}</version>
                 <configuration>
-                    <inputEncoding>${encoding}</inputEncoding>
+                    <sourceEncoding>${encoding}</sourceEncoding>
                     <outputEncoding>${encoding}</outputEncoding>
                     <includeFilterFile>${findbugs.includefilter.xml}</includeFilterFile>
                     <xmlOutput>true</xmlOutput>
