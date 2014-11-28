@@ -245,7 +245,7 @@
         <org.codehaus.mojo.emma-maven-plugin.version>1.0-alpha-3</org.codehaus.mojo.emma-maven-plugin.version>
         <org.codehaus.mojo.version>2.5</org.codehaus.mojo.version>
         <org.springframework.build.aws.version>3.0.0.RELEASE</org.springframework.build.aws.version>
-        <postgresql.version>9.1-901.jdbc4</postgresql.version>
+        <postgresql.version>9.3-1102-jdbc41</postgresql.version>
 
         <!-- If necessary, please customize artifact version. -->
         <!--<selenium.version>2.44.0</selenium.version>-->
