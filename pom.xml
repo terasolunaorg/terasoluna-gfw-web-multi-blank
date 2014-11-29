@@ -214,7 +214,7 @@
 <!--             </dependency> -->
 <!--             <dependency> -->
 <!--                 <groupId>com.oracle</groupId> -->
-<!--                 <artifactId>ojdbc6</artifactId> -->
+<!--                 <artifactId>ojdbc7</artifactId> -->
 <!--                 <version>${ojdbc.version}</version> -->
 <!--                 <scope>provided</scope> -->
 <!--             </dependency> -->
@@ -246,6 +246,7 @@
         <org.codehaus.mojo.version>2.5</org.codehaus.mojo.version>
         <org.springframework.build.aws.version>3.0.0.RELEASE</org.springframework.build.aws.version>
         <postgresql.version>9.3-1102-jdbc41</postgresql.version>
+        <ojdbc.version>12.1.0.2</ojdbc.version>
 
         <!-- If necessary, please customize artifact version. -->
         <!--<selenium.version>2.44.0</selenium.version>-->
