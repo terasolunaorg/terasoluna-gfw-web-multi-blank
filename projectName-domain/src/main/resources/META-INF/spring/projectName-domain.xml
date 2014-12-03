@@ -12,7 +12,7 @@
     <tx:annotation-driven/>
 
     <import resource="classpath:META-INF/spring/projectName-infra.xml" />
-    <import resource="classpath:META-INF/spring/projectName-codelist.xml" />
+    <import resource="classpath*:META-INF/spring/**/*-codelist.xml" />
     
     <context:component-scan base-package="xxxxxx.yyyyyy.zzzzzz.domain" />
 
