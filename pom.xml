@@ -229,6 +229,15 @@
             </dependency>
             <!-- == End Coding Support == -->
 
+            <!-- == Begin Unit Test == -->
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-el</artifactId>
+                <version>${tomcat.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- == End Unit Test == -->
+
         </dependencies>
     </dependencyManagement>
     <properties>
