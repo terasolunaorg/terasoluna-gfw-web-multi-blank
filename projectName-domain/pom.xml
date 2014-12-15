@@ -44,14 +44,17 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+            <scope>runtime</scope>
         </dependency>
 <!--         <dependency> -->
 <!--             <groupId>org.postgresql</groupId> -->
 <!--             <artifactId>postgresql</artifactId> -->
+<!--             <scope>provided</scope> -->
 <!--         </dependency> -->
 <!--         <dependency> -->
 <!--             <groupId>com.oracle</groupId> -->
 <!--             <artifactId>ojdbc6</artifactId> -->
+<!--             <scope>provided</scope> -->
 <!--         </dependency> -->
         <!-- == End Database == -->
 
@@ -59,14 +62,17 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
+            <scope>test</scope>
         </dependency>
         <!-- == End Unit Test == -->
     </dependencies>
