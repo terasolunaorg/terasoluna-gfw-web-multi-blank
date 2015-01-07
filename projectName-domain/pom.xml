@@ -19,6 +19,10 @@
         </dependency>
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
+            <artifactId>terasoluna-gfw-jodatime</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.terasoluna.gfw</groupId>
             <artifactId>terasoluna-gfw-security-core</artifactId>
         </dependency>
         <!--  REMOVE THIS LINE IF YOU USE JPA

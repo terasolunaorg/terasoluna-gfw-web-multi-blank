@@ -6,7 +6,7 @@
         http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="dateFactory" class="org.terasoluna.gfw.common.date.DefaultDateFactory" />
+    <bean id="dateFactory" class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
 
     <bean id="realDataSource" class="org.apache.commons.dbcp2.BasicDataSource"
         destroy-method="close">
