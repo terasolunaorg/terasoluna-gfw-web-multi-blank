@@ -48,5 +48,5 @@ mvn archetype:generate\
 
 ### multi blank project with MyBatis3
 
-Comming soon (MyBatis3 is planned to be supported from 1.1.0.RELEASE). 
+Comming soon (MyBatis3 is planned to be supported from 5.0.0.RELEASE). 
 
