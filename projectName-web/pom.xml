@@ -62,23 +62,6 @@
         </dependency>
         <!-- == End Tomcat == -->
 
-        <!-- == Begin Database == -->
-        <!-- This dependency is just only for demo. Please remove for production. -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
-<!--         <dependency> -->
-<!--             <groupId>postgresql</groupId> -->
-<!--             <artifactId>postgresql</artifactId> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>com.oracle</groupId> -->
-<!--             <artifactId>ojdbc6</artifactId> -->
-<!--         </dependency> -->
-        <!-- == End Database == -->
-
-
         <!-- == Begin Unit Test == -->
         <dependency>
             <groupId>junit</groupId>
