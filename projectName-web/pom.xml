@@ -11,9 +11,23 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <!--
+      Please generate the war file using following Maven command.
+
+        * Generate for local development environment
+             mvn clean package
+
+        * Generate for test or production environment (exclude the projectName-env.jar)
+             mvn -P warpack clean package
+
+        * Generate for test or production environment (include the projectName-env.jar)
+             mvn -P warpack-with-env clean package
+
+      Details of Maven profile refer to http://maven.apache.org/guides/introduction/introduction-to-profiles.html .
+    -->
     <profiles>
         <profile>
-            <id>default</id>
+            <id>local</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
@@ -27,6 +41,21 @@
         <profile>
             <id>warpack</id>
             <dependencies>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>warpack-with-env</id>
+            <dependencies>
+                <dependency>
+                    <groupId>${project.groupId}</groupId>
+                    <artifactId>projectName-env</artifactId>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>com.h2database</groupId>
+                            <artifactId>h2</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
             </dependencies>
         </profile>
     </profiles>
@@ -61,23 +90,6 @@
             <scope>provided</scope>
         </dependency>
         <!-- == End Tomcat == -->
-
-        <!-- == Begin Database == -->
-        <!-- This dependency is just only for demo. Please remove for production. -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
-<!--         <dependency> -->
-<!--             <groupId>postgresql</groupId> -->
-<!--             <artifactId>postgresql</artifactId> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>com.oracle</groupId> -->
-<!--             <artifactId>ojdbc6</artifactId> -->
-<!--         </dependency> -->
-        <!-- == End Database == -->
-
 
         <!-- == Begin Unit Test == -->
         <dependency>
