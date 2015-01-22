@@ -58,6 +58,13 @@
                 <resource.directory>src/main/resources</resource.directory>
                 <buildFinalName>${project.artifactId}-${project.version}</buildFinalName>
             </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
         </profile>
         <profile>
             <id>test-server</id>
