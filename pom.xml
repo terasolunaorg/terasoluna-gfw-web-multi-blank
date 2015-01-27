@@ -19,8 +19,8 @@
         <relativePath />
     </parent>
 
-    <name>TERASOLUNA Global Framework Web Blank Multi Project</name>
-    <description>Web Blank Multi Project using TERASOLUNA Global Framework</description>
+    <name>TERASOLUNA Server Framework for Java (5.x) Web Blank Multi Project</name>
+    <description>Web Blank Multi Project using TERASOLUNA Server Framework for Java (5.x)</description>
     <url>http://terasoluna.org</url>
     <inceptionYear>2014</inceptionYear>
     <licenses>
