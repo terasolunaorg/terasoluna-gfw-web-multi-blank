@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>xxxxxx.yyyyyy.zzzzzz</groupId>
     <artifactId>projectName</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2.RELEASE</version>
     <packaging>pom</packaging>
     <modules>
         <module>projectName-env</module>
@@ -15,7 +15,7 @@
     <parent>
         <groupId>org.terasoluna.gfw</groupId>
         <artifactId>terasoluna-gfw-parent</artifactId>
-        <version>1.0.2-SNAPSHOT</version>
+        <version>1.0.2.RELEASE</version>
         <relativePath />
     </parent>
 
