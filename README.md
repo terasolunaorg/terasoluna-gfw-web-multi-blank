@@ -1,4 +1,4 @@
-## Blank multi project for web application using TERASOLUNA Server Framework for Java 5.x 
+## Blank multi project for web application using TERASOLUNA Server Framework for Java (5.x) 
 
 ### multi blank project with MyBatis3
 
@@ -6,7 +6,7 @@ To create multi blank project with MyBatis3
 
 #### for CommandPrompt
 
-```
+``` console
 mvn archetype:generate^
  -DarchetypeCatalog=http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-releases^
  -DarchetypeGroupId=org.terasoluna.gfw.blank^
@@ -16,7 +16,7 @@ mvn archetype:generate^
 
 #### for Bash
 
-```
+``` console
 mvn archetype:generate\
  -DarchetypeCatalog=http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-releases\
  -DarchetypeGroupId=org.terasoluna.gfw.blank\
@@ -29,7 +29,8 @@ mvn archetype:generate\
 To create multi blank project with JPA (Spring Data JPA)
 
 #### for CommandPrompt
-```
+
+``` console
 mvn archetype:generate^
  -DarchetypeCatalog=http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-releases^
  -DarchetypeGroupId=org.terasoluna.gfw.blank^
@@ -39,7 +40,7 @@ mvn archetype:generate^
 
 #### for Bash
 
-```
+``` console
 mvn archetype:generate\
  -DarchetypeCatalog=http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-releases\
  -DarchetypeGroupId=org.terasoluna.gfw.blank\
