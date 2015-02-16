@@ -65,11 +65,6 @@
         <level value="debug" />
     </logger>
           REMOVE THIS LINE IF YOU USE JPA  -->
-    <!--  REMOVE THIS LINE IF YOU USE MyBatis2
-    <logger name="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <level value="debug" />
-    </logger>
-          REMOVE THIS LINE IF YOU USE MyBatis2  -->
     <!--  REMOVE THIS LINE IF YOU USE MyBatis3
     <logger name="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <level value="debug" />
