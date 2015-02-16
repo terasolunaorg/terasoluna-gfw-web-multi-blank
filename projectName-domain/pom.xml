@@ -31,12 +31,6 @@
             <artifactId>terasoluna-gfw-jpa</artifactId>
         </dependency>
               REMOVE THIS LINE IF YOU USE JPA  -->
-        <!--  REMOVE THIS LINE IF YOU USE MyBatis2
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-mybatis2</artifactId>
-        </dependency>
-              REMOVE THIS LINE IF YOU USE MyBatis2  -->
         <!--  REMOVE THIS LINE IF YOU USE MyBatis3
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
