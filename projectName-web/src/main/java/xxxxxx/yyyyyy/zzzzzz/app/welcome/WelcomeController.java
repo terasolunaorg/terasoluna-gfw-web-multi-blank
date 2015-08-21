@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application home page.
  */
 @Controller
-public class HelloController {
+public class WelcomeController {
 
     private static final Logger logger = LoggerFactory
-            .getLogger(HelloController.class);
+            .getLogger(WelcomeController.class);
 
     /**
      * Simply selects the home view to render by returning its name.
