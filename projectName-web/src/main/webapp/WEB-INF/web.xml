@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
     version="3.0">
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-    <listener>
-        <listener-class>org.terasoluna.gfw.web.logging.HttpSessionEventLoggingListener</listener-class>
     </listener>
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -16,6 +15,10 @@
             classpath*:META-INF/spring/spring-security.xml
         </param-value>
     </context-param>
+
+    <listener>
+        <listener-class>org.terasoluna.gfw.web.logging.HttpSessionEventLoggingListener</listener-class>
+    </listener>
 
     <filter>
         <filter-name>MDCClearFilter</filter-name>
@@ -65,7 +68,6 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
     </filter>
-
     <filter-mapping>
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
@@ -81,7 +83,6 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>appServlet</servlet-name>
         <url-pattern>/</url-pattern>
@@ -101,10 +102,12 @@
         <error-code>500</error-code>
         <location>/WEB-INF/views/common/error/systemError.jsp</location>
     </error-page>
+
     <error-page>
         <error-code>404</error-code>
         <location>/WEB-INF/views/common/error/resourceNotFoundError.jsp</location>
     </error-page>
+
     <error-page>
         <exception-type>java.lang.Exception</exception-type>
         <location>/WEB-INF/views/common/error/unhandledSystemError.html</location>
