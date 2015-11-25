@@ -9,10 +9,11 @@
         <setting name="mapUnderscoreToCamelCase" value="true" />
         <setting name="lazyLoadingEnabled" value="true" />
         <setting name="aggressiveLazyLoading" value="false" />
+        <setting name="defaultFetchSize" value="100" />
 <!--
         <setting name="defaultExecutorType" value="REUSE" />
         <setting name="jdbcTypeForNull" value="NULL" />
-        <setting name="proxyFactory" value="JAVASSIST" />
+        <setting name="proxyFactory" value="CGLIB" />
         <setting name="localCacheScope" value="STATEMENT" />
 -->
     </settings>
