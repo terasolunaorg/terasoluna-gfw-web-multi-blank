@@ -13,7 +13,6 @@
 <!--
         <setting name="defaultExecutorType" value="REUSE" />
         <setting name="jdbcTypeForNull" value="NULL" />
-        <setting name="proxyFactory" value="CGLIB" />
         <setting name="localCacheScope" value="STATEMENT" />
 -->
     </settings>
