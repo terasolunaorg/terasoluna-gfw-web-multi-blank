@@ -11,6 +11,15 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
     <!--
       Please generate the war file using following Maven command.
 
