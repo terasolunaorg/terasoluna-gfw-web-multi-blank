@@ -8,7 +8,6 @@
     ">
 
     <sec:http pattern="/resources/**" security="none"/>
-
     <sec:http>
         <sec:form-login/>
         <sec:access-denied-handler ref="accessDeniedHandler"/>
