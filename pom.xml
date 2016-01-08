@@ -62,7 +62,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>${maven.failsafe.plugin.version}</version>
+                    <version>${maven-failsafe-plugin.version}</version>
                     <executions>
                         <execution>
                             <goals>
@@ -144,7 +144,8 @@
         <encoding>UTF-8</encoding>
         <java-version>1.7</java-version>
         <org.codehaus.mojo.build-helper-maven-plugi.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugi.version>
+        <maven-failsafe-plugin.version>2.19</maven-failsafe-plugin.version>
         <postgresql.version>9.3-1102-jdbc41</postgresql.version>
         <ojdbc.version>12.1.0.2</ojdbc.version>
-        <maven.failsafe.plugin.version>2.19</maven.failsafe.plugin.version>
-    </properties></project>
+    </properties>
+</project>
