@@ -134,5 +134,5 @@
         <org.codehaus.mojo.build-helper-maven-plugi.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugi.version>
         <postgresql.version>9.3-1102-jdbc41</postgresql.version>
         <ojdbc.version>12.1.0.2</ojdbc.version>
-    </properties>
-</project>
+        <maven.failsafe.plugin.version>2.19</maven.failsafe.plugin.version>
+    </properties></project>
