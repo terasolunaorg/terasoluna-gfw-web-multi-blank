@@ -62,7 +62,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>${org.codehaus.mojo.build-helper-maven-plugi.version}</version>
+                    <version>${org.codehaus.mojo.build-helper-maven-plugin.version}</version>
                     <executions>
                         <execution>
                             <id>add-source</id>
@@ -131,7 +131,7 @@
     <properties>
         <encoding>UTF-8</encoding>
         <java-version>1.7</java-version>
-        <org.codehaus.mojo.build-helper-maven-plugi.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugi.version>
+        <org.codehaus.mojo.build-helper-maven-plugin.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugin.version>
         <postgresql.version>9.3-1102-jdbc41</postgresql.version>
         <ojdbc.version>12.1.0.2</ojdbc.version>
     </properties>
