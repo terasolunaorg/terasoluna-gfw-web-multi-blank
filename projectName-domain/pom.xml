@@ -99,7 +99,6 @@
         -->
         <!-- == End Coding Support == -->
 
-        <!-- == Begin MyBatis -->
         <!--  REMOVE THIS LINE IF YOU USE MyBatis3
         <dependency>
             <groupId>cglib</groupId>
@@ -108,7 +107,6 @@
             <scope>runtime</scope>
         </dependency>
               REMOVE THIS LINE IF YOU USE MyBatis3  -->
-        <!-- == End MyBatis -->
     </dependencies>
 
 </project>
