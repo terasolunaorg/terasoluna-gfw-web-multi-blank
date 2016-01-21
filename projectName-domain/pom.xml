@@ -98,15 +98,6 @@
         </dependency>
         -->
         <!-- == End Coding Support == -->
-
-        <!--  REMOVE THIS LINE IF YOU USE MyBatis3
-        <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib</artifactId>
-            <version>3.1</version>
-            <scope>runtime</scope>
-        </dependency>
-              REMOVE THIS LINE IF YOU USE MyBatis3  -->
     </dependencies>
 
 </project>
