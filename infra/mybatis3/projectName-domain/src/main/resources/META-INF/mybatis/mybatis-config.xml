@@ -9,12 +9,14 @@
         <setting name="mapUnderscoreToCamelCase" value="true" />
         <setting name="lazyLoadingEnabled" value="true" />
         <setting name="aggressiveLazyLoading" value="false" />
-        <setting name="proxyFactory" value="CGLIB"/>
 <!--
         <setting name="defaultExecutorType" value="REUSE" />
         <setting name="jdbcTypeForNull" value="NULL" />
-        <setting name="proxyFactory" value="JAVASSIST" />
         <setting name="localCacheScope" value="STATEMENT" />
+-->
+<!-- Defaul value for proxyFactory has chenged to JAVASSIST since mybatis 3.3.0 .
+     To use CGLIB as a proxyFactory, change value to "CGLIB" and add dependency for CGLIB in pom.xml
+        <setting name="proxyFactory" value="JAVASSIST" />
 -->
     </settings>
 
