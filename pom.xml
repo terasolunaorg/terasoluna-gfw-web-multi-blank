@@ -263,7 +263,6 @@
         <org.springframework.build.aws.version>3.0.0.RELEASE</org.springframework.build.aws.version>
         <postgresql.version>9.4-1206-jdbc41</postgresql.version>
         <ojdbc.version>12.1.0.2</ojdbc.version>
-        <selenium.version>2.39.0</selenium.version>
         <tiles.version>2.2.2</tiles.version>
         <tomcat.api.version>7.0.53</tomcat.api.version>
     </properties>
