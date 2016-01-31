@@ -102,7 +102,7 @@ Commit the modification.
 
 > **Note: Commit comment format**
 >
-> "#{commit number}: {modification overview}"
+> "{modification overview} #{issue number}"
 
 > **Note: Supported language**
 >
@@ -111,7 +111,7 @@ Commit the modification.
 e.g.)
 
 ```
-git commit -a -m "#999: Fixes typos in POM"
+git commit -a -m "Fixes typos in POM #999"
 ```
 
 
@@ -135,7 +135,7 @@ For details, refer to the [GitHub document-Creating a pull request-](https://hel
 >
 > English only.
 
-* Write the modification overview into the title area. (Default is commit comment or work branch name)
+* Write the modification overview into the title area and end with #{issue number}. (Default is commit comment or work branch name)
 * Write the modification detail into the comment area. (If needed)
 * Include the issue number(`#{issue number}` format) to track the modification into the comment area.
 
@@ -143,5 +143,5 @@ e.g.)
 
 | Area | Content |
 | ----- | --------- |
-| Title | #999: Fixes typos in POM |
+| Title | Fixes typos in POM #999 |
 | Comment | Please review #999 . |
