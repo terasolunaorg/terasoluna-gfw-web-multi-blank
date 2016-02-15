@@ -135,7 +135,7 @@ For details, refer to the [GitHub document-Creating a pull request-](https://hel
 >
 > English only.
 
-* Write the modification overview into the title area and end with #{issue number}. (Default is commit comment or work branch name)
+* Write the modification overview into the title area and add the #{issue number} at its end. (Default is commit comment or work branch name)
 * Write the modification detail into the comment area. (If needed)
 * Include the issue number(`#{issue number}` format) to track the modification into the comment area.
 
