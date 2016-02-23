@@ -10,7 +10,7 @@ mvn archetype:generate^
  -DarchetypeCatalog=http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-releases^
  -DarchetypeGroupId=org.terasoluna.gfw.blank^
  -DarchetypeArtifactId=terasoluna-gfw-multi-web-blank-jpa-archetype^
- -DarchetypeVersion=1.0.3.RELEASE
+ -DarchetypeVersion=1.0.4.RELEASE
 ```
 
 #### for Bash
@@ -20,7 +20,7 @@ mvn archetype:generate\
  -DarchetypeCatalog=http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-releases\
  -DarchetypeGroupId=org.terasoluna.gfw.blank\
  -DarchetypeArtifactId=terasoluna-gfw-multi-web-blank-jpa-archetype\
- -DarchetypeVersion=1.0.3.RELEASE
+ -DarchetypeVersion=1.0.4.RELEASE
 ```
 
 ### multi blank project with MyBatis2
@@ -33,7 +33,7 @@ mvn archetype:generate^
  -DarchetypeCatalog=http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-releases^
  -DarchetypeGroupId=org.terasoluna.gfw.blank^
  -DarchetypeArtifactId=terasoluna-gfw-multi-web-blank-mybatis2-archetype^
- -DarchetypeVersion=1.0.3.RELEASE
+ -DarchetypeVersion=1.0.4.RELEASE
 ```
 
 #### for Bash
@@ -43,7 +43,7 @@ mvn archetype:generate\
  -DarchetypeCatalog=http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-releases\
  -DarchetypeGroupId=org.terasoluna.gfw.blank\
  -DarchetypeArtifactId=terasoluna-gfw-multi-web-blank-mybatis2-archetype\
- -DarchetypeVersion=1.0.3.RELEASE
+ -DarchetypeVersion=1.0.4.RELEASE
 ```
 
 ### multi blank project with MyBatis3
