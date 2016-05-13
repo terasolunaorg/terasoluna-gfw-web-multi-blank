@@ -33,17 +33,20 @@
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
             <artifactId>terasoluna-gfw-security-core</artifactId>
+            <type>pom</type>
         </dependency>
         <!--  REMOVE THIS LINE IF YOU USE JPA
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
             <artifactId>terasoluna-gfw-jpa</artifactId>
+            <type>pom</type>
         </dependency>
               REMOVE THIS LINE IF YOU USE JPA  -->
         <!--  REMOVE THIS LINE IF YOU USE MyBatis3
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
             <artifactId>terasoluna-gfw-mybatis3</artifactId>
+            <type>pom</type>
         </dependency>
               REMOVE THIS LINE IF YOU USE MyBatis3  -->
         <dependency>
