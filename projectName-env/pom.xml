@@ -38,10 +38,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>com.google.code.maven-license-plugin</groupId>
-                <artifactId>maven-license-plugin</artifactId>
-            </plugin>
         </plugins>
     </build>
 
@@ -84,23 +80,25 @@
         <!-- == Begin TERASOLUNA == -->
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-common</artifactId>
+            <artifactId>terasoluna-gfw-common-dependencies</artifactId>
+            <type>pom</type>
         </dependency>
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-jodatime</artifactId>
+            <artifactId>terasoluna-gfw-jodatime-dependencies</artifactId>
+            <type>pom</type>
         </dependency>
         <!--  REMOVE THIS LINE IF YOU USE JPA
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-jpa</artifactId>
+            <artifactId>terasoluna-gfw-jpa-dependencies</artifactId>
             <type>pom</type>
         </dependency>
               REMOVE THIS LINE IF YOU USE JPA  -->
         <!--  REMOVE THIS LINE IF YOU USE MyBatis3
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-mybatis3</artifactId>
+            <artifactId>terasoluna-gfw-mybatis3-dependencies</artifactId>
             <type>pom</type>
         </dependency>
               REMOVE THIS LINE IF YOU USE MyBatis3  -->
