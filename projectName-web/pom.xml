@@ -20,12 +20,20 @@
         </plugins>
     </build>
 
-    <!-- Please generate the war file using following Maven command. * Generate 
-        for local development environment mvn clean package * Generate for test or 
-        production environment (exclude the projectName-env.jar) mvn -P warpack clean 
-        package * Generate for test or production environment (include the projectName-env.jar) 
-        mvn -P warpack-with-env clean package Details of Maven profile refer to http://maven.apache.org/guides/introduction/introduction-to-profiles.html 
-        . -->
+    <!--
+      Please generate the war file using following Maven command.
+
+        * Generate for local development environment
+             mvn clean package
+
+        * Generate for test or production environment (exclude the projectName-env.jar)
+             mvn -P warpack clean package
+
+        * Generate for test or production environment (include the projectName-env.jar)
+             mvn -P warpack-with-env clean package
+
+      Details of Maven profile refer to http://maven.apache.org/guides/introduction/introduction-to-profiles.html .
+    -->
     <profiles>
         <profile>
             <id>local</id>
@@ -99,8 +107,8 @@
         </dependency>
 
         <!-- JavaEE/SE APIs -->
-        <!-- Required only for Tomcat. If run on other J2EE server, remove 
-            this dependency and use provided tag libraries. -->
+        <!--  Required only for Tomcat. If run on other J2EE server,
+            remove this dependency and use provided tag libraries. -->
         <dependency>
             <groupId>org.apache.taglibs</groupId>
             <artifactId>taglibs-standard-jstlel</artifactId>
@@ -136,8 +144,13 @@
         <!-- == End Unit Test == -->
 
         <!-- == Begin Coding Support == -->
-        <!-- <dependency> <groupId>org.projectlombok</groupId> <artifactId>lombok</artifactId> 
-            <scope>provided</scope> </dependency> -->
+        <!--
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        -->
         <!-- == End Coding Support == -->
 
     </dependencies>
