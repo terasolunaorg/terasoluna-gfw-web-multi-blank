@@ -104,6 +104,20 @@
                         </execution>
                     </executions>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${maven-war-plugin.version}</version>
+                    <configuration>
+                        <warName>${project.artifactId}</warName>
+                        <archive>
+                            <addMavenDescriptor>false</addMavenDescriptor>
+                            <manifest>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -124,28 +138,36 @@
                 <artifactId>projectName-env</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-java</artifactId>
+                <version>${selenium.version}</version>
+            </dependency>
 
             <!-- == Begin Database == -->
-<!--             <dependency> -->
-<!--                 <groupId>org.postgresql</groupId> -->
-<!--                 <artifactId>postgresql</artifactId> -->
-<!--                 <version>${postgresql.version}</version> -->
-<!--             </dependency> -->
-<!--             <dependency> -->
-<!--                 <groupId>com.oracle</groupId> -->
-<!--                 <artifactId>ojdbc7</artifactId> -->
-<!--                 <version>${ojdbc.version}</version> -->
-<!--             </dependency> -->
+            <!-- <dependency> -->
+            <!-- <groupId>org.postgresql</groupId> -->
+            <!-- <artifactId>postgresql</artifactId> -->
+            <!-- <version>${postgresql.version}</version> -->
+            <!-- </dependency> -->
+            <!-- <dependency> -->
+            <!-- <groupId>com.oracle</groupId> -->
+            <!-- <artifactId>ojdbc7</artifactId> -->
+            <!-- <version>${ojdbc.version}</version> -->
+            <!-- </dependency> -->
             <!-- == End Database == -->
 
         </dependencies>
     </dependencyManagement>
+
     <properties>
         <encoding>UTF-8</encoding>
         <java-version>1.8</java-version>
+        <maven-war-plugin.version>2.5</maven-war-plugin.version>
         <org.codehaus.mojo.build-helper-maven-plugin.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugin.version>
         <maven-failsafe-plugin.version>2.19</maven-failsafe-plugin.version>
         <postgresql.version>9.4-1206-jdbc41</postgresql.version>
         <ojdbc.version>12.1.0.2</ojdbc.version>
+        <selenium.version>2.46.0</selenium.version>
     </properties>
 </project>
