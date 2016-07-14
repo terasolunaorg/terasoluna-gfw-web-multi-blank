@@ -37,6 +37,11 @@
             <artifactId>terasoluna-gfw-security-core-dependencies</artifactId>
             <type>pom</type>
         </dependency>
+        <dependency>
+            <groupId>org.terasoluna.gfw</groupId>
+            <artifactId>terasoluna-gfw-recommended-dependencies</artifactId>
+            <type>pom</type>
+        </dependency>
         <!--  REMOVE THIS LINE IF YOU USE JPA
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
@@ -51,11 +56,6 @@
             <type>pom</type>
         </dependency>
               REMOVE THIS LINE IF YOU USE MyBatis3  -->
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-recommended-dependencies</artifactId>
-            <type>pom</type>
-        </dependency>
         <!-- == End TERASOLUNA == -->
 
         <!-- == Begin Database == -->
