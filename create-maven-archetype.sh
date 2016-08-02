@@ -22,9 +22,53 @@ fi
 
 rm -rf infra
 rm -rf `/usr/bin/find . -name '.svn' -type d`
-mvn archetype:create-from-project
+
+if [ "$1" = "central" ]; then
+  profile="-P central"
+fi
+mvn archetype:create-from-project ${profile}
 
 pushd target/generated-sources/archetype
 sed -i -e "s/xxxxxx\.yyyyyy\.zzzzzz/org.terasoluna.gfw.blank/g" pom.xml
 sed -i -e "s/projectName/terasoluna-gfw-multi-web-blank/g" pom.xml
+
+if [ "$1" = "central" ]; then
+  # add plugins to deploy to Maven Central Repository
+  LF=$(printf '\\\012_')
+  LF=${LF%_}
+  
+  REPLACEMENT_TAG="    <plugins>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}      <plugin>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}        <groupId>org.sonatype.plugins<\/groupId>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}        <artifactId>nexus-staging-maven-plugin<\/artifactId>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}        <version>1.6.7<\/version>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}        <extensions>true<\/extensions>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}        <configuration>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}          <serverId>ossrh<\/serverId>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}          <nexusUrl>https:\/\/oss.sonatype.org\/<\/nexusUrl>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}          <autoReleaseAfterClose>true<\/autoReleaseAfterClose>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}        <\/configuration>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}      <\/plugin>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}      <plugin>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}        <groupId>org.apache.maven.plugins<\/groupId>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}        <artifactId>maven-gpg-plugin<\/artifactId>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}        <version>1.6<\/version>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}        <executions>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}          <execution>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}            <id>sign-artifacts<\/id>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}            <phase>verify<\/phase>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}            <goals>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}              <goal>sign<\/goal>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}            <\/goals>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}          <\/execution>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}        <\/executions>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}      <\/plugin>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}    <\/plugins>${LF}"
+  REPLACEMENT_TAG="${REPLACEMENT_TAG}  <\/build>"
+  
+  sed -i -e "s/  <\/build>/${REPLACEMENT_TAG}/" pom.xml
+fi
 mvn deploy
+
+popd
+popd
