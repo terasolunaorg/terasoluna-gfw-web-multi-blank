@@ -24,9 +24,9 @@ rm -rf infra
 rm -rf `/usr/bin/find . -name '.svn' -type d`
 
 if [ "$1" = "central" ]; then
-  profile="-P central"
+  PROFILE="-P central"
 fi
-mvn archetype:create-from-project ${profile}
+mvn archetype:create-from-project ${PROFILE}
 
 pushd target/generated-sources/archetype
 sed -i -e "s/xxxxxx\.yyyyyy\.zzzzzz/org.terasoluna.gfw.blank/g" pom.xml
