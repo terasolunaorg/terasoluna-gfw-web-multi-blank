@@ -82,6 +82,19 @@
         </dependency>
         <!-- == End TERASOLUNA == -->
 
+        <!-- == Begin Database == -->
+<!--         <dependency> -->
+<!--             <groupId>org.postgresql</groupId> -->
+<!--             <artifactId>postgresql</artifactId> -->
+<!--             <scope>runtime</scope> -->
+<!--         </dependency> -->
+<!--         <dependency> -->
+<!--             <groupId>com.oracle</groupId> -->
+<!--             <artifactId>ojdbc7</artifactId> -->
+<!--             <scope>runtime</scope> -->
+<!--         </dependency> -->
+        <!-- == End Database == -->
+
         <!-- == Begin Tomcat == -->
         <!-- Servlet API 3.0 & JSP API 2.2 -->
         <dependency>
