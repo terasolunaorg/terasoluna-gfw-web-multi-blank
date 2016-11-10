@@ -55,6 +55,11 @@
 <!--             <artifactId>postgresql</artifactId> -->
 <!--             <scope>test</scope> -->
 <!--         </dependency> -->
+<!--         <dependency> -->
+<!--             <groupId>com.oracle</groupId> -->
+<!--             <artifactId>ojdbc7</artifactId> -->
+<!--             <scope>test</scope> -->
+<!--         </dependency> -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
