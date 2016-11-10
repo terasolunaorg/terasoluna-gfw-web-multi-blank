@@ -91,7 +91,19 @@
         </dependency>
         <!-- == End TERASOLUNA == -->
 
+        <!-- == Begin Tomcat == -->
+        <!-- Servlet API 3.0 & JSP API 2.2 -->
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jsp-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- == End Tomcat == -->
+
         <!-- == Begin Database == -->
+        <!--  JDBC Driver is normally provided by application server .
+              But if you want to include JDBC Driver in the application,
+              add this dependency . -->
 <!--         <dependency> -->
 <!--             <groupId>org.postgresql</groupId> -->
 <!--             <artifactId>postgresql</artifactId> -->
@@ -103,15 +115,6 @@
 <!--             <scope>runtime</scope> -->
 <!--         </dependency> -->
         <!-- == End Database == -->
-
-        <!-- == Begin Tomcat == -->
-        <!-- Servlet API 3.0 & JSP API 2.2 -->
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jsp-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <!-- == End Tomcat == -->
 
         <!-- == Begin Unit Test == -->
         <dependency>
