@@ -96,6 +96,22 @@
         </dependency>
         <!-- == End Tomcat == -->
 
+        <!-- == Begin Database == -->
+        <!--  JDBC Driver is normally provided by application server .
+              But if you want to include JDBC Driver in the application,
+              add this dependency . -->
+<!--         <dependency> -->
+<!--             <groupId>org.postgresql</groupId> -->
+<!--             <artifactId>postgresql</artifactId> -->
+<!--             <scope>runtime</scope> -->
+<!--         </dependency> -->
+<!--         <dependency> -->
+<!--             <groupId>com.oracle</groupId> -->
+<!--             <artifactId>ojdbc7</artifactId> -->
+<!--             <scope>runtime</scope> -->
+<!--         </dependency> -->
+        <!-- == End Database == -->
+
         <!-- == Begin Unit Test == -->
         <dependency>
             <groupId>junit</groupId>

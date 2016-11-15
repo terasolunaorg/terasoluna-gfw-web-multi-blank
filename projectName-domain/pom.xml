@@ -44,12 +44,12 @@
 <!--         <dependency> -->
 <!--             <groupId>org.postgresql</groupId> -->
 <!--             <artifactId>postgresql</artifactId> -->
-<!--             <scope>provided</scope> -->
+<!--             <scope>test</scope> -->
 <!--         </dependency> -->
 <!--         <dependency> -->
 <!--             <groupId>com.oracle</groupId> -->
 <!--             <artifactId>ojdbc7</artifactId> -->
-<!--             <scope>provided</scope> -->
+<!--             <scope>test</scope> -->
 <!--         </dependency> -->
         <!-- == End Database == -->
 
