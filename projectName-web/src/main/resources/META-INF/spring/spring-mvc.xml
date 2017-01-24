@@ -17,7 +17,7 @@
             <bean
                 class="org.springframework.data.web.PageableHandlerMethodArgumentResolver" />
         </mvc:argument-resolvers>
-        <!-- workarround to CVE-2016-5007. -->
+        <!-- workaround to CVE-2016-5007. -->
         <mvc:path-matching path-matcher="pathMatcher" />
     </mvc:annotation-driven>
 
