@@ -145,7 +145,7 @@
         <java-version>1.8</java-version>
         <org.codehaus.mojo.build-helper-maven-plugin.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugin.version>
         <maven-failsafe-plugin.version>2.19</maven-failsafe-plugin.version>
-        <postgresql.version>9.4-1206-jdbc41</postgresql.version>
+        <postgresql.version>9.4.1212</postgresql.version>
         <ojdbc.version>12.1.0.2</ojdbc.version>
     </properties>
 </project>
