@@ -114,6 +114,11 @@
                 <entry key="common/error/dataAccessError" value="500" />
             </map>
         </property>
+        <property name="excludedExceptions">
+            <array>
+                <value>org.springframework.web.util.NestedServletException</value>
+            </array>
+        </property>
         <property name="defaultErrorView" value="common/error/systemError" />
         <property name="defaultStatusCode" value="500" />
     </bean>
