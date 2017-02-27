@@ -6,7 +6,7 @@ To create multi blank project with JPA (Spring Data JPA)
 
 #### for CommandPrompt
 ``` console
-mvn archetype:generate^
+mvn org.apache.maven.plugins:maven-archetype-plugin:2.4:generate^
  -DarchetypeCatalog=http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-releases^
  -DarchetypeGroupId=org.terasoluna.gfw.blank^
  -DarchetypeArtifactId=terasoluna-gfw-multi-web-blank-jpa-archetype^
@@ -16,7 +16,7 @@ mvn archetype:generate^
 #### for Bash
 
 ``` console
-mvn archetype:generate\
+mvn org.apache.maven.plugins:maven-archetype-plugin:2.4:generate\
  -DarchetypeCatalog=http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-releases\
  -DarchetypeGroupId=org.terasoluna.gfw.blank\
  -DarchetypeArtifactId=terasoluna-gfw-multi-web-blank-jpa-archetype\
@@ -29,7 +29,7 @@ To create multi blank project with MyBatis2
 
 #### for CommandPrompt
 ``` console
-mvn archetype:generate^
+mvn org.apache.maven.plugins:maven-archetype-plugin:2.4:generate^
  -DarchetypeCatalog=http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-releases^
  -DarchetypeGroupId=org.terasoluna.gfw.blank^
  -DarchetypeArtifactId=terasoluna-gfw-multi-web-blank-mybatis2-archetype^
@@ -39,7 +39,7 @@ mvn archetype:generate^
 #### for Bash
 
 ``` console
-mvn archetype:generate\
+mvn org.apache.maven.plugins:maven-archetype-plugin:2.4:generate\
  -DarchetypeCatalog=http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-releases\
  -DarchetypeGroupId=org.terasoluna.gfw.blank\
  -DarchetypeArtifactId=terasoluna-gfw-multi-web-blank-mybatis2-archetype\
