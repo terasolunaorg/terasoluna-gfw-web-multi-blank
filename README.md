@@ -11,7 +11,7 @@ mvn org.apache.maven.plugins:maven-archetype-plugin:2.4:generate^
  -DarchetypeCatalog=http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-releases^
  -DarchetypeGroupId=org.terasoluna.gfw.blank^
  -DarchetypeArtifactId=terasoluna-gfw-multi-web-blank-mybatis3-archetype^
- -DarchetypeVersion=5.2.0.RELEASE
+ -DarchetypeVersion=5.3.0.RELEASE
 ```
 
 #### for Bash
@@ -21,7 +21,7 @@ mvn org.apache.maven.plugins:maven-archetype-plugin:2.4:generate\
  -DarchetypeCatalog=http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-releases\
  -DarchetypeGroupId=org.terasoluna.gfw.blank\
  -DarchetypeArtifactId=terasoluna-gfw-multi-web-blank-mybatis3-archetype\
- -DarchetypeVersion=5.2.0.RELEASE
+ -DarchetypeVersion=5.3.0.RELEASE
 ```
 
 ### multi blank project with JPA (Spring Data JPA)
@@ -35,7 +35,7 @@ mvn org.apache.maven.plugins:maven-archetype-plugin:2.4:generate^
  -DarchetypeCatalog=http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-releases^
  -DarchetypeGroupId=org.terasoluna.gfw.blank^
  -DarchetypeArtifactId=terasoluna-gfw-multi-web-blank-jpa-archetype^
- -DarchetypeVersion=5.2.0.RELEASE
+ -DarchetypeVersion=5.3.0.RELEASE
 ```
 
 #### for Bash
@@ -45,5 +45,5 @@ mvn org.apache.maven.plugins:maven-archetype-plugin:2.4:generate\
  -DarchetypeCatalog=http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-releases\
  -DarchetypeGroupId=org.terasoluna.gfw.blank\
  -DarchetypeArtifactId=terasoluna-gfw-multi-web-blank-jpa-archetype\
- -DarchetypeVersion=5.2.0.RELEASE
+ -DarchetypeVersion=5.3.0.RELEASE
 ```
