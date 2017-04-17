@@ -14,6 +14,7 @@
         <sec:access-denied-handler ref="accessDeniedHandler"/>
         <sec:custom-filter ref="userIdMDCPutFilter" after="ANONYMOUS_FILTER"/>
         <sec:session-management />
+        <sec:logout/>
     </sec:http>
 
     <sec:authentication-manager />
