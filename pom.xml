@@ -151,7 +151,7 @@
 <!--                 <version>${postgresql.version}</version> -->
 <!--             </dependency> -->
 <!--             <dependency> -->
-<!--                 <groupId>com.oracle</groupId> -->
+<!--                 <groupId>com.oracle.jdbc</groupId> -->
 <!--                 <artifactId>ojdbc7</artifactId> -->
 <!--                 <version>${ojdbc.version}</version> -->
 <!--             </dependency> -->
