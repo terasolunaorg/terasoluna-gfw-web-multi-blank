@@ -225,7 +225,7 @@
 <!--                 <scope>provided</scope> -->
 <!--             </dependency> -->
 <!--             <dependency> -->
-<!--                 <groupId>com.oracle</groupId> -->
+<!--                 <groupId>com.oracle.jdbc</groupId> -->
 <!--                 <artifactId>ojdbc7</artifactId> -->
 <!--                 <version>${ojdbc.version}</version> -->
 <!--                 <scope>provided</scope> -->
