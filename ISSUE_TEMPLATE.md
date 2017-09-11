@@ -11,5 +11,13 @@
 ## Fix Version/s
 (To be written later by project member)
 
+## Final Solution
+(To be written later by project member)
+
+## Migrating Guide
+(To be selected later by project member)
+* [ ] Required
+* Not Required
+
 ## Issue Links
 * #XXX
