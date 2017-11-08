@@ -60,6 +60,7 @@
 <!--             <artifactId>ojdbc7</artifactId> -->
 <!--             <scope>test</scope> -->
 <!--         </dependency> -->
+        <!-- It is needed that adjust the selenium version by browser version used. -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
