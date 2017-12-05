@@ -72,6 +72,11 @@
                     </executions>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
                     <version>${org.codehaus.mojo.build-helper-maven-plugin.version}</version>
@@ -145,6 +150,8 @@
         <java-version>1.8</java-version>
         <org.codehaus.mojo.build-helper-maven-plugin.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugin.version>
         <maven-failsafe-plugin.version>2.19</maven-failsafe-plugin.version>
+        <maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
+        <!-- == Dependency Versions == -->
         <postgresql.version>9.4.1212</postgresql.version>
         <ojdbc.version>12.1.0.2</ojdbc.version>
     </properties>
