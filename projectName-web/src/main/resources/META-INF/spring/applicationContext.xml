@@ -16,6 +16,12 @@
                 <entry key="pbkdf2">
                     <bean class="org.springframework.security.crypto.password.Pbkdf2PasswordEncoder" />
                 </entry>
+                <entry key="bcrypt">
+                    <bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+                </entry>
+                <entry key="scrypt">
+                    <bean class="org.springframework.security.crypto.scrypt.SCryptPasswordEncoder" />
+                </entry>
             </map>
         </constructor-arg>
     </bean>
