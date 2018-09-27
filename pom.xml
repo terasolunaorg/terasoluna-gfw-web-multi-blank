@@ -135,6 +135,16 @@
                 <version>${project.version}</version>
             </dependency>
 
+            <!-- == Begin Password Encode == -->
+            <!-- Please remove comment out when using SCryptPasswordEncoder. -->
+            <!--
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk15on</artifactId>
+            </dependency>
+            -->
+            <!-- == End Password Encode == -->
+
             <!-- == Begin Database == -->
 <!--             <dependency> -->
 <!--                 <groupId>org.postgresql</groupId> -->
@@ -162,15 +172,6 @@
 <!--                 <scope>test</scope> -->
 <!--             </dependency> -->
             <!-- == End Unit Test == -->
-
-            <!-- == Begin Password Encode == -->
-            <!--
-            <dependency>
-                <groupId>org.bouncycastle</groupId>
-                <artifactId>bcprov-jdk15on</artifactId>
-            </dependency>
-            -->
-            <!-- == End Password Encode == -->
 
         </dependencies>
     </dependencyManagement>
