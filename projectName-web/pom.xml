@@ -98,6 +98,16 @@
         </dependency>
         <!-- == End TERASOLUNA == -->
 
+        <!-- == Begin Security == -->
+        <!-- Please remove comment out when using SCryptPasswordEncoder. -->
+        <!--
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+        </dependency>
+        -->
+        <!-- == End Security == -->
+
         <!-- == Begin Tomcat == -->
         <!-- Servlet API 3.0 & JSP API 2.2 -->
         <dependency>
