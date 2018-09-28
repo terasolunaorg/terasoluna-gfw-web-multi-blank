@@ -135,7 +135,7 @@
                 <version>${project.version}</version>
             </dependency>
 
-            <!-- == Begin Password Encode == -->
+            <!-- == Begin Security == -->
             <!-- Please remove comment out when using SCryptPasswordEncoder. -->
             <!--
             <dependency>
@@ -143,7 +143,7 @@
                 <artifactId>bcprov-jdk15on</artifactId>
             </dependency>
             -->
-            <!-- == End Password Encode == -->
+            <!-- == End Security == -->
 
             <!-- == Begin Database == -->
 <!--             <dependency> -->
