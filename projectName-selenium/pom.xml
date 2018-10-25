@@ -61,7 +61,6 @@
 <!--             <scope>test</scope> -->
 <!--         </dependency> -->
 
-        <!-- Please set the appropriate version according to the web browser. -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
