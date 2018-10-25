@@ -10,7 +10,7 @@
     <context:property-placeholder
         location="classpath*:META-INF/spring/*.properties" />
 
-    <bean id="webDriver" class="xxxxxx.yyyyyy.zzzzzz.selenium.welcome.FirefoxDriverFactoryBean"
+    <bean id="webDriver" class="xxxxxx.yyyyyy.zzzzzz.selenium.common.FirefoxDriverFactoryBean"
         scope="prototype" />
 
 </beans>

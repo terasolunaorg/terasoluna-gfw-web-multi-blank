@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package xxxxxx.yyyyyy.zzzzzz.selenium.welcome;
+package xxxxxx.yyyyyy.zzzzzz.selenium.common;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -24,6 +24,7 @@ import io.github.bonigarcia.wdm.FirefoxDriverManager;
 
 /**
  * Create the bean of FirefoxDriver.
+ * Use WebDriverManager to create WebDriver for operating the browser.
  */
 public class FirefoxDriverFactoryBean implements FactoryBean<FirefoxDriver> {
 
