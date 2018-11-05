@@ -225,11 +225,6 @@
                 <artifactId>selenium-support</artifactId>
                 <version>${selenium.version}</version>
             </dependency>
-            <dependency>
-                <groupId>io.github.bonigarcia</groupId>
-                <artifactId>webdrivermanager</artifactId>
-                <version>${webdrivermanager.version}</version>
-            </dependency>
             <!-- == End E2E Test == -->
 
         </dependencies>
@@ -247,7 +242,6 @@
         <spring.test.dbunit.version>1.3.0</spring.test.dbunit.version>
         <bouncycastle.version>1.59</bouncycastle.version>
         <selenium.version>3.0.1</selenium.version>
-        <webdrivermanager.version>1.6.2</webdrivermanager.version>
         <!-- == Project Properties == -->
         <encoding>UTF-8</encoding>
         <java-version>1.8</java-version>

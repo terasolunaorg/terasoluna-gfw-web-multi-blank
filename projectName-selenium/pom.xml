@@ -66,11 +66,6 @@
             <artifactId>selenium-java</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
 </project>
