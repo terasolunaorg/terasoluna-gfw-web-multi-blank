@@ -175,6 +175,7 @@
 
             <!-- == Begin E2E Test == -->
             <!-- Please set the appropriate version according to the web browser. -->
+            <!-- Depending on the version of Selenium, it is necessary to prepare a webdriver suitable for the browser. -->
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
                 <artifactId>selenium-java</artifactId>
