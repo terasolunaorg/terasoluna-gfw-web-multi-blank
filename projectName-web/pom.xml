@@ -126,7 +126,7 @@
 <!--         </dependency> -->
 <!--         <dependency> -->
 <!--             <groupId>com.oracle.jdbc</groupId> -->
-<!--             <artifactId>ojdbc7</artifactId> -->
+<!--             <artifactId>ojdbc8</artifactId> -->
 <!--             <scope>runtime</scope> -->
 <!--         </dependency> -->
         <!-- == End Database == -->

@@ -40,8 +40,8 @@
                 <db.password>oracle</db.password>
                 <db.driver>oracle.jdbc.driver.OracleDriver</db.driver>
                 <db.groupId>com.oracle.jdbc</db.groupId>
-                <db.artifactId>ojdbc7</db.artifactId>
-                <db.version>${ojdbc7.version}</db.version>
+                <db.artifactId>ojdbc8</db.artifactId>
+                <db.version>${ojdbc8.version}</db.version>
                 <db.delimiterType>row</db.delimiterType>
             </properties>
         </profile>
