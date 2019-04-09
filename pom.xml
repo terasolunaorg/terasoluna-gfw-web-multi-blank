@@ -172,8 +172,8 @@
         <maven-failsafe-plugin.version>2.19</maven-failsafe-plugin.version>
         <maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
         <!-- == Dependency Versions == -->
-        <postgresql.version>9.4.1212</postgresql.version>
-        <ojdbc.version>12.2.0.1.0</ojdbc.version>
+        <postgresql.version>42.2.5.jre7</postgresql.version>
+        <ojdbc.version>12.1.0.2</ojdbc.version>
         <dbunit.version>2.5.4</dbunit.version>
         <spring.test.dbunit.version>1.3.0</spring.test.dbunit.version>
         <!-- == Project Properties == -->
