@@ -61,7 +61,14 @@
         <level value="info" />
     </logger>
 
+    <logger name="org.springframework.jdbc.core.JdbcTemplate">
+        <level value="debug" />
+    </logger>
+
     <!--  REMOVE THIS LINE IF YOU USE JPA
+    <logger name="org.hibernate.SQL" additivity="true">
+        <level value="debug" />
+    </logger>
     <logger name="org.hibernate.engine.transaction">
         <level value="debug" />
     </logger>
