@@ -62,7 +62,7 @@
     </logger>
 
     <logger name="org.springframework.jdbc.core.JdbcTemplate">
-        <level value="debug" />
+        <level value="trace" />
     </logger>
 
     <!--  REMOVE THIS LINE IF YOU USE JPA
