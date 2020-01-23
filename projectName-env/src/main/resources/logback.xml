@@ -61,7 +61,17 @@
         <level value="info" />
     </logger>
 
+    <logger name="org.springframework.jdbc.core.JdbcTemplate">
+        <level value="trace" />
+    </logger>
+
     <!--  REMOVE THIS LINE IF YOU USE JPA
+    <logger name="org.hibernate.SQL" additivity="true">
+        <level value="debug" />
+    </logger>
+    <logger name="org.hibernate.type">
+        <level value="trace" />
+    </logger>
     <logger name="org.hibernate.engine.transaction">
         <level value="debug" />
     </logger>
@@ -72,15 +82,6 @@
     </logger>
           REMOVE THIS LINE IF YOU USE MyBatis3  -->
 
-    <logger name="jdbc.sqltiming">
-        <level value="debug" />
-    </logger>
-    
-    <!-- only for development -->
-    <logger name="jdbc.resultsettable">
-        <level value="debug" />
-    </logger>
-    
     <root level="warn">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="APPLICATION_LOG_FILE" />
