@@ -39,7 +39,7 @@
                 <db.username>oracle</db.username>
                 <db.password>oracle</db.password>
                 <db.driver>oracle.jdbc.driver.OracleDriver</db.driver>
-                <db.groupId>com.oracle.ojdbc</db.groupId>
+                <db.groupId>com.oracle.database.jdbc</db.groupId>
                 <db.artifactId>ojdbc8</db.artifactId>
                 <db.version>${ojdbc.version}</db.version>
                 <db.delimiterType>row</db.delimiterType>
