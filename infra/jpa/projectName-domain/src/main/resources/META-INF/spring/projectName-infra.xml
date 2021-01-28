@@ -15,7 +15,6 @@
 
     <bean id="jpaVendorAdapter"
         class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-        <property name="showSql" value="false" />
         <property name="database" value="${database}" />
     </bean>
 
@@ -26,11 +25,7 @@
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
         <property name="jpaPropertyMap">
             <util:map>
-                <entry key="hibernate.hbm2ddl.auto" value="" />
-                <entry key="hibernate.ejb.naming_strategy"
-                    value="org.hibernate.cfg.ImprovedNamingStrategy" />
                 <entry key="hibernate.connection.charSet" value="UTF-8" />
-                <entry key="hibernate.show_sql" value="false" />
                 <entry key="hibernate.format_sql" value="false" />
                 <entry key="hibernate.use_sql_comments" value="true" />
                 <entry key="hibernate.jdbc.batch_size" value="30" />
