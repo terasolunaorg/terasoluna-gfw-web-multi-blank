@@ -52,7 +52,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>sql-maven-plugin</artifactId>
-                <version>1.5</version>
+                <version>${org.codehaus.mojo.sql-maven-plugin.version}</version>
                 <dependencies>
                     <dependency>
                         <groupId>${db.groupId}</groupId>
