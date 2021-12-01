@@ -168,7 +168,7 @@
         <!-- == Dependency Versions == -->
         <postgresql.version>42.2.9</postgresql.version>
         <ojdbc.version>19.3.0.0</ojdbc.version>
-        <dbunit.version>2.5.4</dbunit.version>
+        <dbunit.version>2.7.2</dbunit.version>
         <spring.test.dbunit.version>1.3.0</spring.test.dbunit.version>
         <!-- == Project Properties == -->
         <encoding>UTF-8</encoding>
