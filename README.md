@@ -10,7 +10,7 @@ To create multi blank project with MyBatis3
 mvn archetype:generate^
  -DarchetypeGroupId=org.terasoluna.gfw.blank^
  -DarchetypeArtifactId=terasoluna-gfw-multi-web-blank-mybatis3-archetype^
- -DarchetypeVersion=5.7.0.RELEASE
+ -DarchetypeVersion=5.7.1.RELEASE
 ```
 
 #### for Bash
@@ -19,7 +19,7 @@ mvn archetype:generate^
 mvn archetype:generate\
  -DarchetypeGroupId=org.terasoluna.gfw.blank\
  -DarchetypeArtifactId=terasoluna-gfw-multi-web-blank-mybatis3-archetype\
- -DarchetypeVersion=5.7.0.RELEASE
+ -DarchetypeVersion=5.7.1.RELEASE
 ```
 
 ### multi blank project with JPA (Spring Data JPA)
@@ -32,7 +32,7 @@ To create multi blank project with JPA (Spring Data JPA)
 mvn archetype:generate^
  -DarchetypeGroupId=org.terasoluna.gfw.blank^
  -DarchetypeArtifactId=terasoluna-gfw-multi-web-blank-jpa-archetype^
- -DarchetypeVersion=5.7.0.RELEASE
+ -DarchetypeVersion=5.7.1.RELEASE
 ```
 
 #### for Bash
@@ -41,5 +41,5 @@ mvn archetype:generate^
 mvn archetype:generate\
  -DarchetypeGroupId=org.terasoluna.gfw.blank\
  -DarchetypeArtifactId=terasoluna-gfw-multi-web-blank-jpa-archetype\
- -DarchetypeVersion=5.7.0.RELEASE
+ -DarchetypeVersion=5.7.1.RELEASE
 ```
