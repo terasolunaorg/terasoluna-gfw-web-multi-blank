@@ -5,7 +5,7 @@
     <artifactId>projectName-selenium</artifactId>
     <packaging>jar</packaging>
     <parent>
-        <version>5.6.2.RELEASE</version>
+        <version>5.6.2.SP1.RELEASE</version>
         <artifactId>projectName</artifactId>
         <groupId>xxxxxx.yyyyyy.zzzzzz</groupId>
         <relativePath>../pom.xml</relativePath>
