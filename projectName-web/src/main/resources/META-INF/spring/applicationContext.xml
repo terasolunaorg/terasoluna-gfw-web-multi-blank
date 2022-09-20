@@ -34,11 +34,6 @@
     <context:property-placeholder
         location="classpath*:/META-INF/spring/*.properties" />
 
-    <bean id="beanMapper" class="com.github.dozermapper.spring.DozerBeanMapperFactoryBean">
-        <property name="mappingFiles"
-            value="classpath*:/META-INF/dozer/**/*-mapping.xml" />
-    </bean>
-
     <!-- Message -->
     <bean id="messageSource"
         class="org.springframework.context.support.ResourceBundleMessageSource">
