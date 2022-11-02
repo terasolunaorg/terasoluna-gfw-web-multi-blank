@@ -1,0 +1,175 @@
+/*
+ * Copyright(c) 2013 NTT DATA Corporation. Copyright(c) 2013 NTT Corporation.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+package xxxxxx.yyyyyy.zzzzzz.config.app;
+
+import javax.sql.DataSource;
+
+import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.jdbc.datasource.init.DataSourceInitializer;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
+import org.springframework.transaction.TransactionManager;
+import org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory;
+import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
+
+/* REMOVE THIS LINE IF YOU USE JPA
+import org.springframework.orm.jpa.JpaTransactionManager;
+import jakarta.persistence.EntityManagerFactory;
+REMOVE THIS LINE IF YOU USE JPA */
+
+/**
+ * Define settings for the environment.
+ */
+@Configuration
+public class ProjectNameEnvConfig {
+
+    /**
+     * DataSource.driverClassName property.
+     */
+    @Value("${database.driverClassName}")
+    private String driverClassName;
+
+    /**
+     * DataSource.url property.
+     */
+    @Value("${database.url}")
+    private String url;
+
+    /**
+     * DataSource.username property.
+     */
+    @Value("${database.username}")
+    private String username;
+
+    /**
+     * DataSource.password property.
+     */
+    @Value("${database.password}")
+    private String password;
+
+    /**
+     * DataSource.maxTotal property.
+     */
+    @Value("${cp.maxActive}")
+    private Integer maxActive;
+
+    /**
+     * DataSource.maxIdle property.
+     */
+    @Value("${cp.maxIdle}")
+    private Integer maxIdle;
+
+    /**
+     * DataSource.minIdle property.
+     */
+    @Value("${cp.minIdle}")
+    private Integer minIdle;
+
+    /**
+     * DataSource.maxWaitMillis property.
+     */
+    @Value("${cp.maxWait}")
+    private Integer maxWait;
+
+    /**
+     * Property databaseName.
+     */
+    @Value("${database}")
+    private String database;
+
+    /**
+     * Configure {@link DataSource} bean.
+     * @return Bean of configured {@link BasicDataSource}
+     */
+    @Bean(name = "dataSource", destroyMethod = "close")
+    public DataSource dataSource() {
+        BasicDataSource bean = new BasicDataSource();
+        bean.setDriverClassName(driverClassName);
+        bean.setUrl(url);
+        bean.setUsername(username);
+        bean.setPassword(password);
+        bean.setDefaultAutoCommit(false);
+        bean.setMaxTotal(maxActive);
+        bean.setMaxIdle(maxIdle);
+        bean.setMinIdle(minIdle);
+        bean.setMaxWaitMillis(maxWait);
+        return bean;
+    }
+
+    /**
+     * Configuration to set up database during initialization.
+     * @param dataSource Bean defined by #dataSource()
+     * @see #dataSource()
+     * @return Bean of configured {@link DataSourceInitializer}
+     */
+    @Bean
+    public DataSourceInitializer dataSourceInitializer(DataSource dataSource) {
+        DataSourceInitializer bean = new DataSourceInitializer();
+        bean.setDataSource(dataSource);
+
+        ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
+        databasePopulator.addScript(new ClassPathResource("/database/" + database + "-schema.sql"));
+        databasePopulator.addScript(new ClassPathResource("/database/" + database + "-dataload.sql"));
+        databasePopulator.setSqlScriptEncoding("UTF-8");
+        databasePopulator.setIgnoreFailedDrops(true);
+        bean.setDatabasePopulator(databasePopulator);
+        return bean;
+    }
+
+    /* REMOVE THIS LINE IF YOU USE JPA
+    /**
+     * Configure {@link TransactionManager} bean for use with JPA.
+     * @param entityManagerFactory EntityManager used within a transaction
+     * @return Bean of configured {@link JpaTransactionManager}
+     *REMOVE THIS COMMENT IF YOU USE JPA/
+    @Bean("transactionManager")
+    public TransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+        JpaTransactionManager bean = new JpaTransactionManager();
+        bean.setEntityManagerFactory(entityManagerFactory);
+        return bean;
+    }
+    REMOVE THIS LINE IF YOU USE JPA */
+
+    /* REMOVE THIS LINE IF YOU USE MyBatis3
+    /**
+     * Configure {@link TransactionManager} bean.
+     * @param dataSource Bean defined by #dataSource()
+     * @see #dataSource()
+     * @return Bean of configured {@link DataSourceTransactionManager}
+     *REMOVE THIS COMMENT IF YOU USE MyBatis3/
+    @Bean("transactionManager")
+    public TransactionManager transactionManager(DataSource dataSource) {
+        DataSourceTransactionManager bean = new DataSourceTransactionManager();
+        bean.setDataSource(dataSource);
+        bean.setRollbackOnCommitFailure(true);
+        return bean;
+    }
+    REMOVE THIS LINE IF YOU USE MyBatis3 */
+
+    /**
+     * Configure {@link DefaultJodaTimeDateFactory}.
+     * @return Bean of configured {@link DefaultJodaTimeDateFactory}
+     */
+    @Bean("dateFactory")
+    public JodaTimeDateFactory dateFactory() {
+        return new DefaultJodaTimeDateFactory();
+    }
+
+}
