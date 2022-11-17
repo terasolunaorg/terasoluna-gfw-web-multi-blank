@@ -15,20 +15,20 @@ echo create $ARTIFACT_ID
 #rm -rf ./target
 rm -rf ./tmp
 mkdir tmp
-cp -r  pom.xml tmp
-cp -r  projectName-* tmp
+cp -r  parts/base/pom.xml tmp
+cp -r  parts/base/projectName-* tmp
 
-cp -r  pattern/$CONFIG/projectName-* tmp
+cp -r  parts/$CONFIG/projectName-* tmp
 
-cp -r  pattern/UseDB/projectName-env tmp
+cp -r  parts/UseDB/projectName-env tmp
 
-cp -r  pattern/$CONFIG-$DB/projectName-domain tmp
+cp -r  parts/$CONFIG-$DB/projectName-domain tmp
 if [ $DB = "MyBatis3" ]; then
-  cp -r  pattern/$DB/projectName-domain tmp
+  cp -r  parts/$DB/projectName-domain tmp
 fi
 
-cp -r  pattern/$CONFIG-$VIEW/projectName-web tmp
-cp -r  pattern/$VIEW/projectName-web tmp
+cp -r  parts/$CONFIG-$VIEW/projectName-web tmp
+cp -r  parts/$VIEW/projectName-web tmp
 # end create tmp directory ###################
 
 # start work at tmp ###################
