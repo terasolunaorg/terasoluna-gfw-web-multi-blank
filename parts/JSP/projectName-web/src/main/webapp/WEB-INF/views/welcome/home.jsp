@@ -7,6 +7,7 @@
 <script type="text/javascript">
     
 </script>
+<c:set var="titleKey" value="title.welcome.home" />
 <title><spring:message code="${titleKey}" text="projectName" /></title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/app/css/styles.css">
 </head>
