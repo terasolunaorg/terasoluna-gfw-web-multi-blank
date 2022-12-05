@@ -72,6 +72,11 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 public class SpringMvcConfig extends WebMvcConfigurationSupport {
 
     /**
+     * Bean of SpringTemplateEngine.
+     */
+    private SpringTemplateEngine templateEngine;
+
+    /**
      * Configure {@link PropertySourcesPlaceholderConfigurer} bean.
      * @param properties Property files to be read
      * @return Bean of configured {@link PropertySourcesPlaceholderConfigurer}
@@ -198,6 +203,7 @@ public class SpringMvcConfig extends WebMvcConfigurationSupport {
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         registry.beanName();
+        registry.viewResolver(thymeleafViewResolver());
     }
     /**
      * Configure ITemplateResolver Bean.
@@ -227,16 +233,16 @@ public class SpringMvcConfig extends WebMvcConfigurationSupport {
         set.add(new SpringSecurityDialect());
         set.add(new Java8TimeDialect());
         bean.setAdditionalDialects(set);
+        this.templateEngine = bean;
         return bean;
     }
     /**
      * Configure Thymeleaf bean.
      * @return Bean of configured ThymeleafViewResolver
      */
-    @Bean
-    public ThymeleafViewResolver thymeleafViewResolver(SpringTemplateEngine springTemplateEngine) {
+    private ThymeleafViewResolver thymeleafViewResolver() {
         ThymeleafViewResolver bean = new ThymeleafViewResolver();
-        bean.setTemplateEngine(springTemplateEngine);
+        bean.setTemplateEngine(this.templateEngine);
         bean.setCharacterEncoding("UTF-8");
         bean.setForceContentType(true);
         bean.setContentType("text/html;charset=UTF-8");
