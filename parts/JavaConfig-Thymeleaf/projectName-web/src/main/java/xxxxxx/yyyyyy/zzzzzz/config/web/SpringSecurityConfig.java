@@ -41,21 +41,12 @@ import org.terasoluna.gfw.security.web.logging.UserIdMDCPutFilter;
 public class SpringSecurityConfig {
 
     /**
-     * Configure {@link HandlerMappingIntrospector} bean.
-     * @return Bean of configured {@link HandlerMappingIntrospector}
-     */
-    @Bean("mvcHandlerMappingIntrospector")
-    public HandlerMappingIntrospector mvcHandlerMappingIntrospector() {
-        return new HandlerMappingIntrospector();
-    }
-
-    /**
      * Configure ignore security pattern.
      * @return Bean of configured {@link WebSecurityCustomizer}
      */
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return web -> web.ignoring().antMatchers("/resources/**");
+        return web -> web.ignoring().requestMatchers("/resources/**");
     }
 
     /**
@@ -74,6 +65,15 @@ public class SpringSecurityConfig {
         http.sessionManagement();
 
         return http.build();
+    }
+
+    /**
+     * Configure {@link HandlerMappingIntrospector} bean.
+     * @return Bean of configured {@link HandlerMappingIntrospector}
+     */
+    @Bean("mvcHandlerMappingIntrospector")
+    public HandlerMappingIntrospector mvcHandlerMappingIntrospector() {
+        return new HandlerMappingIntrospector();
     }
 
     /**

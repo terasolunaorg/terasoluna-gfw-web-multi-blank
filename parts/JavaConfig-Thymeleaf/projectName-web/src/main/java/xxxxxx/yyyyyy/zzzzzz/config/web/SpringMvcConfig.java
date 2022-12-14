@@ -57,7 +57,6 @@ import org.terasoluna.gfw.web.mvc.support.CompositeRequestDataValueProcessor;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenInterceptor;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenRequestDataValueProcessor;
 import org.thymeleaf.dialect.IDialect;
-import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 import org.thymeleaf.extras.springsecurity6.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
@@ -231,7 +230,6 @@ public class SpringMvcConfig extends WebMvcConfigurationSupport {
         bean.setEnableSpringELCompiler(true);
         Set<IDialect> set = new HashSet<>();
         set.add(new SpringSecurityDialect());
-        set.add(new Java8TimeDialect());
         bean.setAdditionalDialects(set);
         this.templateEngine = bean;
         return bean;

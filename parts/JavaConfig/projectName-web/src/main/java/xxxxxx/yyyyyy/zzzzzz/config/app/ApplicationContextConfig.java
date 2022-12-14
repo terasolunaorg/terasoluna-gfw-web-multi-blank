@@ -52,13 +52,13 @@ public class ApplicationContextConfig {
     @Bean("passwordEncoder")
     public PasswordEncoder passwordEncoder() {
         Map<String, PasswordEncoder> idToPasswordEncoder = new HashMap<>();
-        idToPasswordEncoder.put("pbkdf2", pbkdf2PasswordEncoder());
+        idToPasswordEncoder.put("pbkdf2@SpringSecurity_v5_8", pbkdf2PasswordEncoder());
         idToPasswordEncoder.put("bcrypt", bCryptPasswordEncoder());
         /* When using commented out PasswordEncoders, you need to add bcprov-jdk15on.jar to the dependency.
-        idToPasswordEncoder.put("argon2", argon2PasswordEncoder());
-        idToPasswordEncoder.put("scrypt", aCryptPasswordEncoder());
+        idToPasswordEncoder.put("argon2@SpringSecurity_v5_8", argon2PasswordEncoder());
+        idToPasswordEncoder.put("scrypt@SpringSecurity_v5_8", aCryptPasswordEncoder());
         */
-        return new DelegatingPasswordEncoder("pbkdf2", idToPasswordEncoder);
+        return new DelegatingPasswordEncoder("pbkdf2@SpringSecurity_v5_8", idToPasswordEncoder);
     }
 
     /**
@@ -67,7 +67,7 @@ public class ApplicationContextConfig {
      */
     @Bean
     public Pbkdf2PasswordEncoder pbkdf2PasswordEncoder() {
-        return new Pbkdf2PasswordEncoder();
+        return Pbkdf2PasswordEncoder.defaultsForSpringSecurity_v5_8();
     }
 
     /**
@@ -81,11 +81,11 @@ public class ApplicationContextConfig {
     /* When using commented out PasswordEncoders, you need to add bcprov-jdk15on.jar to the dependency.
     @Bean
     public Argon2PasswordEncoder argon2PasswordEncoder() {
-        return new Argon2PasswordEncoder();
+        return Argon2PasswordEncoder.defaultsForSpringSecurity_v5_8();
     }
     @Bean
     public SCryptPasswordEncoder aCryptPasswordEncoder() {
-        return new SCryptPasswordEncoder();
+        return SCryptPasswordEncoder.defaultsForSpringSecurity_v5_8();
     }
     */
 
