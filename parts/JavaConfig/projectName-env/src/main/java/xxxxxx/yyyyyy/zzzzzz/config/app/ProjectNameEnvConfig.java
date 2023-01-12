@@ -26,8 +26,8 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.init.DataSourceInitializer;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.transaction.TransactionManager;
-import org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory;
-import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
+import org.terasoluna.gfw.common.time.ClockFactory;
+import org.terasoluna.gfw.common.time.DefaultClockFactory;
 
 /* REMOVE THIS LINE IF YOU USE JPA
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -164,12 +164,12 @@ public class ProjectNameEnvConfig {
     REMOVE THIS LINE IF YOU USE MyBatis3 */
 
     /**
-     * Configure {@link DefaultJodaTimeDateFactory}.
-     * @return Bean of configured {@link DefaultJodaTimeDateFactory}
+     * Configure {@link ClockFactory}.
+     * @return Bean of configured {@link DefaultClockFactory}
      */
     @Bean("dateFactory")
-    public JodaTimeDateFactory dateFactory() {
-        return new DefaultJodaTimeDateFactory();
+    public ClockFactory dateFactory() {
+        return new DefaultClockFactory();
     }
 
 }
