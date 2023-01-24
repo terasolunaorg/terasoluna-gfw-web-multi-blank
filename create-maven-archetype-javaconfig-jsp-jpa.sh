@@ -1,8 +1,8 @@
 #!/bin/sh
 CONFIG=JavaConfig
 VIEW=JSP
-DB=JPA
+ORM=JPA
 DEPLOY=$1
 REPOSITORY=$2
 
-sh create-maven-archetype.sh $CONFIG $VIEW $DB "$DEPLOY" "$REPOSITORY"
+sh create-maven-archetype.sh $CONFIG $VIEW $ORM "$DEPLOY" "$REPOSITORY"

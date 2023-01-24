@@ -99,7 +99,7 @@
         <!-- == End TERASOLUNA == -->
 
         <!-- == Begin Tomcat == -->
-        <!-- Servlet API 4.0 & JSP API 2.3 -->
+        <!-- Servlet API & JSP API -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
@@ -109,8 +109,6 @@
             <artifactId>jakarta.servlet.jsp-api</artifactId>
         </dependency>
 
-        <!-- Required only for Tomcat. If run on other J2EE server,
-            remove this dependency and use provided tag libraries. -->
         <dependency>
             <groupId>jakarta.servlet.jsp.jstl</groupId>
             <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>

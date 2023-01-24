@@ -1,13 +1,13 @@
 #!/bin/sh
 CONFIG=$1
 VIEW=$2
-DB=$3
+ORM=$3
 DEPRLOY=$4
 REPOSITORY=$5
 if [ "$CONFIG" = "JavaConfig" ]; then
-  ARTIFACT_ID=terasoluna-gfw-multi-web-blank-${VIEW,,}-${DB,,}
+  ARTIFACT_ID=terasoluna-gfw-multi-web-blank-${VIEW,,}-${ORM,,}
 else
-  ARTIFACT_ID=terasoluna-gfw-multi-web-blank-${CONFIG,,}-${VIEW,,}-${DB,,}
+  ARTIFACT_ID=terasoluna-gfw-multi-web-blank-${CONFIG,,}-${VIEW,,}-${ORM,,}
 fi
 echo create $ARTIFACT_ID
 
@@ -20,11 +20,11 @@ cp -r  parts/base/projectName-* tmp
 
 cp -r  parts/$CONFIG/projectName-* tmp
 
-cp -r  parts/UseDB/projectName-env tmp
+cp -r  parts/UseORM/projectName-env tmp
 
-cp -r  parts/$CONFIG-$DB/projectName-domain tmp
-if [ $DB = "MyBatis3" ]; then
-  cp -r  parts/$DB/projectName-domain tmp
+cp -r  parts/$CONFIG-$ORM/projectName-domain tmp
+if [ $ORM = "MyBatis3" ]; then
+  cp -r  parts/$ORM/projectName-domain tmp
 fi
 
 cp -r  parts/$CONFIG-$VIEW/projectName-web tmp
@@ -34,7 +34,7 @@ cp -r  parts/$VIEW/projectName-web tmp
 # start work at tmp ###################
 pushd tmp
 
-sed -i -e "s/Web Blank Multi Project/Web Blank Multi Project (${CONFIG})(${VIEW})(${DB})/g" pom.xml
+sed -i -e "s/Web Blank Multi Project/Web Blank Multi Project (${CONFIG})(${VIEW})(${ORM})/g" pom.xml
 
 # rename "projectName" in filename to replace by ${artifactId}
 if [ "$CONFIG" = "XMLConfig" ]; then
@@ -57,8 +57,8 @@ if [ -d projectName-domain/src/main/resources/xxxxxx ];then
   rm -rf projectName-domain/src/main/resources/xxxxxx
 fi
 
-sed -i -e "/REMOVE THIS LINE IF YOU USE $DB/d" `grep -rIl $DB projectName-* | grep -v '.svn'`
-sed -i -e "s/REMOVE THIS COMMENT IF YOU USE $DB//g" `grep -rIl $DB projectName-* | grep -v '.svn'`
+sed -i -e "/REMOVE THIS LINE IF YOU USE $ORM/d" `grep -rIl $ORM projectName-* | grep -v '.svn'`
+sed -i -e "s/REMOVE THIS COMMENT IF YOU USE $ORM//g" `grep -rIl $ORM projectName-* | grep -v '.svn'`
 
 rm -rf `/usr/bin/find . -name '.svn' -type d`
 
