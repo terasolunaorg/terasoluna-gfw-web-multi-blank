@@ -64,6 +64,7 @@
 
     <!-- Settings View Resolver. -->
     <mvc:view-resolvers>
+        <mvc:bean-name />
         <mvc:jsp prefix="/WEB-INF/views/" />
     </mvc:view-resolvers>
 

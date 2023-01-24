@@ -64,6 +64,7 @@
 
     <!-- Settings View Resolver. -->
     <mvc:view-resolvers>
+        <mvc:bean-name />
         <bean class="org.thymeleaf.spring6.view.ThymeleafViewResolver">
             <property name="templateEngine" ref="templateEngine" />
             <property name="characterEncoding" value="UTF-8" />
