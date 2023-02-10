@@ -1,17 +1,66 @@
 #!/bin/sh
-#rm -rf ${HOME}/.m2/repository/xxxxxx
-rm -rf ./target
+CONFIG=$1
+VIEW=$2
+ORM=$3
+DEPRLOY=$4
+REPOSITORY=$5
+
+if [ $VIEW == "JSP" ]; then
+  ARTIFACT_ID_VIEW=""
+else
+  ARTIFACT_ID_VIEW=-${VIEW,,}
+fi
+if [ $ORM == "NoORM" ]; then
+  ARTIFACT_ID_ORM=""
+else
+  ARTIFACT_ID_ORM=-${ORM,,}
+fi
+if [ $CONFIG == "XMLConfig" ]; then
+  ARTIFACT_ID_CONFIG=""
+else
+  ARTIFACT_ID_CONFIG=-${CONFIG,,}
+fi
+ARTIFACT_ID=terasoluna-gfw-multi-web-blank${ARTIFACT_ID_CONFIG}${ARTIFACT_ID_ORM}${ARTIFACT_ID_VIEW}
+echo create $ARTIFACT_ID
+
+# start create tmp directory ###################
+#rm -rf ./target
 rm -rf ./tmp
 mkdir tmp
-cp -r  pom.xml infra projectName* tmp
+cp -r  parts/base/pom.xml tmp
+cp -r  parts/base/projectName-* tmp
+
+cp -r  parts/$CONFIG/projectName-* tmp
+
+cp -r  parts/UseORM/projectName-env tmp
+
+cp -r  parts/$CONFIG-$ORM/projectName-domain tmp
+if [ $ORM = "MyBatis3" ]; then
+  cp -r  parts/$ORM/projectName-domain tmp
+fi
+
+cp -r  parts/$CONFIG-$VIEW/projectName-web tmp
+cp -r  parts/$VIEW/projectName-web tmp
+# end create tmp directory ###################
+
+# start work at tmp ###################
 pushd tmp
 
+sed -i -e "s/Web Blank Multi Project/Web Blank Multi Project (${CONFIG})(${VIEW})(${ORM})/g" pom.xml
+
 # rename "projectName" in filename to replace by ${artifactId}
-mv projectName-domain/src/main/resources/META-INF/spring/projectName-domain.xml projectName-domain/src/main/resources/META-INF/spring/__rootArtifactId__-domain.xml
-mv projectName-domain/src/main/resources/META-INF/spring/projectName-infra.xml projectName-domain/src/main/resources/META-INF/spring/__rootArtifactId__-infra.xml
-mv projectName-domain/src/main/resources/META-INF/spring/projectName-codelist.xml projectName-domain/src/main/resources/META-INF/spring/__rootArtifactId__-codelist.xml
-mv projectName-env/src/main/resources/META-INF/spring/projectName-env.xml projectName-env/src/main/resources/META-INF/spring/__rootArtifactId__-env.xml
-mv projectName-env/src/main/resources/META-INF/spring/projectName-infra.properties projectName-env/src/main/resources/META-INF/spring/__rootArtifactId__-infra.properties
+if [ "$CONFIG" = "XMLConfig" ]; then
+  mv projectName-domain/src/main/resources/META-INF/spring/projectName-domain.xml projectName-domain/src/main/resources/META-INF/spring/__rootArtifactId__-domain.xml
+  mv projectName-domain/src/main/resources/META-INF/spring/projectName-infra.xml projectName-domain/src/main/resources/META-INF/spring/__rootArtifactId__-infra.xml
+  mv projectName-domain/src/main/resources/META-INF/spring/projectName-codelist.xml projectName-domain/src/main/resources/META-INF/spring/__rootArtifactId__-codelist.xml
+  mv projectName-env/src/main/resources/META-INF/spring/projectName-env.xml projectName-env/src/main/resources/META-INF/spring/__rootArtifactId__-env.xml
+  mv projectName-env/src/main/resources/META-INF/spring/projectName-infra.properties projectName-env/src/main/resources/META-INF/spring/__rootArtifactId__-infra.properties
+else
+  mv projectName-domain/src/main/java/xxxxxx/yyyyyy/zzzzzz/config/app/ProjectNameCodeListConfig.java projectName-domain/src/main/java/xxxxxx/yyyyyy/zzzzzz/config/app/__ProjectName__CodeListConfig.java
+  mv projectName-domain/src/main/java/xxxxxx/yyyyyy/zzzzzz/config/app/ProjectNameDomainConfig.java projectName-domain/src/main/java/xxxxxx/yyyyyy/zzzzzz/config/app/__ProjectName__DomainConfig.java
+  mv projectName-domain/src/main/java/xxxxxx/yyyyyy/zzzzzz/config/app/ProjectNameInfraConfig.java projectName-domain/src/main/java/xxxxxx/yyyyyy/zzzzzz/config/app/__ProjectName__InfraConfig.java
+  mv projectName-env/src/main/java/xxxxxx/yyyyyy/zzzzzz/config/app/ProjectNameEnvConfig.java projectName-env/src/main/java/xxxxxx/yyyyyy/zzzzzz/config/app/__ProjectName__EnvConfig.java
+fi
 
 if [ -d projectName-domain/src/main/resources/xxxxxx ];then
   echo "rename to __packageInPathFormat__"
@@ -20,19 +69,24 @@ if [ -d projectName-domain/src/main/resources/xxxxxx ];then
   rm -rf projectName-domain/src/main/resources/xxxxxx
 fi
 
-rm -rf infra
+sed -i -e "/REMOVE THIS LINE IF YOU USE $ORM/d" `grep -rIl $ORM projectName-* | grep -v '.svn'`
+sed -i -e "s/REMOVE THIS COMMENT IF YOU USE $ORM//g" `grep -rIl $ORM projectName-* | grep -v '.svn'`
+
 rm -rf `/usr/bin/find . -name '.svn' -type d`
 
-if [ "$2" = "central" ]; then
+if [ "$REPOSITORY" = "central" ]; then
   PROFILE="-P central"
 fi
 mvn archetype:create-from-project ${PROFILE}
+# end work at tmp ###################
 
+# start work at tmp target/generated-sources/archetype ###################
 pushd target/generated-sources/archetype
-sed -i -e "s/xxxxxx\.yyyyyy\.zzzzzz/org.terasoluna.gfw.blank/g" pom.xml
-sed -i -e "s/projectName/terasoluna-gfw-multi-web-blank/g" pom.xml
 
-if [ "$2" = "central" ]; then
+sed -i -e "s/xxxxxx\.yyyyyy\.zzzzzz/org.terasoluna.gfw.blank/g" pom.xml
+sed -i -e "s/projectName/${ARTIFACT_ID}/g" pom.xml
+
+if [ "$REPOSITORY" = "central" ]; then
   # add plugins to deploy to Maven Central Repository
   LF=$(printf '\\\012_')
   LF=${LF%_}
@@ -75,11 +129,17 @@ if [ "$2" = "central" ]; then
   sed -i -e "s/  <\/build>/${REPLACEMENT_TAG}/" pom.xml
 fi
 
-if [ "$1" = "deploy" ]; then
+# convert config classes to Camel
+if [ "$CONFIG" = "JavaConfig" ]; then
+  sh ../../../../convert-camelclass.sh
+fi
+
+if [ "$DEPLOY" = "deploy" ]; then
   mvn deploy
 else
   mvn install
 fi
+# end work at tmp target/generated-sources/archetype ###################
 
 popd
 popd

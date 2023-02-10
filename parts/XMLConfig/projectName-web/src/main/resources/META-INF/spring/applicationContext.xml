@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+    ">
+
+    <import resource="classpath:/META-INF/spring/projectName-domain.xml" />
+
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.password.DelegatingPasswordEncoder">
+        <constructor-arg name="idForEncode" value="pbkdf2@SpringSecurity_v5_8" />
+        <constructor-arg name="idToPasswordEncoder">
+            <map>
+                <entry key="pbkdf2@SpringSecurity_v5_8">
+                    <bean class="org.springframework.security.crypto.password.Pbkdf2PasswordEncoder" factory-method="defaultsForSpringSecurity_v5_8" />
+                </entry>
+                <entry key="bcrypt">
+                    <bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+                </entry>
+                <!-- When using commented out PasswordEncoders, you need to add bcprov-jdk15on.jar to the dependency.
+                <entry key="argon2">
+                    <bean class="org.springframework.security.crypto.argon2.Argon2PasswordEncoder" factory-method="defaultsForSpringSecurity_v5_8" />
+                </entry>
+                <entry key="scrypt">
+                    <bean class="org.springframework.security.crypto.scrypt.SCryptPasswordEncoder" factory-method="defaultsForSpringSecurity_v5_8" />
+                </entry>
+                -->
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <context:property-placeholder
+        location="classpath*:/META-INF/spring/*.properties" />
+
+    <!-- Message -->
+    <bean id="messageSource"
+        class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>i18n/application-messages</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Exception Code Resolver. -->
+    <bean id="exceptionCodeResolver"
+        class="org.terasoluna.gfw.common.exception.SimpleMappingExceptionCodeResolver">
+        <!-- Setting and Customization by project. -->
+        <property name="exceptionMappings">
+            <map>
+                <entry key="ResourceNotFoundException" value="e.xx.fw.5001" />
+                <entry key="InvalidTransactionTokenException" value="e.xx.fw.7001" />
+                <entry key="BusinessException" value="e.xx.fw.8001" />
+                <entry key=".DataAccessException" value="e.xx.fw.9002" />
+            </map>
+        </property>
+        <property name="defaultExceptionCode" value="e.xx.fw.9001" />
+    </bean>
+
+    <!-- Exception Logger. -->
+    <bean id="exceptionLogger"
+        class="org.terasoluna.gfw.common.exception.ExceptionLogger">
+        <property name="exceptionCodeResolver" ref="exceptionCodeResolver" />
+    </bean>
+
+    <!-- Filter. -->
+    <bean id="exceptionLoggingFilter"
+        class="org.terasoluna.gfw.web.exception.ExceptionLoggingFilter" >
+        <property name="exceptionLogger" ref="exceptionLogger" />
+    </bean>
+
+</beans>
