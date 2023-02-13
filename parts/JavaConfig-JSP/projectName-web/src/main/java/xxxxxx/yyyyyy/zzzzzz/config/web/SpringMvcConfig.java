@@ -29,7 +29,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.support.RequestDataValueProcessor;
-import org.springframework.web.util.NestedServletException;
 import org.terasoluna.gfw.common.exception.ExceptionCodeResolver;
 import org.terasoluna.gfw.common.exception.ExceptionLogger;
 import org.terasoluna.gfw.web.codelist.CodeListInterceptor;
@@ -230,7 +229,6 @@ public class SpringMvcConfig extends WebMvcConfigurationSupport {
         statusCodes.setProperty("common/error/dataAccessError", String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()));
         bean.setStatusCodes(statusCodes);
 
-        bean.setExcludedExceptions(NestedServletException.class);
         bean.setDefaultErrorView("common/error/systemError");
         bean.setDefaultStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
         return bean;
