@@ -105,7 +105,6 @@
         </property>
         <property name="excludedExceptions">
             <array>
-                <value>org.springframework.web.util.NestedServletException</value>
             </array>
         </property>
         <property name="defaultErrorView" value="common/error/systemError" />
