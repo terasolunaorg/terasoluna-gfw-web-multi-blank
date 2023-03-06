@@ -19,11 +19,11 @@
                 <entry key="bcrypt">
                     <bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
                 </entry>
-                <!-- When using commented out PasswordEncoders, you need to add bcprov-jdk15on.jar to the dependency.
-                <entry key="argon2">
+                <!-- When using commented out PasswordEncoders, you need to add bcprov-jdk18on.jar to the dependency.
+                <entry key="argon2@SpringSecurity_v5_8">
                     <bean class="org.springframework.security.crypto.argon2.Argon2PasswordEncoder" factory-method="defaultsForSpringSecurity_v5_8" />
                 </entry>
-                <entry key="scrypt">
+                <entry key="scrypt@SpringSecurity_v5_8">
                     <bean class="org.springframework.security.crypto.scrypt.SCryptPasswordEncoder" factory-method="defaultsForSpringSecurity_v5_8" />
                 </entry>
                 -->
