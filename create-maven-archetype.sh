@@ -2,7 +2,7 @@
 CONFIG=$1
 VIEW=$2
 ORM=$3
-DEPRLOY=$4
+DEPLOY=$4
 REPOSITORY=$5
 
 if [ $VIEW == "JSP" ]; then
