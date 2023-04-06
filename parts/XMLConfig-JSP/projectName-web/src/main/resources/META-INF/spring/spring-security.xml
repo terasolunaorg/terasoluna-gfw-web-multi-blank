@@ -7,8 +7,8 @@
         http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
     ">
 
-    <sec:http pattern="/resources/**" security="none"/>
-    <sec:http>
+    <sec:http pattern="/resources/**" security="none" request-matcher="ant"/>
+    <sec:http request-matcher="ant">
         <sec:form-login/>
         <sec:logout/>
         <sec:access-denied-handler ref="accessDeniedHandler"/>
@@ -50,8 +50,6 @@
             </bean>
         </constructor-arg>
     </bean>
-
-    <bean id="mvcHandlerMappingIntrospector" class="org.springframework.web.servlet.handler.HandlerMappingIntrospector" />
 
     <bean id="webSecurityExpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
 
