@@ -7,7 +7,7 @@
         http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
     ">
 
-    <sec:http pattern="/resources/**" security="none" request-matcher="ant"/>
+    <sec:http pattern="/resources/**" request-matcher="ant" security="none"/>
     <sec:http request-matcher="ant">
         <sec:form-login/>
         <sec:logout/>
