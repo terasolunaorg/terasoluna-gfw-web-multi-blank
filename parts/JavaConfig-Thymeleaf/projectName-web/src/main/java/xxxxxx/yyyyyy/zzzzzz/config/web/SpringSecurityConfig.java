@@ -15,7 +15,7 @@ import org.springframework.security.web.access.DelegatingAccessDeniedHandler;
 import org.springframework.security.web.authentication.AnonymousAuthenticationFilter;
 import org.springframework.security.web.csrf.InvalidCsrfTokenException;
 import org.springframework.security.web.csrf.MissingCsrfTokenException;
-import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.terasoluna.gfw.security.web.logging.UserIdMDCPutFilter;
 
 /**
@@ -31,7 +31,7 @@ public class SpringSecurityConfig {
      */
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return web -> web.ignoring().requestMatchers("/resources/**");
+        return web -> web.ignoring().requestMatchers(new AntPathRequestMatcher("/resources/**"));
     }
 
     /**
@@ -50,15 +50,6 @@ public class SpringSecurityConfig {
         http.sessionManagement();
 
         return http.build();
-    }
-
-    /**
-     * Configure {@link HandlerMappingIntrospector} bean.
-     * @return Bean of configured {@link HandlerMappingIntrospector}
-     */
-    @Bean("mvcHandlerMappingIntrospector")
-    public HandlerMappingIntrospector mvcHandlerMappingIntrospector() {
-        return new HandlerMappingIntrospector();
     }
 
     /**
