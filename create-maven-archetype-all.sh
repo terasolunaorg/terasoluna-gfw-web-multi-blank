@@ -1,3 +1,4 @@
+set -e
 #!/bin/sh
 
 DEPLOY=$1

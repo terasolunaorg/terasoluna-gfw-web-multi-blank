@@ -1,3 +1,4 @@
+set -e
 #!/bin/sh
 LF=$(printf '\\\012_')
 LF=${LF%_}

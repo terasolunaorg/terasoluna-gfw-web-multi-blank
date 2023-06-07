@@ -1,3 +1,4 @@
+set -e
 #!/bin/sh
 CONFIG=$1
 VIEW=$2

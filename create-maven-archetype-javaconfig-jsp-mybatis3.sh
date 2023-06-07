@@ -1,3 +1,4 @@
+set -e
 #!/bin/sh
 CONFIG=JavaConfig
 VIEW=JSP
