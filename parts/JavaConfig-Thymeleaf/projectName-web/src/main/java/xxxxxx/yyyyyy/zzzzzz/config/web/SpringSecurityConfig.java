@@ -41,13 +41,16 @@ public class SpringSecurityConfig {
      */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.formLogin();
-        http.logout();
+        http.formLogin(login -> {
+        });
+        http.logout(logout -> {
+        });
         http.exceptionHandling(ex -> ex
                 .accessDeniedHandler(accessDeniedHandler()));
         http.addFilterAfter(
                 userIdMDCPutFilter(), AnonymousAuthenticationFilter.class);
-        http.sessionManagement();
+        http.sessionManagement(sessionManagement -> {
+        });
 
         return http.build();
     }
