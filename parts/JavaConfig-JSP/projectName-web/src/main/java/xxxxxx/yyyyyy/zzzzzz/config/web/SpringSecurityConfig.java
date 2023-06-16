@@ -1,5 +1,7 @@
 package xxxxxx.yyyyyy.zzzzzz.config.web;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 import java.util.LinkedHashMap;
 
 import org.springframework.context.annotation.Bean;
@@ -41,13 +43,13 @@ public class SpringSecurityConfig {
      */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.formLogin();
-        http.logout();
+        http.formLogin(login -> withDefaults());
+        http.logout(logout -> withDefaults());
         http.exceptionHandling(ex -> ex
                 .accessDeniedHandler(accessDeniedHandler()));
         http.addFilterAfter(
                 userIdMDCPutFilter(), AnonymousAuthenticationFilter.class);
-        http.sessionManagement();
+        http.sessionManagement(sessionManagement -> withDefaults());
 
         return http.build();
     }
