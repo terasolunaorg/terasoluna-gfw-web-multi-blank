@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 DEPLOY=$1
 REPOSITORY=$2

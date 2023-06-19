@@ -1,4 +1,6 @@
 #!/bin/sh
+set -e
+
 CONFIG=XMLConfig
 VIEW=Thymeleaf
 ORM=MyBatis3

@@ -1,4 +1,6 @@
 #!/bin/sh
+set -e
+
 CONFIG=$1
 VIEW=$2
 ORM=$3

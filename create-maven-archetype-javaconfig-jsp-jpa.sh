@@ -1,4 +1,6 @@
 #!/bin/sh
+set -e
+
 CONFIG=JavaConfig
 VIEW=JSP
 ORM=JPA
