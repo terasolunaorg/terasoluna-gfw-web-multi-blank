@@ -1,5 +1,6 @@
-set -e
 #!/bin/sh
+set -e
+
 CONFIG=XMLConfig
 VIEW=JSP
 ORM=JPA

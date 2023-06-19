@@ -1,5 +1,6 @@
-set -e
 #!/bin/sh
+set -e
+
 LF=$(printf '\\\012_')
 LF=${LF%_}
 REQUIRED_PROPERTIES="${LF}  <requiredProperties>"

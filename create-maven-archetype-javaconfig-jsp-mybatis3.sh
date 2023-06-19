@@ -1,5 +1,6 @@
-set -e
 #!/bin/sh
+set -e
+
 CONFIG=JavaConfig
 VIEW=JSP
 ORM=MyBatis3
