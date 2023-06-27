@@ -14,55 +14,59 @@ import jakarta.servlet.http.HttpServletRequest;
 @RequestMapping("/test/error")
 public class TestErrorController {
 
-	@GetMapping("/accessDeniedError")
+    @GetMapping("/accessDeniedError")
     public String accessDeniedError(HttpServletRequest request, Model model) {
-    	model.addAttribute("exceptionCode", "e.xx.fw.7003");
+        model.addAttribute("exceptionCode", "e.xx.fw.7003");
         return "common/error/accessDeniedError";
     }
 
-	@GetMapping("/businessError")
+    @GetMapping("/businessError")
     public String businessError(HttpServletRequest request, Model model) {
-    	model.addAttribute("exceptionCode", "e.xx.fw.8001");
-    	return "common/error/businessError";
+        model.addAttribute("exceptionCode", "e.xx.fw.8001");
+        return "common/error/businessError";
     }
 
-	@GetMapping("/dataAccessError")
+    @GetMapping("/dataAccessError")
     public String dataAccessError(HttpServletRequest request, Model model) {
-    	model.addAttribute("exceptionCode", "e.xx.fw.9002");
+        model.addAttribute("exceptionCode", "e.xx.fw.9002");
         return "common/error/dataAccessError";
     }
 
-	@GetMapping("/invalidCsrfTokenError")
-    public String invalidCsrfTokenError(HttpServletRequest request, Model model) {
-    	model.addAttribute("exceptionCode", "e.xx.fw.7002");
+    @GetMapping("/invalidCsrfTokenError")
+    public String invalidCsrfTokenError(HttpServletRequest request,
+            Model model) {
+        model.addAttribute("exceptionCode", "e.xx.fw.7002");
         return "common/error/invalidCsrfTokenError";
     }
 
-	@GetMapping("/missingCsrfTokenError")
-    public String missingCsrfTokenError(HttpServletRequest request, Model model) {
-    	model.addAttribute("exceptionCode", "e.xx.fw.7004");
+    @GetMapping("/missingCsrfTokenError")
+    public String missingCsrfTokenError(HttpServletRequest request,
+            Model model) {
+        model.addAttribute("exceptionCode", "e.xx.fw.7004");
         return "common/error/missingCsrfTokenError";
     }
 
-	@GetMapping("/resourceNotFoundError")
-    public String resourceNotFoundError(HttpServletRequest request, Model model) {
-    	model.addAttribute("exceptionCode", "e.xx.fw.5001");
+    @GetMapping("/resourceNotFoundError")
+    public String resourceNotFoundError(HttpServletRequest request,
+            Model model) {
+        model.addAttribute("exceptionCode", "e.xx.fw.5001");
         return "common/error/resourceNotFoundError";
     }
 
-	@GetMapping("/systemError")
+    @GetMapping("/systemError")
     public String systemError(HttpServletRequest request, Model model) {
-    	model.addAttribute("exceptionCode", "e.xx.fw.9001");
+        model.addAttribute("exceptionCode", "e.xx.fw.9001");
         return "common/error/systemError";
     }
 
-	@GetMapping("/transactionTokenError")
-    public String transactionTokenError(HttpServletRequest request, Model model) {
-    	model.addAttribute("exceptionCode", "e.xx.fw.7001");
+    @GetMapping("/transactionTokenError")
+    public String transactionTokenError(HttpServletRequest request,
+            Model model) {
+        model.addAttribute("exceptionCode", "e.xx.fw.7001");
         return "common/error/transactionTokenError";
     }
-	
-	@GetMapping("/other")
+
+    @GetMapping("/other")
     public String unhandledSystemError(HttpServletRequest request) {
         return "errortest/otherError";
     }

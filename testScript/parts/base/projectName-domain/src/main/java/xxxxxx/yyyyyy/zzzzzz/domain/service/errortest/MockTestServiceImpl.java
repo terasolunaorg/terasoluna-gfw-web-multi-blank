@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class MockTestServiceImpl implements MockTestService {
 
-	@Override
-	public void testExecute() {
-	}
+    @Override
+    public void testExecute() {
+    }
 }

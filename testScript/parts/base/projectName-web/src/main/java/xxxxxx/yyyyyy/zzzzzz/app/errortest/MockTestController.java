@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.inject.Inject;
 import xxxxxx.yyyyyy.zzzzzz.domain.service.errortest.MockTestService;
 
-/** 
+/**
  * Controller for Mock test
  */
 @Controller
@@ -17,7 +17,7 @@ public class MockTestController {
 
     @Inject
     MockTestService mockTestService;
-	
+
     @GetMapping(value = "/success")
     public String test(Model model) {
         mockTestService.testExecute();

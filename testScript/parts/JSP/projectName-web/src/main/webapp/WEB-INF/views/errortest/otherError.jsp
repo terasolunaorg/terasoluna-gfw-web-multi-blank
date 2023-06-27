@@ -5,7 +5,7 @@
 </head>
 <body>
     <div id="wrapper">
-    	<!-- Rendering test when jstl expression is invalid. -->
+        <!-- Rendering test when jstl expression is invalid. -->
         <c:if test="error">
     </div>
 </body>

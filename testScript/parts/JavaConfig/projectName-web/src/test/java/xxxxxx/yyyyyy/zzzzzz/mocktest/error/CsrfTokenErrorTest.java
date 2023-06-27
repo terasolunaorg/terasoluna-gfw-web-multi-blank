@@ -32,71 +32,72 @@ import xxxxxx.yyyyyy.zzzzzz.config.web.SpringSecurityConfig;
  * Run test for Csrf Token error.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextHierarchy({ 
-	@ContextConfiguration(classes = { ApplicationContextConfig.class, SpringSecurityConfig.class}),
-	@ContextConfiguration(classes = { SpringMvcConfig.class})
-})
+@ContextHierarchy({ @ContextConfiguration(classes = {
+        ApplicationContextConfig.class, SpringSecurityConfig.class }),
+        @ContextConfiguration(classes = { SpringMvcConfig.class }) })
 @WebAppConfiguration
 public class CsrfTokenErrorTest {
-	
-	private static final Logger logger = LoggerFactory
-            .getLogger(CsrfTokenErrorTest.class);
-	
+
+    private static final Logger logger = LoggerFactory.getLogger(
+            CsrfTokenErrorTest.class);
+
     @Inject
     private WebApplicationContext webApplicationContext;
 
     private MockMvc mockMvc;
-    
+
     @Value("${invalidCsrfTokenError.forwardedUrl}")
     private String invalidCsrfTokenErrorForwardedUrl;
-    
+
     @Value("${missingCsrfTokenError.forwardedUrl}")
     private String missingCsrfTokenErrorForwardedUrl;
-    
+
     @Before
     public void setUp() {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
-        		.alwaysDo(log())
-        		.apply(SecurityMockMvcConfigurers.springSecurity())
-        		.build();
+                .alwaysDo(log()).apply(SecurityMockMvcConfigurers
+                        .springSecurity()).build();
     }
-    
-    /** 
-     * Invalid CSRF token error page.
-     * Confirm that you are transitioning to the above page.
-     * @throws Exception 
+
+    /**
+     * Invalid CSRF token error page. Confirm that you are transitioning to the above page.
+     * @throws Exception
      */
     @Test
     public void testInvalidCsrfTokenError() throws Exception {
-    	
-    	//Mockmvc test. 
-    	ResultActions results = mockMvc.perform(post("/").with(csrf().useInvalidToken()));
-    	
-    	logger.debug("testInvalidCsrfTokenError#status:" + results.andReturn().getResponse().getStatus());
-    	logger.debug("testInvalidCsrfTokenError#forwardedUrl:" + results.andReturn().getResponse().getForwardedUrl());
 
-    	results.andExpect(status().is(403))
-    			.andExpect(forwardedUrl(invalidCsrfTokenErrorForwardedUrl));
+        // Mockmvc test.
+        ResultActions results = mockMvc.perform(post("/").with(csrf()
+                .useInvalidToken()));
+
+        logger.debug("testInvalidCsrfTokenError#status:" + results.andReturn()
+                .getResponse().getStatus());
+        logger.debug("testInvalidCsrfTokenError#forwardedUrl:" + results
+                .andReturn().getResponse().getForwardedUrl());
+
+        results.andExpect(status().is(403)).andExpect(forwardedUrl(
+                invalidCsrfTokenErrorForwardedUrl));
     }
-    
-    /** 
-     * CSRF token missing error page.
-     * Confirm that you are transitioning to the above page.
-     * @throws Exception 
+
+    /**
+     * CSRF token missing error page. Confirm that you are transitioning to the above page.
+     * @throws Exception
      */
     @Test
     public void testMissingCsrfTokenError() throws Exception {
-    	
-    	//Mockmvc test. 
-    	ResultActions results = mockMvc.perform(post("/"));
-    	
-    	logger.debug("testMissingCsrfTokenError#status:" + results.andReturn().getResponse().getStatus());
-    	logger.debug("testMissingCsrfTokenError#forwardedUrl:" + results.andReturn().getResponse().getForwardedUrl());
 
-    	results.andExpect(status().is(403))
-    			.andExpect(forwardedUrl(missingCsrfTokenErrorForwardedUrl));
+        // Mockmvc test.
+        ResultActions results = mockMvc.perform(post("/"));
+
+        logger.debug("testMissingCsrfTokenError#status:" + results.andReturn()
+                .getResponse().getStatus());
+        logger.debug("testMissingCsrfTokenError#forwardedUrl:" + results
+                .andReturn().getResponse().getForwardedUrl());
+
+        results.andExpect(status().is(403)).andExpect(forwardedUrl(
+                missingCsrfTokenErrorForwardedUrl));
     }
-    
+
     @After
     public void tearDown() {
     }

@@ -5,8 +5,10 @@
         http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
     ">
 
-    <bean id="mockTestService" class="org.mockito.Mockito" factory-method="mock">
-    	<constructor-arg value="xxxxxx.yyyyyy.zzzzzz.domain.service.errortest.MockTestServiceImpl"/>
-	</bean>
+    <bean id="mockTestService" class="org.mockito.Mockito"
+        factory-method="mock">
+        <constructor-arg
+            value="xxxxxx.yyyyyy.zzzzzz.domain.service.errortest.MockTestServiceImpl" />
+    </bean>
 
 </beans>

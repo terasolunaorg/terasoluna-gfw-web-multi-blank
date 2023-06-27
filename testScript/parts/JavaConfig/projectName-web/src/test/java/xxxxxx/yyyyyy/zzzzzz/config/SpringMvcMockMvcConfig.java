@@ -17,7 +17,7 @@ public class SpringMvcMockMvcConfig {
      * Mock definition of MockTestService.
      * @return MockTestService(Mock) bean definition
      */
-    @Bean(name="mockTestService")
+    @Bean(name = "mockTestService")
     public MockTestService mockTestService() {
         return Mockito.mock(MockTestServiceImpl.class);
     }

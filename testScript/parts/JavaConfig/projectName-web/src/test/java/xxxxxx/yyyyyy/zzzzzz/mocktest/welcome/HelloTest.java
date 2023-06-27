@@ -46,62 +46,65 @@ import xxxxxx.yyyyyy.zzzzzz.config.web.SpringSecurityConfig;
  * Run a unit test on HelloController.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextHierarchy({
-	@ContextConfiguration(classes = { ApplicationContextConfig.class, SpringSecurityConfig.class}),
-	@ContextConfiguration(classes = { SpringMvcConfig.class})
-})
+@ContextHierarchy({ @ContextConfiguration(classes = {
+        ApplicationContextConfig.class, SpringSecurityConfig.class }),
+        @ContextConfiguration(classes = { SpringMvcConfig.class }) })
 @WebAppConfiguration
 public class HelloTest {
-		
+
     @Inject
     private WebApplicationContext webApplicationContext;
 
     private MockMvc mockMvc;
-    
+
     private Logger logger;
-    
+
     @Mock
     private Appender<ILoggingEvent> mockAppender;
-    
+
     @Captor
     private ArgumentCaptor<LoggingEvent> captorLoggingEvent;
-    
+
     @Rule
     public MockitoRule mockito = MockitoJUnit.rule();
-    
+
     @Before
     public void setUp() {
-    	mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).alwaysDo(log()).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
+                .alwaysDo(log()).build();
     }
-    
+
     /**
      * Run the HelloController's internal tests.
      * @throws Exception
      */
     @Test
     public void testTraceLoggingInterceptor() throws Exception {
-    	
-    	//Mock the Appender and capture the output contents.
-    	logger = (Logger)LoggerFactory.getLogger(HelloController.class);
-    	logger.addAppender(mockAppender);
-    	
-    	//Mockmvc test. 
-    	ResultActions result = mockMvc.perform(get("/")
-    									.header("Accept-Language", "en"));
-    	
-    	verify(mockAppender, times(1)).doAppend(captorLoggingEvent.capture());
-    	List<LoggingEvent> events = captorLoggingEvent.getAllValues();
-    	
-    	//Confirmation of log output contents
-    	assertThat(events.get(0).getLevel(), is(Level.INFO));
-    	assertThat(events.get(0).getFormattedMessage(), is("Welcome home! The client locale is " + Locale.ENGLISH + "."));
-    	//Confirmation of model settings
-    	ModelAndView mv = result.andReturn().getModelAndView();
-    	String serverTime = (String)mv.getModel().get("serverTime");
-    	assertThat(serverTime.matches("^[a-zA-Z]{3,9} \\d{1,2}, \\d{4} at \\d{1,2}:\\d{1,2}:\\d{1,2} [AM|PM].+"), is(true));
+
+        // Mock the Appender and capture the output contents.
+        logger = (Logger) LoggerFactory.getLogger(HelloController.class);
+        logger.addAppender(mockAppender);
+
+        // Mockmvc test.
+        ResultActions result = mockMvc.perform(get("/").header(
+                "Accept-Language", "en"));
+
+        verify(mockAppender, times(1)).doAppend(captorLoggingEvent.capture());
+        List<LoggingEvent> events = captorLoggingEvent.getAllValues();
+
+        // Confirmation of log output contents
+        assertThat(events.get(0).getLevel(), is(Level.INFO));
+        assertThat(events.get(0).getFormattedMessage(), is(
+                "Welcome home! The client locale is " + Locale.ENGLISH + "."));
+        // Confirmation of model settings
+        ModelAndView mv = result.andReturn().getModelAndView();
+        String serverTime = (String) mv.getModel().get("serverTime");
+        assertThat(serverTime.matches(
+                "^[a-zA-Z]{3,9} \\d{1,2}, \\d{4} at \\d{1,2}:\\d{1,2}:\\d{1,2} [AM|PM].+"),
+                is(true));
     }
-    
+
     @After
     public void tearDown() {
-    }    
+    }
 }
