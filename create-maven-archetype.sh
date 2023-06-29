@@ -72,7 +72,9 @@ if [ -d projectName-domain/src/main/resources/xxxxxx ];then
 fi
 
 sed -i -e "/REMOVE THIS LINE IF YOU USE $ORM/d" `grep -rIl $ORM projectName-* | grep -v '.svn'`
-sed -i -e "s/REMOVE THIS COMMENT IF YOU USE $ORM//g" `grep -rIl $ORM projectName-* | grep -v '.svn'`
+if [ $CONFIG == "JavaConfig" ]; then
+  sed -i -e "s/REMOVE THIS COMMENT IF YOU USE $ORM//g" `grep -rIl $ORM projectName-* | grep -v '.svn'`
+fi
 
 rm -rf `/usr/bin/find . -name '.svn' -type d`
 
