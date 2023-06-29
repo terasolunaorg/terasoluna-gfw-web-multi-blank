@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.Resource;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
@@ -51,6 +52,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
  * Configure SpringMVC.
  */
 @ComponentScan(basePackages = { "xxxxxx.yyyyyy.zzzzzz.app" })
+@EnableAspectJAutoProxy
 @Configuration
 public class SpringMvcConfig extends WebMvcConfigurationSupport {
 
