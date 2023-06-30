@@ -17,7 +17,7 @@ import org.terasoluna.gfw.common.exception.SimpleMappingExceptionCodeResolver;
  * Bean definition to TestContext configure .
  */
 @Configuration
-@EnableAspectJAutoProxy(proxyTargetClass = true)
+@EnableAspectJAutoProxy
 @ComponentScan(basePackageClasses = TestContextConfig.class)
 public class TestContextConfig {
 
