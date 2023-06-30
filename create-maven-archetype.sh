@@ -71,8 +71,10 @@ if [ -d projectName-domain/src/main/resources/xxxxxx ];then
   rm -rf projectName-domain/src/main/resources/xxxxxx
 fi
 
-sed -i -e "/REMOVE THIS LINE IF YOU USE $ORM/d" `grep -rIl $ORM projectName-* | grep -v '.svn'`
-sed -i -e "s/REMOVE THIS COMMENT IF YOU USE $ORM//g" `grep -rIl $ORM projectName-* | grep -v '.svn'`
+GREP_TARGET=`grep -rIl $ORM projectName-* | grep -v '.svn'`
+
+sed -i -e "/REMOVE THIS LINE IF YOU USE $ORM/d" $GREP_TARGET
+sed -i -e "s/REMOVE THIS COMMENT IF YOU USE $ORM//g" $GREP_TARGET
 
 rm -rf `/usr/bin/find . -name '.svn' -type d`
 
