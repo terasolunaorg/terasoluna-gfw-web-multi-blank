@@ -1,4 +1,6 @@
 #!/bin/sh
+set -e
+
 MODE=$1
 KEYWORD="REMOVE THIS LINE IF YOU USE $1"
 TARGET="projectName-*"
