@@ -1,4 +1,6 @@
 #!/bin/sh
+set -e
+
 #rm -rf ${HOME}/.m2/repository/xxxxxx
 rm -rf ./target
 rm -rf ./tmp
