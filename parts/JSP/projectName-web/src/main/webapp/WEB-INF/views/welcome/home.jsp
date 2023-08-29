@@ -18,8 +18,7 @@
             <h1 id="title">Hello world!</h1>
             <p>The time on the server is ${serverTime}.</p>
         </div>
-        <hr>
-        <p style="text-align: center; background: #e5eCf9;">Copyright &copy; 20XX CompanyName</p>
+    <jsp:include page="../layout/footer.jsp"  />
     </div>
 </body>
 </html>
