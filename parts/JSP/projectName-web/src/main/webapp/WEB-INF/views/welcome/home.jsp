@@ -13,12 +13,12 @@
 </head>
 <body>
     <div class="container">
-    <jsp:include page="../layout/header.jsp"  />
+        <jsp:include page="../layout/header.jsp" />
         <div id="wrapper">
             <h1 id="title">Hello world!</h1>
             <p>The time on the server is ${serverTime}.</p>
         </div>
-    <jsp:include page="../layout/footer.jsp"  />
+        <jsp:include page="../layout/footer.jsp" />
     </div>
 </body>
 </html>
