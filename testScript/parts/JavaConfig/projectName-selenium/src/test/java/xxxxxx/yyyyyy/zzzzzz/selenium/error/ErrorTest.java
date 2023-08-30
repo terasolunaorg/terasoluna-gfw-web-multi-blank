@@ -16,16 +16,15 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import jakarta.inject.Inject;
 import xxxxxx.yyyyyy.zzzzzz.config.SeleniumContextConfig;
+import xxxxxx.yyyyyy.zzzzzz.selenium.FunctionTestSupport;
 
 /**
  * Perform an error page rendering test.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { SeleniumContextConfig.class })
-public class ErrorTest {
+public class ErrorTest extends FunctionTestSupport{
 
-    @Inject
-    private WebDriver webDriver;
 
     @Value("${selenium.applicationContextUrl}")
     private String applicationContextUrl;
@@ -185,14 +184,6 @@ public class ErrorTest {
                 "Unhandled System Error!"));
         assertThat(webDriver.findElement(By.className("error")).getText(), is(
                 "Unhandled system error occurred!"));
-    }
-
-    /**
-     * Quits the driver, closing every associated window.
-     */
-    @After
-    public void tearDown() {
-        webDriver.quit();
     }
 
 }
