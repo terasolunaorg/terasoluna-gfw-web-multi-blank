@@ -7,8 +7,9 @@
 
     <bean id="mockTestService" class="org.mockito.Mockito"
         factory-method="mock">
-        <constructor-arg
-            value="xxxxxx.yyyyyy.zzzzzz.domain.service.errortest.MockTestServiceImpl" />
+        <constructor-arg>
+            <value type="java.lang.Class">xxxxxx.yyyyyy.zzzzzz.domain.service.errortest.MockTestServiceImpl</value>
+        </constructor-arg>
     </bean>
 
 </beans>

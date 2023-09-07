@@ -1,10 +1,8 @@
 package xxxxxx.yyyyyy.zzzzzz.domain.service.errortest;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Component;
 
-@Service
-@Transactional
+@Component
 public class MockTestServiceImpl implements MockTestService {
 
     @Override
