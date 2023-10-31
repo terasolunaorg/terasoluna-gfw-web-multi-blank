@@ -51,8 +51,8 @@ import xxxxxx.yyyyyy.zzzzzz.domain.service.errortest.MockTestService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextHierarchy({ @ContextConfiguration(classes = {
         ApplicationContextConfig.class, SpringSecurityConfig.class }),
-        @ContextConfiguration(classes = { SpringMvcConfig.class,
-                SpringMvcMockMvcConfig.class }) })
+        @ContextConfiguration(classes = { SpringMvcMockMvcConfig.class,
+                SpringMvcConfig.class }) })
 @WebAppConfiguration
 public class InterceptorTest {
 
