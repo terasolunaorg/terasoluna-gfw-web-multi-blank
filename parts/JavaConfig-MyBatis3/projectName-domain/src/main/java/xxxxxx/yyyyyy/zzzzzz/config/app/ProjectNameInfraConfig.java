@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 import xxxxxx.yyyyyy.zzzzzz.config.app.mybatis.MybatisConfig;
 
@@ -14,6 +15,7 @@ import xxxxxx.yyyyyy.zzzzzz.config.app.mybatis.MybatisConfig;
  */
 @Configuration
 @MapperScan("xxxxxx.yyyyyy.zzzzzz.domain.repository")
+@Import({ ProjectNameEnvConfig.class })
 public class ProjectNameInfraConfig {
 
     /**
