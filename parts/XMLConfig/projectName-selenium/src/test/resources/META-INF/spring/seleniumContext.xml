@@ -9,8 +9,15 @@
 
     <context:property-placeholder
         location="classpath*:META-INF/spring/*.properties" />
-
-    <bean id="webDriver" class="org.openqa.selenium.firefox.FirefoxDriver"
-        scope="prototype" />
+  
+    <beans profile="firefox default">
+      <bean id="webDriver" class="xxxxxx.yyyyyy.zzzzzz.selenium.webdrivers.FirefoxDriverFactoryBean" scope="prototype" />
+    </beans>
+    <beans profile="chrome">
+      <bean id="webDriver" class="xxxxxx.yyyyyy.zzzzzz.selenium.webdrivers.ChromeDriverFactoryBean" scope="prototype" />
+    </beans>
+    <beans profile="edge">
+      <bean id="webDriver" class="xxxxxx.yyyyyy.zzzzzz.selenium.webdrivers.EdgeDriverFactoryBean" scope="prototype" />
+    </beans>
 
 </beans>
