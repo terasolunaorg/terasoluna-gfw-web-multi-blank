@@ -19,7 +19,11 @@
         <property name="maxTotal" value="${cp.maxActive}" />
         <property name="maxIdle" value="${cp.maxIdle}" />
         <property name="minIdle" value="${cp.minIdle}" />
-        <property name="maxWaitMillis" value="${cp.maxWait}" />
+        <property name="maxWait" >
+            <bean class="java.time.Duration" factory-method="ofMillis">
+                <constructor-arg value="${cp.maxWait}" />
+            </bean>
+        </property>
     </bean>
 
     <jdbc:initialize-database data-source="dataSource"

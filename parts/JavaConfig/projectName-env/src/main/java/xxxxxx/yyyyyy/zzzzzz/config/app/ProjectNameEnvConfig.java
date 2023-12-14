@@ -1,5 +1,7 @@
 package xxxxxx.yyyyyy.zzzzzz.config.app;
 
+import java.time.Duration;
+
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -94,7 +96,7 @@ public class ProjectNameEnvConfig {
         bean.setMaxTotal(maxActive);
         bean.setMaxIdle(maxIdle);
         bean.setMinIdle(minIdle);
-        bean.setMaxWaitMillis(maxWait);
+        bean.setMaxWait(Duration.ofMillis(maxWait));
         return bean;
     }
 
