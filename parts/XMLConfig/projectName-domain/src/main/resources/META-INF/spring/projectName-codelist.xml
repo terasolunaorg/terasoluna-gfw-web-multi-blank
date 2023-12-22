@@ -12,10 +12,12 @@
         <property name="fetchSize" value="${codelist.jdbc.fetchSize:1000}" />
     </bean>
 
+    <!-- Example for usage of AbstractJdbcCodeList
     <bean id="AbstractJdbcCodeList"
           class="org.terasoluna.gfw.common.codelist.JdbcCodeList" abstract="true">
         <property name="jdbcTemplate" ref="jdbcTemplateForCodeList" />
     </bean>
+    -->
 
     <!-- Example for usage of AbstractJdbcCodeList
     <bean id="CL_SAMPLE" parent="AbstractJdbcCodeList">

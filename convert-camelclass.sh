@@ -15,3 +15,4 @@ echo "ProjectName=basic" >> src/test/resources/projects/basic/archetype.properti
 sed -i -e "s/public class ProjectName/public class \${ProjectName}/" src/main/resources/archetype-resources/__rootArtifactId__-*/src/main/java/config/app/__ProjectName__*.java
 sed -i -e "s/config\.app\.ProjectName/config\.app\.\${ProjectName}/" src/main/resources/archetype-resources/__rootArtifactId__-*/src/main/java/config/app/__ProjectName__*.java
 sed -i -e "s/\(ProjectName\)\([A-Za-z]*Config\.class\)/\${ProjectName}\2/" src/main/resources/archetype-resources/__rootArtifactId__-*/src/main/java/config/app/*.java
+sed -i -e "s/\(ProjectName\)\([A-Za-z]*Config\)/\${ProjectName}\2/" src/main/resources/archetype-resources/__rootArtifactId__-*/src/test/java/config/*.java

@@ -1,3 +1,18 @@
+/*
+ * Copyright(c) 2023 NTT Corporation.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
 package xxxxxx.yyyyyy.zzzzzz.config.app;
 
 import java.util.HashMap;
@@ -37,13 +52,13 @@ public class ApplicationContextConfig {
     @Bean("passwordEncoder")
     public PasswordEncoder passwordEncoder() {
         Map<String, PasswordEncoder> idToPasswordEncoder = new HashMap<>();
-        idToPasswordEncoder.put("pbkdf2@SpringSecurity_v5_8", pbkdf2PasswordEncoder());
+        idToPasswordEncoder.put("pbkdf2", pbkdf2PasswordEncoder());
         idToPasswordEncoder.put("bcrypt", bCryptPasswordEncoder());
         /* When using commented out PasswordEncoders, you need to add bcprov-jdk18on.jar to the dependency.
-        idToPasswordEncoder.put("argon2@SpringSecurity_v5_8", argon2PasswordEncoder());
-        idToPasswordEncoder.put("scrypt@SpringSecurity_v5_8", sCryptPasswordEncoder());
+        idToPasswordEncoder.put("argon2", argon2PasswordEncoder());
+        idToPasswordEncoder.put("scrypt", sCryptPasswordEncoder());
         */
-        return new DelegatingPasswordEncoder("pbkdf2@SpringSecurity_v5_8", idToPasswordEncoder);
+        return new DelegatingPasswordEncoder("pbkdf2", idToPasswordEncoder);
     }
 
     /**
@@ -63,6 +78,7 @@ public class ApplicationContextConfig {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     /* When using commented out PasswordEncoders, you need to add bcprov-jdk18on.jar to the dependency.
     @Bean
     public Argon2PasswordEncoder argon2PasswordEncoder() {
@@ -117,27 +133,23 @@ public class ApplicationContextConfig {
 
     /**
      * Configure {@link ExceptionLogger} bean.
-     * @param exceptionCodeResolver Bean defined by #exceptionCodeResolver
-     * @see #exceptionCodeResolver()
      * @return Bean of configured {@link ExceptionLogger}
      */
     @Bean("exceptionLogger")
-    public ExceptionLogger exceptionLogger(ExceptionCodeResolver exceptionCodeResolver) {
+    public ExceptionLogger exceptionLogger() {
         ExceptionLogger bean = new ExceptionLogger();
-        bean.setExceptionCodeResolver(exceptionCodeResolver);
+        bean.setExceptionCodeResolver(exceptionCodeResolver());
         return bean;
     }
 
     /**
      * Configure {@link ExceptionLoggingFilter} bean.
-     * @param exceptionLogger Bean defined by #exceptionLogger
-     * @see #exceptionLogger(ExceptionCodeResolver)
      * @return Bean of configured {@link ExceptionLoggingFilter}
      */
     @Bean("exceptionLoggingFilter")
-    public ExceptionLoggingFilter exceptionLoggingFilter(ExceptionLogger exceptionLogger) {
+    public ExceptionLoggingFilter exceptionLoggingFilter() {
         ExceptionLoggingFilter bean = new ExceptionLoggingFilter();
-        bean.setExceptionLogger(exceptionLogger);
+        bean.setExceptionLogger(exceptionLogger());
         return bean;
     }
 }

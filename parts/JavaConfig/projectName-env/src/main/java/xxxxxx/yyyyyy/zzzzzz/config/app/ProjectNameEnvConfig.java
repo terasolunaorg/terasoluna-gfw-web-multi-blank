@@ -1,3 +1,18 @@
+/*
+ * Copyright(c) 2023 NTT Corporation.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
 package xxxxxx.yyyyyy.zzzzzz.config.app;
 
 import java.time.Duration;
@@ -9,7 +24,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+/* REMOVE THIS LINE IF YOU USE MyBatis3
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+REMOVE THIS LINE IF YOU USE MyBatis3 */
 import org.springframework.jdbc.datasource.init.DataSourceInitializer;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.transaction.TransactionManager;
@@ -82,6 +99,15 @@ public class ProjectNameEnvConfig {
     private String database;
 
     /**
+     * Configure {@link ClockFactory}.
+     * @return Bean of configured {@link DefaultClockFactory}
+     */
+    @Bean("dateFactory")
+    public ClockFactory dateFactory() {
+        return new DefaultClockFactory();
+    }
+
+    /**
      * Configure {@link DataSource} bean.
      * @return Bean of configured {@link BasicDataSource}
      */
@@ -102,18 +128,18 @@ public class ProjectNameEnvConfig {
 
     /**
      * Configuration to set up database during initialization.
-     * @param dataSource Bean defined by #dataSource()
-     * @see #dataSource()
      * @return Bean of configured {@link DataSourceInitializer}
      */
     @Bean
-    public DataSourceInitializer dataSourceInitializer(DataSource dataSource) {
+    public DataSourceInitializer dataSourceInitializer() {
         DataSourceInitializer bean = new DataSourceInitializer();
-        bean.setDataSource(dataSource);
+        bean.setDataSource(dataSource());
 
         ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
-        databasePopulator.addScript(new ClassPathResource("/database/" + database + "-schema.sql"));
-        databasePopulator.addScript(new ClassPathResource("/database/" + database + "-dataload.sql"));
+        databasePopulator.addScript(new ClassPathResource("/database/"
+                + database + "-schema.sql"));
+        databasePopulator.addScript(new ClassPathResource("/database/"
+                + database + "-dataload.sql"));
         databasePopulator.setSqlScriptEncoding("UTF-8");
         databasePopulator.setIgnoreFailedDrops(true);
         bean.setDatabasePopulator(databasePopulator);
@@ -137,26 +163,15 @@ public class ProjectNameEnvConfig {
     /* REMOVE THIS LINE IF YOU USE MyBatis3
     /**
      * Configure {@link TransactionManager} bean.
-     * @param dataSource Bean defined by #dataSource()
-     * @see #dataSource()
      * @return Bean of configured {@link DataSourceTransactionManager}
      *REMOVE THIS COMMENT IF YOU USE MyBatis3/
     @Bean("transactionManager")
-    public TransactionManager transactionManager(DataSource dataSource) {
+    public TransactionManager transactionManager() {
         DataSourceTransactionManager bean = new DataSourceTransactionManager();
-        bean.setDataSource(dataSource);
+        bean.setDataSource(dataSource());
         bean.setRollbackOnCommitFailure(true);
         return bean;
     }
     REMOVE THIS LINE IF YOU USE MyBatis3 */
-
-    /**
-     * Configure {@link ClockFactory}.
-     * @return Bean of configured {@link DefaultClockFactory}
-     */
-    @Bean("dateFactory")
-    public ClockFactory dateFactory() {
-        return new DefaultClockFactory();
-    }
 
 }

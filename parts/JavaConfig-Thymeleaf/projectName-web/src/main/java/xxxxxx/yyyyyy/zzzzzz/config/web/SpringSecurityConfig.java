@@ -1,3 +1,18 @@
+/*
+ * Copyright(c) 2023 NTT Corporation.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
 package xxxxxx.yyyyyy.zzzzzz.config.web;
 
 import static org.springframework.security.config.Customizer.withDefaults;
@@ -14,6 +29,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.access.AccessDeniedHandlerImpl;
 import org.springframework.security.web.access.DelegatingAccessDeniedHandler;
+import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
 import org.springframework.security.web.authentication.AnonymousAuthenticationFilter;
 import org.springframework.security.web.csrf.InvalidCsrfTokenException;
 import org.springframework.security.web.csrf.MissingCsrfTokenException;
@@ -33,23 +49,27 @@ public class SpringSecurityConfig {
      */
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return web -> web.ignoring().requestMatchers(new AntPathRequestMatcher("/resources/**"));
+        return web -> web.ignoring().requestMatchers(
+                new AntPathRequestMatcher("/resources/**"));
     }
 
     /**
      * Configure {@link SecurityFilterChain} bean.
      * @param http Builder class for setting up authentication and authorization
-     * @return  Bean of configured {@link SecurityFilterChain}
+     * @return Bean of configured {@link SecurityFilterChain}
+     * @throws Exception Exception that occurs when setting HttpSecurity
      */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.formLogin(login -> withDefaults());
         http.logout(logout -> withDefaults());
-        http.exceptionHandling(ex -> ex
-                .accessDeniedHandler(accessDeniedHandler()));
-        http.addFilterAfter(
-                userIdMDCPutFilter(), AnonymousAuthenticationFilter.class);
+        http.exceptionHandling(ex -> ex.accessDeniedHandler(
+                accessDeniedHandler()));
+        http.addFilterAfter(userIdMDCPutFilter(),
+                AnonymousAuthenticationFilter.class);
         http.sessionManagement(sessionManagement -> withDefaults());
+        http.authorizeHttpRequests(authz -> authz.requestMatchers(
+                new AntPathRequestMatcher("/**")).permitAll());
 
         return http.build();
     }
@@ -64,19 +84,32 @@ public class SpringSecurityConfig {
 
         // Invalid CSRF authenticator error handler
         AccessDeniedHandlerImpl invalidCsrfTokenErrorHandler = new AccessDeniedHandlerImpl();
-        invalidCsrfTokenErrorHandler.setErrorPage("/common/error/invalidCsrfTokenError");
-        errorHandlers.put(InvalidCsrfTokenException.class, invalidCsrfTokenErrorHandler);
+        invalidCsrfTokenErrorHandler.setErrorPage(
+                "/common/error/invalidCsrfTokenError");
+        errorHandlers.put(InvalidCsrfTokenException.class,
+                invalidCsrfTokenErrorHandler);
 
         // Missing CSRF authenticator error handler
         AccessDeniedHandlerImpl missingCsrfTokenErrorHandler = new AccessDeniedHandlerImpl();
-        missingCsrfTokenErrorHandler.setErrorPage("/common/error/missingCsrfTokenError");
-        errorHandlers.put(MissingCsrfTokenException.class, missingCsrfTokenErrorHandler);
+        missingCsrfTokenErrorHandler.setErrorPage(
+                "/common/error/missingCsrfTokenError");
+        errorHandlers.put(MissingCsrfTokenException.class,
+                missingCsrfTokenErrorHandler);
 
         // Default error handler
         AccessDeniedHandlerImpl defaultErrorHandler = new AccessDeniedHandlerImpl();
         defaultErrorHandler.setErrorPage("/common/error/accessDeniedError");
 
         return new DelegatingAccessDeniedHandler(errorHandlers, defaultErrorHandler);
+    }
+
+    /**
+     * Configure {@link DefaultWebSecurityExpressionHandler} bean.
+     * @return Bean of configured {@link DefaultWebSecurityExpressionHandler}
+     */
+    @Bean("webSecurityExpressionHandler")
+    public DefaultWebSecurityExpressionHandler webSecurityExpressionHandler() {
+        return new DefaultWebSecurityExpressionHandler();
     }
 
     /**
