@@ -26,7 +26,7 @@ public class ProjectNameInfraConfig {
      * Database property.
      */
     @Value("${database}")
-    Database database;
+    private Database database;
 
     /**
      * Configure {@link HibernateJpaVendorAdapter} bean.
@@ -42,18 +42,19 @@ public class ProjectNameInfraConfig {
     /**
      * Configure {@link LocalContainerEntityManagerFactoryBean} bean.
      * @param dataSource DataSource
-     * @param jpaVendorAdapter HibernateJpaVendorAdapter
      * @return Bean of configured {@link LocalContainerEntityManagerFactoryBean}
      */
     @Bean("entityManagerFactory")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, HibernateJpaVendorAdapter jpaVendorAdapter) {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(
+            DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
         bean.setPackagesToScan("xxxxxx.yyyyyy.zzzzzz.domain.model");
         bean.setDataSource(dataSource);
-        bean.setJpaVendorAdapter(jpaVendorAdapter);
+        bean.setJpaVendorAdapter(jpaVendorAdapter());
         bean.setJpaPropertyMap(jpaPropertyMap());
         return bean;
     }
+
     /**
      * Configure {@link LocalContainerEntityManagerFactoryBean}.JpaPropertyMap.
      * @return configured JpaPropertyMap

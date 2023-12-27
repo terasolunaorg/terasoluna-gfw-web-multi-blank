@@ -37,13 +37,13 @@ public class ApplicationContextConfig {
     @Bean("passwordEncoder")
     public PasswordEncoder passwordEncoder() {
         Map<String, PasswordEncoder> idToPasswordEncoder = new HashMap<>();
-        idToPasswordEncoder.put("pbkdf2@SpringSecurity_v5_8", pbkdf2PasswordEncoder());
+        idToPasswordEncoder.put("pbkdf2", pbkdf2PasswordEncoder());
         idToPasswordEncoder.put("bcrypt", bCryptPasswordEncoder());
         /* When using commented out PasswordEncoders, you need to add bcprov-jdk18on.jar to the dependency.
-        idToPasswordEncoder.put("argon2@SpringSecurity_v5_8", argon2PasswordEncoder());
-        idToPasswordEncoder.put("scrypt@SpringSecurity_v5_8", sCryptPasswordEncoder());
+        idToPasswordEncoder.put("argon2", argon2PasswordEncoder());
+        idToPasswordEncoder.put("scrypt", sCryptPasswordEncoder());
         */
-        return new DelegatingPasswordEncoder("pbkdf2@SpringSecurity_v5_8", idToPasswordEncoder);
+        return new DelegatingPasswordEncoder("pbkdf2", idToPasswordEncoder);
     }
 
     /**
@@ -63,6 +63,7 @@ public class ApplicationContextConfig {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     /* When using commented out PasswordEncoders, you need to add bcprov-jdk18on.jar to the dependency.
     @Bean
     public Argon2PasswordEncoder argon2PasswordEncoder() {
@@ -117,27 +118,23 @@ public class ApplicationContextConfig {
 
     /**
      * Configure {@link ExceptionLogger} bean.
-     * @param exceptionCodeResolver Bean defined by #exceptionCodeResolver
-     * @see #exceptionCodeResolver()
      * @return Bean of configured {@link ExceptionLogger}
      */
     @Bean("exceptionLogger")
-    public ExceptionLogger exceptionLogger(ExceptionCodeResolver exceptionCodeResolver) {
+    public ExceptionLogger exceptionLogger() {
         ExceptionLogger bean = new ExceptionLogger();
-        bean.setExceptionCodeResolver(exceptionCodeResolver);
+        bean.setExceptionCodeResolver(exceptionCodeResolver());
         return bean;
     }
 
     /**
      * Configure {@link ExceptionLoggingFilter} bean.
-     * @param exceptionLogger Bean defined by #exceptionLogger
-     * @see #exceptionLogger(ExceptionCodeResolver)
      * @return Bean of configured {@link ExceptionLoggingFilter}
      */
     @Bean("exceptionLoggingFilter")
-    public ExceptionLoggingFilter exceptionLoggingFilter(ExceptionLogger exceptionLogger) {
+    public ExceptionLoggingFilter exceptionLoggingFilter() {
         ExceptionLoggingFilter bean = new ExceptionLoggingFilter();
-        bean.setExceptionLogger(exceptionLogger);
+        bean.setExceptionLogger(exceptionLogger());
         return bean;
     }
 }

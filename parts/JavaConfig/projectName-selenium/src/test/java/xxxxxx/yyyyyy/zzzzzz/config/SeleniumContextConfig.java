@@ -38,18 +38,7 @@ public class SeleniumContextConfig {
      */
     @Bean("webDriver")
     @Scope("prototype")
-    @Profile("default")
-    public FirefoxDriverFactoryBean defaultDriverFactoryBean() {
-        return new FirefoxDriverFactoryBean();
-    }
-
-    /**
-     * Configure {@link WebDriver} bean.
-     * @return Bean of configured {@link FirefoxDriverFactoryBean}
-     */
-    @Bean("webDriver")
-    @Scope("prototype")
-    @Profile("firefox")
+    @Profile({ "firefox", "default" })
     public FirefoxDriverFactoryBean firefoxDriverFactoryBean() {
         return new FirefoxDriverFactoryBean();
     }

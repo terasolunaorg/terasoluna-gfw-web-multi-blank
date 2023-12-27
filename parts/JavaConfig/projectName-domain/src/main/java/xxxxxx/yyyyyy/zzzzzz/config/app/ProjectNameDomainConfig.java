@@ -24,11 +24,12 @@ public class ProjectNameDomainConfig {
     /**
      * Configure {@link ResultMessagesLoggingInterceptor} bean.
      * @param exceptionLogger Bean defined by ApplicationContextConfig#exceptionLogger
-     * @see xxxxxx.yyyyyy.zzzzzz.config.app.ApplicationContextConfig#exceptionLogger(ExceptionCodeResolver)
+     * @see xxxxxx.yyyyyy.zzzzzz.config.app.ApplicationContextConfig#exceptionLogger()
      * @return Bean of configured {@link ResultMessagesLoggingInterceptor}
      */
     @Bean("resultMessagesLoggingInterceptor")
-    public ResultMessagesLoggingInterceptor resultMessagesLoggingInterceptor(ExceptionLogger exceptionLogger) {
+    public ResultMessagesLoggingInterceptor resultMessagesLoggingInterceptor(
+            ExceptionLogger exceptionLogger) {
         ResultMessagesLoggingInterceptor bean = new ResultMessagesLoggingInterceptor();
         bean.setExceptionLogger(exceptionLogger);
         return bean;
@@ -41,9 +42,11 @@ public class ProjectNameDomainConfig {
      * @return Advisor configured for PointCut
      */
     @Bean
-    public Advisor resultMessagesLoggingInterceptorAdvisor(ResultMessagesLoggingInterceptor resultMessagesLoggingInterceptor) {
-       AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
-       pointcut.setExpression("@within(org.springframework.stereotype.Service)");
-       return new DefaultPointcutAdvisor(pointcut, resultMessagesLoggingInterceptor);
+    public Advisor resultMessagesLoggingInterceptorAdvisor(
+            ResultMessagesLoggingInterceptor resultMessagesLoggingInterceptor) {
+        AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
+        pointcut.setExpression(
+                "@within(org.springframework.stereotype.Service)");
+        return new DefaultPointcutAdvisor(pointcut, resultMessagesLoggingInterceptor);
     }
 }

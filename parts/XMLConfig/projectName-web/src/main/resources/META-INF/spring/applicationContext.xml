@@ -12,20 +12,20 @@
     <import resource="classpath:/META-INF/spring/projectName-domain.xml" />
 
     <bean id="passwordEncoder" class="org.springframework.security.crypto.password.DelegatingPasswordEncoder">
-        <constructor-arg name="idForEncode" value="pbkdf2@SpringSecurity_v5_8" />
+        <constructor-arg name="idForEncode" value="pbkdf2" />
         <constructor-arg name="idToPasswordEncoder">
             <map>
-                <entry key="pbkdf2@SpringSecurity_v5_8">
+                <entry key="pbkdf2">
                     <bean class="org.springframework.security.crypto.password.Pbkdf2PasswordEncoder" factory-method="defaultsForSpringSecurity_v5_8" />
                 </entry>
                 <entry key="bcrypt">
                     <bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
                 </entry>
                 <!-- When using commented out PasswordEncoders, you need to add bcprov-jdk18on.jar to the dependency.
-                <entry key="argon2@SpringSecurity_v5_8">
+                <entry key="argon2">
                     <bean class="org.springframework.security.crypto.argon2.Argon2PasswordEncoder" factory-method="defaultsForSpringSecurity_v5_8" />
                 </entry>
-                <entry key="scrypt@SpringSecurity_v5_8">
+                <entry key="scrypt">
                     <bean class="org.springframework.security.crypto.scrypt.SCryptPasswordEncoder" factory-method="defaultsForSpringSecurity_v5_8" />
                 </entry>
                 -->

@@ -18,6 +18,7 @@ public class SpringMvcMockMvcConfig {
      */
     @Bean(name = "mockTestService")
     public MockTestService mockTestService() {
-        return Mockito.mock(MockTestService.class);
+        return Mockito.mock(MockTestService.class,
+                "org.mockito.internal.creation.bytebuddy.MockMethodInterceptor");
     }
 }

@@ -14,6 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.access.AccessDeniedHandlerImpl;
 import org.springframework.security.web.access.DelegatingAccessDeniedHandler;
+import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
 import org.springframework.security.web.authentication.AnonymousAuthenticationFilter;
 import org.springframework.security.web.csrf.InvalidCsrfTokenException;
 import org.springframework.security.web.csrf.MissingCsrfTokenException;
@@ -33,23 +34,27 @@ public class SpringSecurityConfig {
      */
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return web -> web.ignoring().requestMatchers(new AntPathRequestMatcher("/resources/**"));
+        return web -> web.ignoring().requestMatchers(
+                new AntPathRequestMatcher("/resources/**"));
     }
 
     /**
      * Configure {@link SecurityFilterChain} bean.
      * @param http Builder class for setting up authentication and authorization
-     * @return  Bean of configured {@link SecurityFilterChain}
+     * @return Bean of configured {@link SecurityFilterChain}
+     * @throws Exception Exception that occurs when setting HttpSecurity
      */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.formLogin(login -> withDefaults());
         http.logout(logout -> withDefaults());
-        http.exceptionHandling(ex -> ex
-                .accessDeniedHandler(accessDeniedHandler()));
-        http.addFilterAfter(
-                userIdMDCPutFilter(), AnonymousAuthenticationFilter.class);
+        http.exceptionHandling(ex -> ex.accessDeniedHandler(
+                accessDeniedHandler()));
+        http.addFilterAfter(userIdMDCPutFilter(),
+                AnonymousAuthenticationFilter.class);
         http.sessionManagement(sessionManagement -> withDefaults());
+        http.authorizeHttpRequests(authz -> authz.requestMatchers(
+                new AntPathRequestMatcher("/**")).permitAll());
 
         return http.build();
     }
@@ -64,19 +69,33 @@ public class SpringSecurityConfig {
 
         // Invalid CSRF authenticator error handler
         AccessDeniedHandlerImpl invalidCsrfTokenErrorHandler = new AccessDeniedHandlerImpl();
-        invalidCsrfTokenErrorHandler.setErrorPage("/WEB-INF/views/common/error/invalidCsrfTokenError.jsp");
-        errorHandlers.put(InvalidCsrfTokenException.class, invalidCsrfTokenErrorHandler);
+        invalidCsrfTokenErrorHandler.setErrorPage(
+                "/WEB-INF/views/common/error/invalidCsrfTokenError.jsp");
+        errorHandlers.put(InvalidCsrfTokenException.class,
+                invalidCsrfTokenErrorHandler);
 
         // Missing CSRF authenticator error handler
         AccessDeniedHandlerImpl missingCsrfTokenErrorHandler = new AccessDeniedHandlerImpl();
-        missingCsrfTokenErrorHandler.setErrorPage("/WEB-INF/views/common/error/missingCsrfTokenError.jsp");
-        errorHandlers.put(MissingCsrfTokenException.class, missingCsrfTokenErrorHandler);
+        missingCsrfTokenErrorHandler.setErrorPage(
+                "/WEB-INF/views/common/error/missingCsrfTokenError.jsp");
+        errorHandlers.put(MissingCsrfTokenException.class,
+                missingCsrfTokenErrorHandler);
 
         // Default error handler
         AccessDeniedHandlerImpl defaultErrorHandler = new AccessDeniedHandlerImpl();
-        defaultErrorHandler.setErrorPage("/WEB-INF/views/common/error/accessDeniedError.jsp");
+        defaultErrorHandler.setErrorPage(
+                "/WEB-INF/views/common/error/accessDeniedError.jsp");
 
         return new DelegatingAccessDeniedHandler(errorHandlers, defaultErrorHandler);
+    }
+
+    /**
+     * Configure {@link DefaultWebSecurityExpressionHandler} bean.
+     * @return Bean of configured {@link DefaultWebSecurityExpressionHandler}
+     */
+    @Bean("webSecurityExpressionHandler")
+    public DefaultWebSecurityExpressionHandler webSecurityExpressionHandler() {
+        return new DefaultWebSecurityExpressionHandler();
     }
 
     /**

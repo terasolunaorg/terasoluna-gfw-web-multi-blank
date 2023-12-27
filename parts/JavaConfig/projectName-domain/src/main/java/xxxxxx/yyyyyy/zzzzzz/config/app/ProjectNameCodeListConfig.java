@@ -7,9 +7,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.init.DataSourceInitializer;
-import org.terasoluna.gfw.common.codelist.JdbcCodeList;
-import org.terasoluna.gfw.common.codelist.CodeList;
 
 /**
  * Bean definition regarding CodeLists.
@@ -24,53 +21,47 @@ public class ProjectNameCodeListConfig {
     private Integer fetchSize;
 
     /**
-     * Load database setup during initialization.
-     * Bean defined by xxxxxx.yyyyyy.zzzzzz.config.app.ProjectNameEnvConfig#dataSourceInitializer
-     * @see xxxxxx.yyyyyy.zzzzzz.config.app.ProjectNameEnvConfig#dataSourceInitializer(DataSource)
+     * Bean of DataSource.
      */
     @Inject
-    DataSourceInitializer dataSourceInitializer;
+    private DataSource dataSource;
 
     /**
      * Configure {@link JdbcTemplate} bean.
-     * @param dataSource Bean defined by xxxxxx.yyyyyy.zzzzzz.config.app.ProjectNameEnvConfig#dataSource
-     * @see xxxxxx.yyyyyy.zzzzzz.config.app.ProjectNameEnvConfig#dataSource()
      * @return Bean of configured {@link JdbcTemplate}
      */
     @Bean("jdbcTemplateForCodeList")
-    public JdbcTemplate jdbcTemplateForCodeList(DataSource dataSource) {
+    public JdbcTemplate jdbcTemplateForCodeList() {
         JdbcTemplate bean = new JdbcTemplate();
         bean.setDataSource(dataSource);
         bean.setFetchSize(fetchSize);
         return bean;
     }
 
-    /**
-     * Common processing of {@link JdbcCodeList}.
-     * @param jdbcTemplateForCodeList Bean defined by #jdbcTemplateForCodeList
-     * @see #jdbcTemplateForCodeList(DataSource)
-     * @return Bean of configured {@link JdbcCodeList}
-     */
-    private JdbcCodeList abstractJdbcCodeList(JdbcTemplate jdbcTemplateForCodeList) {
-        JdbcCodeList bean = new JdbcCodeList();
-        bean.setJdbcTemplate(jdbcTemplateForCodeList);
-        return bean;
-    }
+    // Example for usage of AbstractJdbcCodeList
 
-//    Example for usage of AbstractJdbcCodeList
-//    /**
-//     * Example for usage of {@link AbstractJdbcCodeList}.
-//     * @param jdbcTemplateForCodeList Bean defined by #jdbcTemplateForCodeList
-//     * @see #jdbcTemplateForCodeList(DataSource)
-//     * @return Bean of configured {@link JdbcCodeList}
-//     */
-//    @Bean("CL_SAMPLE")
-//    public CodeList CL_SAMPLE(JdbcTemplate jdbcTemplateForCodeList) {
-//        JdbcCodeList bean = abstractJdbcCodeList(jdbcTemplateForCodeList);
-//        bean.setJdbcTemplate(jdbcTemplateForCodeList);
-//        bean.setQuerySql("SELECT code, code_name FROM t_sample_codes ORDER BY code");
-//        bean.setValueColumn("code");
-//        bean.setLabelColumn("code_name");
-//        return bean;
-//    }
+//  /**
+//   * Common processing of {@link JdbcCodeList}.
+//   * @return Bean of configured {@link JdbcCodeList}
+//   */
+//  private JdbcCodeList abstractJdbcCodeList() {
+//      JdbcCodeList bean = new JdbcCodeList();
+//      bean.setJdbcTemplate(jdbcTemplateForCodeList());
+//      return bean;
+//  }
+
+//  /**
+//  * Example for usage of {@link AbstractJdbcCodeList}.
+//  * @return Bean of configured {@link JdbcCodeList}
+//  */
+//  @Bean("CL_SAMPLE")
+//  public JdbcCodeList clSample() {
+//      JdbcCodeList jdbcCodeList = abstractJdbcCodeList();
+//      jdbcCodeList.setQuerySql(
+//              "SELECT code, code_name FROM t_sample_codes ORDER BY code");
+//      jdbcCodeList.setValueColumn("code");
+//      jdbcCodeList.setLabelColumn("code_name");
+//      return jdbcCodeList;
+//  }
+
 }

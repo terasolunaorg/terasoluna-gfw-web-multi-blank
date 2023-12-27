@@ -40,8 +40,8 @@ public class MybatisConfig {
      */
     private static void setTypeAliases(TypeAliasRegistry typeAliasRegistry) {
         typeAliasRegistry.registerAliases("xxxxxx.yyyyyy.zzzzzz.domain.model");
-        typeAliasRegistry.registerAliases("xxxxxx.yyyyyy.zzzzzz.domain.repository");
-
+        typeAliasRegistry.registerAliases(
+                "xxxxxx.yyyyyy.zzzzzz.domain.repository");
         // typeAliasRegistry.registerAliases("xxxxxx.yyyyyy.zzzzzz.infra.mybatis.typehandler");
     }
 
@@ -49,7 +49,8 @@ public class MybatisConfig {
      * Settings type handlers.
      * @param typeHandlerRegistry Accepted at configuration
      */
-    private static void setTypeHandlers(TypeHandlerRegistry typeHandlerRegistry) {
+    private static void setTypeHandlers(
+            TypeHandlerRegistry typeHandlerRegistry) {
         // typeHandlerRegistry.register("xxxxxx.yyyyyy.zzzzzz.infra.mybatis.typehandler");
     }
 }
