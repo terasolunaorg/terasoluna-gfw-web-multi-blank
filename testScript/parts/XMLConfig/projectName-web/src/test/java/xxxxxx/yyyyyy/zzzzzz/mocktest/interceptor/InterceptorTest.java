@@ -47,10 +47,10 @@ import xxxxxx.yyyyyy.zzzzzz.domain.service.errortest.MockTestService;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextHierarchy({ @ContextConfiguration({
-        "classpath:META-INF/spring/applicationContext.xml",
-        "classpath:META-INF/spring/spring-security.xml" }),
-        @ContextConfiguration({ "classpath:META-INF/spring/spring-mvc.xml",
-                "classpath:META-INF/spring/spring-mvc-mockmvc.xml" }) })
+    "classpath:META-INF/spring/applicationContext.xml",
+    "classpath:META-INF/spring/spring-security.xml",
+    "classpath:META-INF/spring/spring-mvc-mockmvc.xml" }),
+    @ContextConfiguration({ "classpath:META-INF/spring/spring-mvc.xml" }) })
 @WebAppConfiguration
 public class InterceptorTest {
 
