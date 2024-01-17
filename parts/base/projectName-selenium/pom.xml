@@ -52,7 +52,6 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>${webdrivermanager.version}</version>
             <scope>test</scope>
         </dependency>
 <!--         <dependency> -->
@@ -73,7 +72,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <properties>
-        <webdrivermanager.version>5.3.1</webdrivermanager.version>
-    </properties>
 </project>
