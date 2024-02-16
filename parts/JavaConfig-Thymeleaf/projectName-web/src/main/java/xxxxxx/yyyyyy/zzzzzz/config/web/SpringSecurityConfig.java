@@ -1,12 +1,11 @@
 package xxxxxx.yyyyyy.zzzzzz.config.web;
 
-import static org.springframework.security.config.Customizer.withDefaults;
-
 import java.util.LinkedHashMap;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -46,13 +45,13 @@ public class SpringSecurityConfig {
      */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.formLogin(login -> withDefaults());
-        http.logout(logout -> withDefaults());
+        http.formLogin(Customizer.withDefaults());
+        http.logout(Customizer.withDefaults());
         http.exceptionHandling(ex -> ex.accessDeniedHandler(
                 accessDeniedHandler()));
         http.addFilterAfter(userIdMDCPutFilter(),
                 AnonymousAuthenticationFilter.class);
-        http.sessionManagement(sessionManagement -> withDefaults());
+        http.sessionManagement(Customizer.withDefaults());
         http.authorizeHttpRequests(authz -> authz.requestMatchers(
                 new AntPathRequestMatcher("/**")).permitAll());
 
