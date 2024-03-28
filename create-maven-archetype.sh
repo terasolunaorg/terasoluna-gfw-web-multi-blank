@@ -136,7 +136,7 @@ if [ "$CONFIG" = "JavaConfig" ]; then
 fi
 
 if [ "$DEPLOY" = "deploy" ]; then
-  mvn deploy
+  mvn deploy -X
 else
   mvn install
 fi
