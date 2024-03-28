@@ -78,7 +78,7 @@ if [ "$2" = "central" ]; then
 fi
 
 if [ "$1" = "deploy" ]; then
-  mvn deploy
+  mvn deploy -X
 else
   mvn install
 fi
