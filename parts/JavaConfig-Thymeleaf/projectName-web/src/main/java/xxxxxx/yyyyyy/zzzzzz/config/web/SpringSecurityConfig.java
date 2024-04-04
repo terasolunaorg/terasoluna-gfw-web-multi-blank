@@ -1,5 +1,7 @@
 package xxxxxx.yyyyyy.zzzzzz.config.web;
 
+import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
+
 import java.util.LinkedHashMap;
 
 import org.springframework.context.annotation.Bean;
@@ -17,7 +19,6 @@ import org.springframework.security.web.access.expression.DefaultWebSecurityExpr
 import org.springframework.security.web.authentication.AnonymousAuthenticationFilter;
 import org.springframework.security.web.csrf.InvalidCsrfTokenException;
 import org.springframework.security.web.csrf.MissingCsrfTokenException;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.terasoluna.gfw.security.web.logging.UserIdMDCPutFilter;
 
 /**
@@ -34,7 +35,7 @@ public class SpringSecurityConfig {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return web -> web.ignoring().requestMatchers(
-                new AntPathRequestMatcher("/resources/**"));
+                antMatcher("/resources/**"));
     }
 
     /**
@@ -53,7 +54,7 @@ public class SpringSecurityConfig {
                 AnonymousAuthenticationFilter.class);
         http.sessionManagement(Customizer.withDefaults());
         http.authorizeHttpRequests(authz -> authz.requestMatchers(
-                new AntPathRequestMatcher("/**")).permitAll());
+                antMatcher("/**")).permitAll());
 
         return http.build();
     }
