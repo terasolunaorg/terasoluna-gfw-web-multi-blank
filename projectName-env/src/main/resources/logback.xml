@@ -33,61 +33,34 @@
     </appender>
 
     <!-- Application Loggers -->
-    <logger name="xxxxxx.yyyyyy.zzzzzz">
-        <level value="debug" />
-    </logger>
+    <logger name="xxxxxx.yyyyyy.zzzzzz" level="debug" />
 
-    <logger name="xxxxxx.yyyyyy.zzzzzz.domain.repository">
-        <level value="trace" />
-    </logger>
+    <logger name="xxxxxx.yyyyyy.zzzzzz.domain.repository" level="trace" />
 
     <!-- TERASOLUNA -->
-    <logger name="org.terasoluna.gfw">
-        <level value="info" />
-    </logger>
-    <logger name="org.terasoluna.gfw.web.logging.TraceLoggingInterceptor">
-        <level value="trace" />
-    </logger>
-    <logger name="org.terasoluna.gfw.common.exception.ExceptionLogger">
-        <level value="info" />
-    </logger>
-    <logger name="org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring" additivity="false">
-        <level value="error" />
+    <logger name="org.terasoluna.gfw" level="info" />
+    <logger name="org.terasoluna.gfw.web.logging.TraceLoggingInterceptor" level="trace" />
+    <logger name="org.terasoluna.gfw.common.exception.ExceptionLogger" level="info" />
+    <logger name="org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring" additivity="false" level="error">
         <appender-ref ref="MONITORING_LOG_FILE" />
     </logger>
 
     <!-- 3rdparty Loggers -->
-    <logger name="org.springframework">
-        <level value="warn" />
-    </logger>
+    <logger name="org.springframework" level="warn" />
 
-    <logger name="org.springframework.web.servlet">
-        <level value="info" />
-    </logger>
+    <logger name="org.springframework.web.servlet" level="info" />
 
-    <logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
-        <level value="trace" />
-    </logger>
+    <logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" level="trace" />
 
-    <logger name="org.springframework.jdbc.core.JdbcTemplate">
-        <level value="trace" />
-    </logger>
+    <logger name="org.springframework.jdbc.core.JdbcTemplate" level="trace" />
 
     <!--  REMOVE THIS LINE IF YOU USE JPA
-    <logger name="org.hibernate.SQL" additivity="true">
-        <level value="debug" />
-    </logger>
-    <logger name="org.hibernate.type">
-        <level value="trace" />
-    </logger>
-    <logger name="org.hibernate.engine.transaction">
-        <level value="debug" />
-    </logger>
+    <logger name="org.hibernate.SQL" additivity="true" level="debug" />
+    <logger name="org.hibernate.type" level="trace" />
+    <logger name="org.hibernate.engine.transaction" level="debug" />
           REMOVE THIS LINE IF YOU USE JPA  -->
     <!--  REMOVE THIS LINE IF YOU USE MyBatis3
-    <logger name="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <level value="debug" />
-    </logger>
+    <logger name="org.springframework.jdbc.datasource.DataSourceTransactionManager" level="debug" />
           REMOVE THIS LINE IF YOU USE MyBatis3  -->
 
     <root level="warn">
