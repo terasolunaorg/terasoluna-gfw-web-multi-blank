@@ -56,7 +56,7 @@
 
     <!--  REMOVE THIS LINE IF YOU USE JPA
     <logger name="org.hibernate.SQL" additivity="true" level="debug" />
-    <logger name="org.hibernate.type" level="trace" />
+    <logger name="org.hibernate.orm.jdbc.bind" level="trace" />
     <logger name="org.hibernate.engine.transaction" level="debug" />
           REMOVE THIS LINE IF YOU USE JPA  -->
     <!--  REMOVE THIS LINE IF YOU USE MyBatis3
