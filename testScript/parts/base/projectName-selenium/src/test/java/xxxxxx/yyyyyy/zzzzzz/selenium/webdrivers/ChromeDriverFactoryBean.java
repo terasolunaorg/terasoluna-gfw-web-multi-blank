@@ -6,26 +6,22 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class ChromeDriverFactoryBean extends
-                                     WebDriverManagerFactoryBean<ChromeDriver> {
+                                     HeadlessWebDriverManagerFactoryBean<ChromeDriver> {
 
     @Override
-    public ChromeDriver getObject() {
-        if (System.getenv("webdriver.chrome.driver") == null) {
-            WebDriverManager.chromedriver().setup();
-        }
+    protected WebDriverManager getWebDriverManager() {
+        return WebDriverManager.chromedriver();
+    }
+
+    @Override
+    protected ChromeDriver createWebDriver() {
+
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+
+        if (super.headless) {
+            options.addArguments("--headless=new");
+        }
+
         return new ChromeDriver(options);
     }
-
-    @Override
-    public Class<?> getObjectType() {
-        return ChromeDriver.class;
-    }
-
-    @Override
-    public boolean isSingleton() {
-        return false;
-    }
-
 }

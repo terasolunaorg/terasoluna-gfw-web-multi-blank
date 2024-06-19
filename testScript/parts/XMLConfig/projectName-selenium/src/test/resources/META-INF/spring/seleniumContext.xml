@@ -11,13 +11,22 @@
         location="classpath*:META-INF/spring/*.properties" />
   
     <beans profile="firefox default">
-      <bean id="webDriver" class="xxxxxx.yyyyyy.zzzzzz.selenium.webdrivers.FirefoxDriverFactoryBean" scope="prototype" />
+        <bean id="webDriver" class="xxxxxx.yyyyyy.zzzzzz.selenium.webdrivers.FirefoxDriverFactoryBean" scope="prototype">
+            <property name="propertyFileLocation" value="wdm.properties" />
+            <property name="headless" value="${selenium.headless}" />
+        </bean>
     </beans>
     <beans profile="chrome">
-      <bean id="webDriver" class="xxxxxx.yyyyyy.zzzzzz.selenium.webdrivers.ChromeDriverFactoryBean" scope="prototype" />
+        <bean id="webDriver" class="xxxxxx.yyyyyy.zzzzzz.selenium.webdrivers.ChromeDriverFactoryBean" scope="prototype">
+            <property name="propertyFileLocation" value="wdm.properties" />
+            <property name="headless" value="${selenium.headless}" />
+        </bean>
     </beans>
     <beans profile="edge">
-      <bean id="webDriver" class="xxxxxx.yyyyyy.zzzzzz.selenium.webdrivers.EdgeDriverFactoryBean" scope="prototype" />
+        <bean id="webDriver" class="xxxxxx.yyyyyy.zzzzzz.selenium.webdrivers.EdgeDriverFactoryBean" scope="prototype">
+            <property name="propertyFileLocation" value="wdm.properties" />
+            <property name="headless" value="${selenium.headless}" />
+        </bean>
     </beans>
 
 </beans>

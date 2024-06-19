@@ -10,7 +10,7 @@ public enum WebDriverType {
 
     /**
      * The default {@link WebDriver} type.
-     * @return {@link #HTMLUNIT}
+     * @return {@link #FIREFOX}
      */
     public static WebDriverType DEFAULT() {
         return FIREFOX;
