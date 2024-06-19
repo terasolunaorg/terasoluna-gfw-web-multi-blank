@@ -95,8 +95,8 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
 
     @Before
     public final void logUserAgent() {
-        if (webDriver instanceof RemoteWebDriver remoteWebDriver) {
-            Object agent = remoteWebDriver.executeScript(
+        if (webDriver instanceof RemoteWebDriver) {
+            Object agent = ((RemoteWebDriver)webDriver).executeScript(
                     "return navigator.userAgent");
             if (agent != null) {
                 logger.info("userAgent:" + agent.toString());
