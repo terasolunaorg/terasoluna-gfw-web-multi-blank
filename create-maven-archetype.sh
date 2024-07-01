@@ -5,6 +5,11 @@ DEPLOY=$1
 REPOSITORY=$2
 ORM=$3
 
+if [ -z ${ORM} ];then
+  echo ORM is not empty
+  exit 1
+fi
+
 KEYWORD="REMOVE THIS LINE IF YOU USE ${ORM}"
 TARGET="projectName-*"
 
