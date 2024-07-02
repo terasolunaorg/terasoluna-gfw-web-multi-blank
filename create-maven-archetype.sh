@@ -1,12 +1,36 @@
 #!/bin/sh
 set -e
 
-#rm -rf ${HOME}/.m2/repository/xxxxxx
-rm -rf ./target
+DEPLOY=$1
+REPOSITORY=$2
+ORM=$3
+
+if [ -z ${ORM} ];then
+  echo ORM is not empty
+  exit 1
+fi
+
+KEYWORD="REMOVE THIS LINE IF YOU USE ${ORM}"
+TARGET="projectName-*"
+
+ARTIFACT_ID=terasoluna-gfw-multi-web-blank-${ORM,,}
+
+echo create ${ARTIFACT_ID}
+
+# start create tmp directory
 rm -rf ./tmp
 mkdir tmp
-cp -r  pom.xml infra projectName* tmp
+cp -r pom.xml tmp
+cp -r projectName* tmp
+
+cp -r infra/${ORM,,}/* tmp/
+
 pushd tmp
+
+sed -i -e "/${KEYWORD}/d" `grep -rIl "${ORM}" ${TARGET}`
+
+sed -i -e "s/Web Blank Multi Project/Web Blank Multi Project (${ORM})/g" pom.xml
+
 
 # rename "projectName" in filename to replace by ${artifactId}
 mv projectName-domain/src/main/resources/META-INF/spring/projectName-domain.xml projectName-domain/src/main/resources/META-INF/spring/__rootArtifactId__-domain.xml
@@ -22,19 +46,17 @@ if [ -d projectName-domain/src/main/resources/xxxxxx ];then
   rm -rf projectName-domain/src/main/resources/xxxxxx
 fi
 
-rm -rf infra
-rm -rf `/usr/bin/find . -name '.svn' -type d`
-
-if [ "$2" = "central" ]; then
+if [ "${REPOSITORY}" = "central" ]; then
   PROFILE="-P central"
 fi
 mvn archetype:create-from-project ${PROFILE}
 
 pushd target/generated-sources/archetype
-sed -i -e "s/xxxxxx\.yyyyyy\.zzzzzz/org.terasoluna.gfw.blank/g" pom.xml
-sed -i -e "s/projectName/terasoluna-gfw-multi-web-blank/g" pom.xml
 
-if [ "$2" = "central" ]; then
+sed -i -e "s/xxxxxx\.yyyyyy\.zzzzzz/org.terasoluna.gfw.blank/g" pom.xml
+sed -i -e "s/projectName/${ARTIFACT_ID}/g" pom.xml
+
+if [ "${REPOSITORY}" = "central" ]; then
   # add plugins to deploy to Maven Central Repository
   LF=$(printf '\\\012_')
   LF=${LF%_}
@@ -77,7 +99,7 @@ if [ "$2" = "central" ]; then
   sed -i -e "s/  <\/build>/${REPLACEMENT_TAG}/" pom.xml
 fi
 
-if [ "$1" = "deploy" ]; then
+if [ "${DEPLOY}" = "deploy" ]; then
   mvn deploy -X
 else
   mvn install
