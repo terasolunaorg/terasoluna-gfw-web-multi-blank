@@ -9,39 +9,39 @@
 ####################################################
 
 set -e
-cd `dirname $0`
+cd $(dirname $0)
 WORK_DIR=$1
 PROJECT_NAME=$(basename "${WORK_DIR}")
 
 echo ">>>>> ARGS CHECK"
 
 if [ ! -n "${WORK_DIR}" ]; then
-	echo "[Error] Destination directory not specified."
-	exit -100
+    echo "[Error] Destination directory not specified."
+    exit -100
 fi
 
 if [ ! -d "${WORK_DIR}" ]; then
-	echo "[Error] Destination directory does not exist."
-	exit -101
+    echo "[Error] Destination directory does not exist."
+    exit -101
 fi
 
 if [ ! -d "${WORK_DIR}/${PROJECT_NAME}-web" ]; then
-	echo "[Error] It's not a multi-project configuration."
-	exit -102
+    echo "[Error] It's not a multi-project configuration."
+    exit -102
 fi
 
 if [ -e "${WORK_DIR}/${PROJECT_NAME}-web/src/main/resources/META-INF/spring/applicationContext.xml" ]; then
-	CONFIG_TYPE="XMLConfig"
+    CONFIG_TYPE="XMLConfig"
 else
-	echo "[Error] JavaConfig is not supported in this version."
-	exit -103
+    echo "[Error] JavaConfig is not supported in this version."
+    exit -103
 fi
 
 if [ -e "${WORK_DIR}/${PROJECT_NAME}-web/src/main/webapp/WEB-INF/views/welcome/home.jsp" ]; then
-	VIEW_TYPE="JSP"
+    VIEW_TYPE="JSP"
 else
-	echo "[Error] Thymeleaf is not supported in this version."
-	exit -104
+    echo "[Error] Thymeleaf is not supported in this version."
+    exit -104
 fi
 
 APP_PATH=$(find "${WORK_DIR}/${PROJECT_NAME}-web" -name HelloController.java)
