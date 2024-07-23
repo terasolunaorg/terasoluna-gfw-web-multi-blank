@@ -59,16 +59,16 @@
         <!-- == End TERASOLUNA == -->
 
         <!-- == Begin Database == -->
-<!--         <dependency> -->
-<!--             <groupId>org.postgresql</groupId> -->
-<!--             <artifactId>postgresql</artifactId> -->
-<!--             <scope>test</scope> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>com.oracle.database.jdbc</groupId> -->
-<!--             <artifactId>ojdbc8</artifactId> -->
-<!--             <scope>test</scope> -->
-<!--         </dependency> -->
+        <!--         <dependency> -->
+        <!--             <groupId>org.postgresql</groupId> -->
+        <!--             <artifactId>postgresql</artifactId> -->
+        <!--             <scope>test</scope> -->
+        <!--         </dependency> -->
+        <!--         <dependency> -->
+        <!--             <groupId>com.oracle.database.jdbc</groupId> -->
+        <!--             <artifactId>ojdbc8</artifactId> -->
+        <!--             <scope>test</scope> -->
+        <!--         </dependency> -->
         <!-- == End Database == -->
 
         <!-- == Begin Unit Test == -->

@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE configuration
-    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
     <!-- See http://mybatis.github.io/mybatis-3/configuration.html#settings -->
@@ -9,7 +7,7 @@
         <setting name="mapUnderscoreToCamelCase" value="true" />
         <setting name="lazyLoadingEnabled" value="true" />
         <setting name="defaultFetchSize" value="100" />
-<!--
+        <!--
         <setting name="defaultExecutorType" value="REUSE" />
         <setting name="jdbcTypeForNull" value="NULL" />
         <setting name="localCacheScope" value="STATEMENT" />
@@ -19,13 +17,13 @@
     <typeAliases>
         <package name="xxxxxx.yyyyyy.zzzzzz.domain.model" />
         <package name="xxxxxx.yyyyyy.zzzzzz.domain.repository" />
-<!--
+        <!--
         <package name="xxxxxx.yyyyyy.zzzzzz.infra.mybatis.typehandler" />
 -->
     </typeAliases>
 
     <typeHandlers>
-<!--
+        <!--
         <package name="xxxxxx.yyyyyy.zzzzzz.infra.mybatis.typehandler" />
 -->
     </typeHandlers>

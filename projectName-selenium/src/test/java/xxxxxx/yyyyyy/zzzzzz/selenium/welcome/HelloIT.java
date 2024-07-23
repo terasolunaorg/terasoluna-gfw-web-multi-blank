@@ -20,7 +20,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Executes the test for the application home page.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
+@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
 public class HelloIT {
 
     @Inject
@@ -37,8 +37,7 @@ public class HelloIT {
 
         webDriver.get(applicationContextUrl);
 
-        assertThat(webDriver.findElement(By.id("title")).getText(),
-                is("Hello world!"));
+        assertThat(webDriver.findElement(By.id("title")).getText(), is("Hello world!"));
     }
 
     /**
