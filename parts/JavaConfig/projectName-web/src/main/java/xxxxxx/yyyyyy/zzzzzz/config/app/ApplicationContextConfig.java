@@ -27,7 +27,7 @@ import org.terasoluna.gfw.web.exception.ExceptionLoggingFilter;
  */
 @Configuration
 @EnableAspectJAutoProxy
-@Import({ ProjectNameDomainConfig.class })
+@Import({ProjectNameDomainConfig.class})
 public class ApplicationContextConfig {
 
     /**
@@ -39,10 +39,11 @@ public class ApplicationContextConfig {
         Map<String, PasswordEncoder> idToPasswordEncoder = new HashMap<>();
         idToPasswordEncoder.put("pbkdf2", pbkdf2PasswordEncoder());
         idToPasswordEncoder.put("bcrypt", bCryptPasswordEncoder());
-        /* When using commented out PasswordEncoders, you need to add bcprov-jdk18on.jar to the dependency.
-        idToPasswordEncoder.put("argon2", argon2PasswordEncoder());
-        idToPasswordEncoder.put("scrypt", sCryptPasswordEncoder());
-        */
+        /*
+         * When using commented out PasswordEncoders, you need to add bcprov-jdk18on.jar to the
+         * dependency. idToPasswordEncoder.put("argon2", argon2PasswordEncoder());
+         * idToPasswordEncoder.put("scrypt", sCryptPasswordEncoder());
+         */
         return new DelegatingPasswordEncoder("pbkdf2", idToPasswordEncoder);
     }
 
@@ -64,16 +65,16 @@ public class ApplicationContextConfig {
         return new BCryptPasswordEncoder();
     }
 
-    /* When using commented out PasswordEncoders, you need to add bcprov-jdk18on.jar to the dependency.
-    @Bean
-    public Argon2PasswordEncoder argon2PasswordEncoder() {
-        return Argon2PasswordEncoder.defaultsForSpringSecurity_v5_8();
-    }
-    @Bean
-    public SCryptPasswordEncoder sCryptPasswordEncoder() {
-        return SCryptPasswordEncoder.defaultsForSpringSecurity_v5_8();
-    }
-    */
+    /*
+     * When using commented out PasswordEncoders, you need to add bcprov-jdk18on.jar to the
+     * dependency.
+     * 
+     * @Bean public Argon2PasswordEncoder argon2PasswordEncoder() { return
+     * Argon2PasswordEncoder.defaultsForSpringSecurity_v5_8(); }
+     * 
+     * @Bean public SCryptPasswordEncoder sCryptPasswordEncoder() { return
+     * SCryptPasswordEncoder.defaultsForSpringSecurity_v5_8(); }
+     */
 
     /**
      * Configure {@link PropertySourcesPlaceholderConfigurer} bean.

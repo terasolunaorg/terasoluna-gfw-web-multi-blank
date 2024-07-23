@@ -29,15 +29,14 @@ import jakarta.inject.Inject;
  * Run test for Csrf Token error.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextHierarchy({ @ContextConfiguration({
-        "classpath:META-INF/spring/applicationContext.xml",
-        "classpath:META-INF/spring/spring-security.xml" }),
-        @ContextConfiguration("classpath:META-INF/spring/spring-mvc.xml") })
+@ContextHierarchy({
+        @ContextConfiguration({"classpath:META-INF/spring/applicationContext.xml",
+                "classpath:META-INF/spring/spring-security.xml"}),
+        @ContextConfiguration("classpath:META-INF/spring/spring-mvc.xml")})
 @WebAppConfiguration
 public class CsrfTokenErrorTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(
-            CsrfTokenErrorTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(CsrfTokenErrorTest.class);
 
     @Inject
     private WebApplicationContext webApplicationContext;
@@ -52,9 +51,8 @@ public class CsrfTokenErrorTest {
 
     @Before
     public void setUp() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
-                .alwaysDo(log()).apply(SecurityMockMvcConfigurers
-                        .springSecurity()).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).alwaysDo(log())
+                .apply(SecurityMockMvcConfigurers.springSecurity()).build();
     }
 
     /**
@@ -65,16 +63,15 @@ public class CsrfTokenErrorTest {
     public void testInvalidCsrfTokenError() throws Exception {
 
         // Mockmvc test.
-        ResultActions results = mockMvc.perform(post("/").with(csrf()
-                .useInvalidToken()));
+        ResultActions results = mockMvc.perform(post("/").with(csrf().useInvalidToken()));
 
-        logger.debug("testInvalidCsrfTokenError#status:" + results.andReturn()
-                .getResponse().getStatus());
-        logger.debug("testInvalidCsrfTokenError#forwardedUrl:" + results
-                .andReturn().getResponse().getForwardedUrl());
+        logger.debug("testInvalidCsrfTokenError#status:"
+                + results.andReturn().getResponse().getStatus());
+        logger.debug("testInvalidCsrfTokenError#forwardedUrl:"
+                + results.andReturn().getResponse().getForwardedUrl());
 
-        results.andExpect(status().is(403)).andExpect(forwardedUrl(
-                invalidCsrfTokenErrorForwardedUrl));
+        results.andExpect(status().is(403))
+                .andExpect(forwardedUrl(invalidCsrfTokenErrorForwardedUrl));
     }
 
     /**
@@ -87,16 +84,15 @@ public class CsrfTokenErrorTest {
         // Mockmvc test.
         ResultActions results = mockMvc.perform(post("/"));
 
-        logger.debug("testMissingCsrfTokenError#status:" + results.andReturn()
-                .getResponse().getStatus());
-        logger.debug("testMissingCsrfTokenError#forwardedUrl:" + results
-                .andReturn().getResponse().getForwardedUrl());
+        logger.debug("testMissingCsrfTokenError#status:"
+                + results.andReturn().getResponse().getStatus());
+        logger.debug("testMissingCsrfTokenError#forwardedUrl:"
+                + results.andReturn().getResponse().getForwardedUrl());
 
-        results.andExpect(status().is(403)).andExpect(forwardedUrl(
-                missingCsrfTokenErrorForwardedUrl));
+        results.andExpect(status().is(403))
+                .andExpect(forwardedUrl(missingCsrfTokenErrorForwardedUrl));
     }
 
     @After
-    public void tearDown() {
-    }
+    public void tearDown() {}
 }

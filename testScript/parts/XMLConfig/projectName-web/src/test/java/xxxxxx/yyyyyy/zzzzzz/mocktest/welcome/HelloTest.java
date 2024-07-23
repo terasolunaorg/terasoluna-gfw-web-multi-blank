@@ -44,10 +44,10 @@ import jakarta.inject.Inject;
  * Run a unit test on HelloController.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextHierarchy({ @ContextConfiguration({
-        "classpath:META-INF/spring/applicationContext.xml",
-        "classpath:META-INF/spring/spring-security.xml" }),
-        @ContextConfiguration({ "classpath:META-INF/spring/spring-mvc.xml" }) })
+@ContextHierarchy({
+        @ContextConfiguration({"classpath:META-INF/spring/applicationContext.xml",
+                "classpath:META-INF/spring/spring-security.xml"}),
+        @ContextConfiguration({"classpath:META-INF/spring/spring-mvc.xml"})})
 @WebAppConfiguration
 public class HelloTest {
 
@@ -69,8 +69,7 @@ public class HelloTest {
 
     @Before
     public void setUp() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
-                .alwaysDo(log()).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).alwaysDo(log()).build();
     }
 
     /**
@@ -85,16 +84,15 @@ public class HelloTest {
         logger.addAppender(mockAppender);
 
         // Mockmvc test.
-        ResultActions result = mockMvc.perform(get("/").header(
-                "Accept-Language", "en"));
+        ResultActions result = mockMvc.perform(get("/").header("Accept-Language", "en"));
 
         verify(mockAppender, times(1)).doAppend(captorLoggingEvent.capture());
         List<LoggingEvent> events = captorLoggingEvent.getAllValues();
 
         // Confirmation of log output contents
         assertThat(events.get(0).getLevel(), is(Level.INFO));
-        assertThat(events.get(0).getFormattedMessage(), is(
-                "Welcome home! The client locale is " + Locale.ENGLISH + "."));
+        assertThat(events.get(0).getFormattedMessage(),
+                is("Welcome home! The client locale is " + Locale.ENGLISH + "."));
         // Confirmation of model settings
         ModelAndView mv = result.andReturn().getModelAndView();
         String serverTime = (String) mv.getModel().get("serverTime");
@@ -104,6 +102,5 @@ public class HelloTest {
     }
 
     @After
-    public void tearDown() {
-    }
+    public void tearDown() {}
 }

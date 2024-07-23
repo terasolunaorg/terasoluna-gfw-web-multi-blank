@@ -21,8 +21,7 @@ import xxxxxx.yyyyyy.zzzzzz.selenium.webdrivers.WebDriverType;
 
 public class FunctionTestSupport extends ApplicationObjectSupport {
 
-    private static final Logger logger = LoggerFactory.getLogger(
-            FunctionTestSupport.class);
+    private static final Logger logger = LoggerFactory.getLogger(FunctionTestSupport.class);
 
     protected static WebDriver webDriver;
 
@@ -56,10 +55,9 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     protected Duration defaultTimeoutSecForImplicitlyWait;
 
     @Value("${selenium.defaultTimeoutSecForImplicitlyWait:5}")
-    public void setDefaultTimeoutSecForImplicitlyWait(
-            long defaultTimeoutSecForImplicitlyWait) {
-        this.defaultTimeoutSecForImplicitlyWait = Duration.ofSeconds(
-                defaultTimeoutSecForImplicitlyWait);
+    public void setDefaultTimeoutSecForImplicitlyWait(long defaultTimeoutSecForImplicitlyWait) {
+        this.defaultTimeoutSecForImplicitlyWait =
+                Duration.ofSeconds(defaultTimeoutSecForImplicitlyWait);
     }
 
     @AfterClass
@@ -81,8 +79,7 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         if (driverType != null) {
             return;
         }
-        for (String activeProfile : getApplicationContext().getEnvironment()
-                .getActiveProfiles()) {
+        for (String activeProfile : getApplicationContext().getEnvironment().getActiveProfiles()) {
             for (WebDriverType type : WebDriverType.values()) {
                 if (type.toString().equalsIgnoreCase(activeProfile)) {
                     driverType = type;
@@ -96,8 +93,7 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     @Before
     public final void logUserAgent() {
         if (webDriver instanceof RemoteWebDriver remoteWebDriver) {
-            Object agent = remoteWebDriver.executeScript(
-                    "return navigator.userAgent");
+            Object agent = remoteWebDriver.executeScript("return navigator.userAgent");
             if (agent != null) {
                 logger.info("userAgent:" + agent.toString());
             }
@@ -116,13 +112,12 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         if (webDriver == null) {
             webDriver = newWebDriver();
         }
-        webDriver.manage().timeouts().implicitlyWait(
-                this.defaultTimeoutSecForImplicitlyWait);
+        webDriver.manage().timeouts().implicitlyWait(this.defaultTimeoutSecForImplicitlyWait);
         webDriver.get(getPackageRootUrl());
 
         this.webDriverOperations = new WebDriverOperations(webDriver);
-        this.webDriverOperations.setDefaultTimeoutForImplicitlyWait(
-                this.defaultTimeoutSecForImplicitlyWait);
+        this.webDriverOperations
+                .setDefaultTimeoutForImplicitlyWait(this.defaultTimeoutSecForImplicitlyWait);
         this.webDriverWait = new WebDriverWait(webDriver, this.defaultTimeoutSecForImplicitlyWait);
     }
 

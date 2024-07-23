@@ -15,7 +15,7 @@ import xxxxxx.yyyyyy.zzzzzz.config.app.mybatis.MybatisConfig;
  */
 @Configuration
 @MapperScan("xxxxxx.yyyyyy.zzzzzz.domain.repository")
-@Import({ ProjectNameEnvConfig.class })
+@Import({ProjectNameEnvConfig.class})
 public class ProjectNameInfraConfig {
 
     /**

@@ -10,9 +10,9 @@ REQUIRED_PROPERTIES="${REQUIRED_PROPERTIES}${LF}    <\/requiredProperty>"
 REQUIRED_PROPERTIES="${REQUIRED_PROPERTIES}${LF}  <\/requiredProperties>"
 sed -i -e "s/<\/modules>/<\/modules>${REQUIRED_PROPERTIES}/" src/main/resources/META-INF/maven/archetype-metadata.xml
 
-echo "ProjectName=basic" >> src/test/resources/projects/basic/archetype.properties
+echo "ProjectName=basic" >>src/test/resources/projects/basic/archetype.properties
 
 sed -i -e "s/public class ProjectName/public class \${ProjectName}/" src/main/resources/archetype-resources/__rootArtifactId__-*/src/main/java/config/app/__ProjectName__*.java
 sed -i -e "s/config\.app\.ProjectName/config\.app\.\${ProjectName}/" src/main/resources/archetype-resources/__rootArtifactId__-*/src/main/java/config/app/__ProjectName__*.java
-sed -i -e "s/\(ProjectName\)\([A-Za-z]*Config\.class\)/\${ProjectName}\2/" src/main/resources/archetype-resources/__rootArtifactId__-*/src/main/java/config/app/*.java
+sed -i -e "s/\(ProjectName\)\([A-Za-z]*Config\.class\)/\${ProjectName}\2/g" src/main/resources/archetype-resources/__rootArtifactId__-*/src/main/java/config/app/*.java
 sed -i -e "s/\(ProjectName\)\([A-Za-z]*Config\)/\${ProjectName}\2/" src/main/resources/archetype-resources/__rootArtifactId__-*/src/test/java/config/*.java

@@ -22,7 +22,7 @@ import xxxxxx.yyyyyy.zzzzzz.config.SeleniumContextConfig;
  * Executes the test for the application home page.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { SeleniumContextConfig.class })
+@ContextConfiguration(classes = {SeleniumContextConfig.class})
 public class HelloIT {
 
     @Inject
@@ -39,8 +39,7 @@ public class HelloIT {
 
         webDriver.get(applicationContextUrl);
 
-        assertThat(webDriver.findElement(By.id("title")).getText(),
-                is("Hello world!"));
+        assertThat(webDriver.findElement(By.id("title")).getText(), is("Hello world!"));
     }
 
     /**

@@ -5,10 +5,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.util.StringUtils;
 
 public abstract class HeadlessWebDriverManagerFactoryBean<T extends WebDriver>
-                                                         extends
-                                                         WebDriverManagerFactoryBean<T>
-                                                         implements
-                                                         InitializingBean {
+        extends WebDriverManagerFactoryBean<T> implements InitializingBean {
 
     protected boolean headless = true;
 

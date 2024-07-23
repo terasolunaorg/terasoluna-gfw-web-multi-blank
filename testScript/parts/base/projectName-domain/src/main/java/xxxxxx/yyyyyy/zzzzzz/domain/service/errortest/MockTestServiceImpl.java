@@ -6,6 +6,5 @@ import org.springframework.stereotype.Component;
 public class MockTestServiceImpl implements MockTestService {
 
     @Override
-    public void testExecute() {
-    }
+    public void testExecute() {}
 }

@@ -121,16 +121,16 @@ public class ProjectNameEnvConfig {
         bean.setDataSource(dataSource());
 
         ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
-        databasePopulator.addScript(new ClassPathResource("/database/"
-                + database + "-schema.sql"));
-        databasePopulator.addScript(new ClassPathResource("/database/"
-                + database + "-dataload.sql"));
+        databasePopulator.addScript(new ClassPathResource("/database/" + database + "-schema.sql"));
+        databasePopulator
+                .addScript(new ClassPathResource("/database/" + database + "-dataload.sql"));
         databasePopulator.setSqlScriptEncoding("UTF-8");
         databasePopulator.setIgnoreFailedDrops(true);
         bean.setDatabasePopulator(databasePopulator);
         return bean;
     }
 
+    // @formatter:off
     /* REMOVE THIS LINE IF YOU USE JPA
     /**
      * Configure {@link TransactionManager} bean for use with JPA.
@@ -158,5 +158,6 @@ public class ProjectNameEnvConfig {
         return bean;
     }
     REMOVE THIS LINE IF YOU USE MyBatis3 */
+    // @formatter:on
 
 }

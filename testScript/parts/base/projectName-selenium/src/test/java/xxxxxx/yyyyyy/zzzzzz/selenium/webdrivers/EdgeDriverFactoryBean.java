@@ -5,8 +5,7 @@ import org.openqa.selenium.edge.EdgeOptions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class EdgeDriverFactoryBean extends
-                                   HeadlessWebDriverManagerFactoryBean<EdgeDriver> {
+public class EdgeDriverFactoryBean extends HeadlessWebDriverManagerFactoryBean<EdgeDriver> {
 
     @Override
     protected WebDriverManager getWebDriverManager() {

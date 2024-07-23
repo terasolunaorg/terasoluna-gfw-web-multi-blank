@@ -21,7 +21,8 @@ public class SeleniumContextConfig {
      * @return Bean of configured {@link PropertySourcesPlaceholderConfigurer}
      */
     @Bean
-    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer(@Value("classpath*:META-INF/spring/*.properties") Resource...properties) {
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer(
+            @Value("classpath*:META-INF/spring/*.properties") Resource... properties) {
         PropertySourcesPlaceholderConfigurer bean = new PropertySourcesPlaceholderConfigurer();
         bean.setLocations(properties);
         return bean;
