@@ -40,28 +40,28 @@ public class ProjectNameCodeListConfig {
 
     // Example for usage of AbstractJdbcCodeList
 
-//  /**
-//   * Common processing of {@link JdbcCodeList}.
-//   * @return Bean of configured {@link JdbcCodeList}
-//   */
-//  private JdbcCodeList abstractJdbcCodeList() {
-//      JdbcCodeList bean = new JdbcCodeList();
-//      bean.setJdbcTemplate(jdbcTemplateForCodeList());
-//      return bean;
-//  }
+    // /**
+    // * Common processing of {@link JdbcCodeList}.
+    // * @return Bean of configured {@link JdbcCodeList}
+    // */
+    // private JdbcCodeList abstractJdbcCodeList() {
+    // JdbcCodeList bean = new JdbcCodeList();
+    // bean.setJdbcTemplate(jdbcTemplateForCodeList());
+    // return bean;
+    // }
 
-//  /**
-//  * Example for usage of {@link AbstractJdbcCodeList}.
-//  * @return Bean of configured {@link JdbcCodeList}
-//  */
-//  @Bean("CL_SAMPLE")
-//  public JdbcCodeList clSample() {
-//      JdbcCodeList jdbcCodeList = abstractJdbcCodeList();
-//      jdbcCodeList.setQuerySql(
-//              "SELECT code, code_name FROM t_sample_codes ORDER BY code");
-//      jdbcCodeList.setValueColumn("code");
-//      jdbcCodeList.setLabelColumn("code_name");
-//      return jdbcCodeList;
-//  }
+    // /**
+    // * Example for usage of {@link AbstractJdbcCodeList}.
+    // * @return Bean of configured {@link JdbcCodeList}
+    // */
+    // @Bean("CL_SAMPLE")
+    // public JdbcCodeList clSample() {
+    // JdbcCodeList jdbcCodeList = abstractJdbcCodeList();
+    // jdbcCodeList.setQuerySql(
+    // "SELECT code, code_name FROM t_sample_codes ORDER BY code");
+    // jdbcCodeList.setValueColumn("code");
+    // jdbcCodeList.setLabelColumn("code_name");
+    // return jdbcCodeList;
+    // }
 
 }

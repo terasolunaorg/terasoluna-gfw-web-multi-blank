@@ -19,7 +19,7 @@ import xxxxxx.yyyyyy.zzzzzz.config.app.ProjectNameDomainConfig;
  */
 @Configuration
 @EnableAspectJAutoProxy
-@Import({ ProjectNameDomainConfig.class })
+@Import({ProjectNameDomainConfig.class})
 public class TestContextConfig {
 
     /**
@@ -30,7 +30,8 @@ public class TestContextConfig {
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer(
             @Value("classpath*:/META-INF/spring/*.properties") Resource... resources) {
-        PropertySourcesPlaceholderConfigurer placehodler = new PropertySourcesPlaceholderConfigurer();
+        PropertySourcesPlaceholderConfigurer placehodler =
+                new PropertySourcesPlaceholderConfigurer();
         placehodler.setLocations(resources);
         return placehodler;
     }

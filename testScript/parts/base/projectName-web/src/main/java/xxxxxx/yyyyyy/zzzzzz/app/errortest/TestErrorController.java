@@ -33,22 +33,19 @@ public class TestErrorController {
     }
 
     @GetMapping("/invalidCsrfTokenError")
-    public String invalidCsrfTokenError(HttpServletRequest request,
-            Model model) {
+    public String invalidCsrfTokenError(HttpServletRequest request, Model model) {
         model.addAttribute("exceptionCode", "e.xx.fw.7002");
         return "common/error/invalidCsrfTokenError";
     }
 
     @GetMapping("/missingCsrfTokenError")
-    public String missingCsrfTokenError(HttpServletRequest request,
-            Model model) {
+    public String missingCsrfTokenError(HttpServletRequest request, Model model) {
         model.addAttribute("exceptionCode", "e.xx.fw.7004");
         return "common/error/missingCsrfTokenError";
     }
 
     @GetMapping("/resourceNotFoundError")
-    public String resourceNotFoundError(HttpServletRequest request,
-            Model model) {
+    public String resourceNotFoundError(HttpServletRequest request, Model model) {
         model.addAttribute("exceptionCode", "e.xx.fw.5001");
         return "common/error/resourceNotFoundError";
     }
@@ -60,8 +57,7 @@ public class TestErrorController {
     }
 
     @GetMapping("/transactionTokenError")
-    public String transactionTokenError(HttpServletRequest request,
-            Model model) {
+    public String transactionTokenError(HttpServletRequest request, Model model) {
         model.addAttribute("exceptionCode", "e.xx.fw.7001");
         return "common/error/transactionTokenError";
     }

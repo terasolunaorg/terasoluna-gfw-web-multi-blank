@@ -19,7 +19,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
  */
 @Configuration
 @EnableJpaRepositories("xxxxxx.yyyyyy.zzzzzz.domain.repository")
-@Import({ ProjectNameEnvConfig.class })
+@Import({ProjectNameEnvConfig.class})
 public class ProjectNameInfraConfig {
 
     /**
@@ -45,8 +45,7 @@ public class ProjectNameInfraConfig {
      * @return Bean of configured {@link LocalContainerEntityManagerFactoryBean}
      */
     @Bean("entityManagerFactory")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(
-            DataSource dataSource) {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
         bean.setPackagesToScan("xxxxxx.yyyyyy.zzzzzz.domain.model");
         bean.setDataSource(dataSource);

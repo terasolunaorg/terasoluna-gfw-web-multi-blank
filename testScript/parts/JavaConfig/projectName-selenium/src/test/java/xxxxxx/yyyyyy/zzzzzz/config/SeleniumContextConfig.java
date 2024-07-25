@@ -44,7 +44,7 @@ public class SeleniumContextConfig {
      */
     @Bean("webDriver")
     @Scope("prototype")
-    @Profile({ "firefox", "default" })
+    @Profile({"firefox", "default"})
     public FirefoxDriverFactoryBean firefoxDriverFactoryBean() {
         FirefoxDriverFactoryBean bean = new FirefoxDriverFactoryBean();
         bean.setPropertyFileLocation("wdm.properties");

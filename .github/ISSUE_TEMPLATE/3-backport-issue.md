@@ -1,20 +1,21 @@
 ---
 name: 3.Backport Issue
 about: Backport a issue to other version.
-title: 'Backport:'
-labels: ''
-assignees: ''
-
+title: "Backport:"
+labels: ""
+assignees: ""
 ---
 
 ## Original Issue
+
 > Links to the original issues.
 
-- Backport #XXX
+-   Backport #XXX
 
 ## Fix repositories
+
 > Repositories to fix with this issue.
 
-- [ ] terasoluna-gfw-web-multi-blank
-- [ ] m-j
-- [ ] m-t
+-   [ ] terasoluna-gfw-web-multi-blank
+-   [ ] m-j
+-   [ ] m-t

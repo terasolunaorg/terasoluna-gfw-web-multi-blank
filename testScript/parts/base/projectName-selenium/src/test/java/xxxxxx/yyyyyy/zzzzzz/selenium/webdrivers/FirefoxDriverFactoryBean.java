@@ -6,8 +6,7 @@ import org.openqa.selenium.firefox.FirefoxProfile;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class FirefoxDriverFactoryBean extends
-                                      HeadlessWebDriverManagerFactoryBean<FirefoxDriver> {
+public class FirefoxDriverFactoryBean extends HeadlessWebDriverManagerFactoryBean<FirefoxDriver> {
 
     @Override
     protected WebDriverManager getWebDriverManager() {
@@ -18,8 +17,7 @@ public class FirefoxDriverFactoryBean extends
     protected FirefoxDriver createWebDriver() {
 
         FirefoxProfile profile = new FirefoxProfile();
-        profile.setPreference("browser.startup.homepage_override.mstone",
-                "ignore");
+        profile.setPreference("browser.startup.homepage_override.mstone", "ignore");
         profile.setPreference("network.proxy.type", 0);
         FirefoxOptions options = new FirefoxOptions().setProfile(profile);
 

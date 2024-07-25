@@ -20,10 +20,10 @@ public class WebDriverOperations {
 
     /**
      * Set the default timeout value of the waiting process to find the element.
-     * @param defaultTimeoutSecForImplicitlyWait The default timeout value of the waiting process to find the element (s)
+     * @param defaultTimeoutSecForImplicitlyWait The default timeout value of the waiting process to
+     *        find the element (s)
      */
-    public void setDefaultTimeoutForImplicitlyWait(
-            Duration defaultTimeoutSecForImplicitlyWait) {
+    public void setDefaultTimeoutForImplicitlyWait(Duration defaultTimeoutSecForImplicitlyWait) {
         this.defaultTimeoutSecForImplicitlyWait = defaultTimeoutSecForImplicitlyWait;
     }
 

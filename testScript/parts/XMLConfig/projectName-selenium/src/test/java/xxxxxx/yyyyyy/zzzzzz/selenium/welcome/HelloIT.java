@@ -17,8 +17,8 @@ import xxxxxx.yyyyyy.zzzzzz.selenium.FunctionTestSupport;
  * Executes the test for the application home page.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
-public class HelloIT extends FunctionTestSupport{
+@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
+public class HelloIT extends FunctionTestSupport {
 
     /**
      * Asserts that the content of the application home page is "Hello world!".
@@ -26,7 +26,6 @@ public class HelloIT extends FunctionTestSupport{
     @Test
     public void testHelloWorld() throws IOException {
 
-        assertThat(webDriver.findElement(By.id("title")).getText(),
-                is("Hello world!"));
+        assertThat(webDriver.findElement(By.id("title")).getText(), is("Hello world!"));
     }
 }

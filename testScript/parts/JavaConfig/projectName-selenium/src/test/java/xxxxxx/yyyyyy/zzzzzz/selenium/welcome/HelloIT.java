@@ -18,7 +18,7 @@ import xxxxxx.yyyyyy.zzzzzz.selenium.FunctionTestSupport;
  * Executes the test for the application home page.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { SeleniumContextConfig.class })
+@ContextConfiguration(classes = {SeleniumContextConfig.class})
 public class HelloIT extends FunctionTestSupport {
 
     /**
@@ -27,7 +27,6 @@ public class HelloIT extends FunctionTestSupport {
     @Test
     public void testHelloWorld() throws IOException {
 
-        assertThat(webDriver.findElement(By.id("title")).getText(), is(
-                "Hello world!"));
+        assertThat(webDriver.findElement(By.id("title")).getText(), is("Hello world!"));
     }
 }

@@ -54,16 +54,16 @@
             <artifactId>webdrivermanager</artifactId>
             <scope>test</scope>
         </dependency>
-<!--         <dependency> -->
-<!--             <groupId>org.postgresql</groupId> -->
-<!--             <artifactId>postgresql</artifactId> -->
-<!--             <scope>test</scope> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>com.oracle.database.jdbc</groupId> -->
-<!--             <artifactId>ojdbc11</artifactId> -->
-<!--             <scope>test</scope> -->
-<!--         </dependency> -->
+        <!--         <dependency> -->
+        <!--             <groupId>org.postgresql</groupId> -->
+        <!--             <artifactId>postgresql</artifactId> -->
+        <!--             <scope>test</scope> -->
+        <!--         </dependency> -->
+        <!--         <dependency> -->
+        <!--             <groupId>com.oracle.database.jdbc</groupId> -->
+        <!--             <artifactId>ojdbc11</artifactId> -->
+        <!--             <scope>test</scope> -->
+        <!--         </dependency> -->
 
         <!-- Please set the appropriate version according to the web browser. -->
         <dependency>

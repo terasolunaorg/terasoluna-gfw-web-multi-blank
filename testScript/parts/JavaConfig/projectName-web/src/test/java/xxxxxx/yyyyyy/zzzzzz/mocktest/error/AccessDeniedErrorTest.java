@@ -44,14 +44,14 @@ import xxxxxx.yyyyyy.zzzzzz.config.web.SpringSecurityConfig;
  * Run the access denied error test.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextHierarchy({ @ContextConfiguration(classes = {
-        ApplicationContextConfig.class, SpringSecurityConfig.class }),
-        @ContextConfiguration(classes = { SpringMvcConfig.class }) })
+@ContextHierarchy({
+        @ContextConfiguration(
+                classes = {ApplicationContextConfig.class, SpringSecurityConfig.class}),
+        @ContextConfiguration(classes = {SpringMvcConfig.class})})
 @WebAppConfiguration
 public class AccessDeniedErrorTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(
-            AccessDeniedErrorTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(AccessDeniedErrorTest.class);
 
     @Inject
     private WebApplicationContext webApplicationContext;
@@ -67,12 +67,12 @@ public class AccessDeniedErrorTest {
     @Before
     public void setUp() {
         // Set Filter for Test.
-        DefaultSecurityFilterChain chain = new DefaultSecurityFilterChain(AnyRequestMatcher.INSTANCE, new TestFilter());
+        DefaultSecurityFilterChain chain =
+                new DefaultSecurityFilterChain(AnyRequestMatcher.INSTANCE, new TestFilter());
         TestFilterChainProxy chainProxy = new TestFilterChainProxy(chain);
 
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
-                .alwaysDo(log()).apply(SecurityMockMvcConfigurers
-                        .springSecurity(chainProxy)).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).alwaysDo(log())
+                .apply(SecurityMockMvcConfigurers.springSecurity(chainProxy)).build();
     }
 
     /**
@@ -85,13 +85,12 @@ public class AccessDeniedErrorTest {
         // Mockmvc test.
         ResultActions results = mockMvc.perform(get("/"));
 
-        logger.debug("testAccessDeniedError#status:" + results.andReturn()
-                .getResponse().getStatus());
-        logger.debug("testAccessDeniedError#forwardedUrl:" + results.andReturn()
-                .getResponse().getForwardedUrl());
+        logger.debug(
+                "testAccessDeniedError#status:" + results.andReturn().getResponse().getStatus());
+        logger.debug("testAccessDeniedError#forwardedUrl:"
+                + results.andReturn().getResponse().getForwardedUrl());
 
-        results.andExpect(status().is(403)).andExpect(forwardedUrl(
-                accessDeniedErrorForwardedUrl));
+        results.andExpect(status().is(403)).andExpect(forwardedUrl(accessDeniedErrorForwardedUrl));
     }
 
     /** Test FilterChainProxy */
@@ -105,12 +104,10 @@ public class AccessDeniedErrorTest {
     /** Test filter */
     public class TestFilter extends OncePerRequestFilter {
 
-        public TestFilter() {
-        }
+        public TestFilter() {}
 
         @Override
-        protected void doFilterInternal(HttpServletRequest request,
-                HttpServletResponse response,
+        protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                 FilterChain filterChain) throws ServletException, IOException {
             // Since I can't reproduce the error, I run the handler directly.
             accessDeniedHandler.handle(request, response,
@@ -119,7 +116,6 @@ public class AccessDeniedErrorTest {
     }
 
     @After
-    public void tearDown() {
-    }
+    public void tearDown() {}
 
 }
