@@ -121,7 +121,7 @@
         <exception-type>java.lang.Exception</exception-type>
         <location>/WEB-INF/views/common/error/unhandledSystemError.html</location>
     </error-page>
-    
+
     <session-config>
         <!-- 30min -->
         <session-timeout>30</session-timeout>
