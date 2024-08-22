@@ -11,7 +11,7 @@
         <setting name="defaultExecutorType" value="REUSE" />
         <setting name="jdbcTypeForNull" value="NULL" />
         <setting name="localCacheScope" value="STATEMENT" />
--->
+        -->
     </settings>
 
     <typeAliases>
@@ -19,13 +19,13 @@
         <package name="xxxxxx.yyyyyy.zzzzzz.domain.repository" />
         <!--
         <package name="xxxxxx.yyyyyy.zzzzzz.infra.mybatis.typehandler" />
--->
+        -->
     </typeAliases>
 
     <typeHandlers>
         <!--
         <package name="xxxxxx.yyyyyy.zzzzzz.infra.mybatis.typehandler" />
--->
+        -->
     </typeHandlers>
 
 </configuration>
