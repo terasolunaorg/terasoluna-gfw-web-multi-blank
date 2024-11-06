@@ -10,6 +10,11 @@
         <groupId>xxxxxx.yyyyyy.zzzzzz</groupId>
         <relativePath>../pom.xml</relativePath>
     </parent>
+    <scm>
+        <connection>scm:git:git://github.com/terasolunaorg/terasoluna-gfw-web-multi-blank.git</connection>
+        <developerConnection>scm:git:ssh://github.com/terasolunaorg/terasoluna-gfw-web-multi-blank.git</developerConnection>
+        <url>https://github.com/terasolunaorg/terasoluna-gfw-web-multi-blank</url>
+    </scm>
 
     <build>
         <plugins>

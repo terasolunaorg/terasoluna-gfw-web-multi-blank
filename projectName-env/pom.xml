@@ -9,6 +9,11 @@
         <version>5.7.4-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
+    <scm>
+        <connection>scm:git:git://github.com/terasolunaorg/terasoluna-gfw-web-multi-blank.git</connection>
+        <developerConnection>scm:git:ssh://github.com/terasolunaorg/terasoluna-gfw-web-multi-blank.git</developerConnection>
+        <url>https://github.com/terasolunaorg/terasoluna-gfw-web-multi-blank</url>
+    </scm>
 
     <build>
         <finalName>${buildFinalName}</finalName>
