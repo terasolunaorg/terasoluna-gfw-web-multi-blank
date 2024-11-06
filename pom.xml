@@ -34,6 +34,18 @@
         <name>TERASOLUNA Framework Team</name>
         <url>http://terasoluna.org</url>
     </organization>
+    <developers>
+        <developer>
+            <name>NTT DATA Group Corporation</name>
+            <organization>NTT DATA Group Corporation</organization>
+            <organizationUrl>http://terasolunaorg.github.io/</organizationUrl>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:git://github.com/terasolunaorg/terasoluna-gfw-web-multi-blank.git</connection>
+        <developerConnection>scm:git:ssh://github.com/terasolunaorg/terasoluna-gfw-web-multi-blank.git</developerConnection>
+        <url>https://github.com/terasolunaorg/terasoluna-gfw-web-multi-blank</url>
+    </scm>
     <build>
         <pluginManagement>
             <plugins>
