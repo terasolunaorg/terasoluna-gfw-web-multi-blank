@@ -12,17 +12,18 @@ import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.quality.Strictness;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoRule;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
-import org.springframework.test.context.bean.override.mockito.MockitoBeanSettings;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -48,7 +49,6 @@ import xxxxxx.yyyyyy.zzzzzz.domain.service.errortest.MockTestService;
  * Run the interceptor test.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@MockitoBeanSettings(Strictness.WARN)
 @ContextHierarchy({
         @ContextConfiguration(classes = {ApplicationContextConfig.class, SpringSecurityConfig.class,
                 SpringMvcMockMvcConfig.class}),
@@ -71,6 +71,9 @@ public class InterceptorTest {
 
     @Captor
     private ArgumentCaptor<LoggingEvent> captorLoggingEvent;
+
+    @Rule
+    public MockitoRule mockito = MockitoJUnit.rule();
 
     @Before
     public void setUp() {
