@@ -47,6 +47,7 @@
         <url>https://github.com/terasolunaorg/terasoluna-gfw-web-multi-blank</url>
     </scm>
     <build>
+        <finalName>${project.artifactId}</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -133,7 +134,6 @@
                     <artifactId>maven-war-plugin</artifactId>
                     <version>${org.apache.maven.plugins.maven-war-plugin.version}</version>
                     <configuration>
-                        <warName>${project.artifactId}</warName>
                         <archive>
                             <addMavenDescriptor>false</addMavenDescriptor>
                             <manifest>
@@ -216,10 +216,10 @@
     </dependencyManagement>
     <properties>
         <!-- == Maven Plugin Versions == -->
-        <org.apache.maven.plugins.maven-war-plugin.version>3.3.2</org.apache.maven.plugins.maven-war-plugin.version>
-        <org.codehaus.mojo.build-helper-maven-plugin.version>3.3.0</org.codehaus.mojo.build-helper-maven-plugin.version>
-        <org.apache.maven.plugins.maven-failsafe-plugin.version>3.0.0-M7</org.apache.maven.plugins.maven-failsafe-plugin.version>
-        <org.apache.maven.plugins.maven-surefire-plugin.version>3.0.0-M7</org.apache.maven.plugins.maven-surefire-plugin.version>
+        <org.apache.maven.plugins.maven-war-plugin.version>3.4.0</org.apache.maven.plugins.maven-war-plugin.version>
+        <org.codehaus.mojo.build-helper-maven-plugin.version>3.6.0</org.codehaus.mojo.build-helper-maven-plugin.version>
+        <org.apache.maven.plugins.maven-failsafe-plugin.version>3.5.2</org.apache.maven.plugins.maven-failsafe-plugin.version>
+        <org.apache.maven.plugins.maven-surefire-plugin.version>3.5.2</org.apache.maven.plugins.maven-surefire-plugin.version>
         <!-- == Dependency Versions == -->
         <postgresql.version>42.7.1</postgresql.version>
         <ojdbc.version>23.3.0.23.09</ojdbc.version>
