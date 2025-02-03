@@ -2,7 +2,6 @@ package xxxxxx.yyyyyy.zzzzzz.selenium.webdrivers;
 
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.FactoryBean;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public abstract class WebDriverManagerFactoryBean<T extends WebDriver>
