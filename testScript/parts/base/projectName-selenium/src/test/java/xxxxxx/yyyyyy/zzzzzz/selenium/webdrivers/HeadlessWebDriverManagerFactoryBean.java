@@ -3,7 +3,6 @@ package xxxxxx.yyyyyy.zzzzzz.selenium.webdrivers;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.util.StringUtils;
-
 public abstract class HeadlessWebDriverManagerFactoryBean<T extends WebDriver>
                                                          extends
                                                          WebDriverManagerFactoryBean<T>

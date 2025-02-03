@@ -7,11 +7,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.util.List;
-
 import javax.inject.Inject;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -34,12 +31,12 @@ import org.springframework.web.context.WebApplicationContext;
 import org.terasoluna.gfw.common.exception.ExceptionLogger;
 import org.terasoluna.gfw.common.exception.SystemException;
 import org.terasoluna.gfw.web.logging.TraceLoggingInterceptor;
-
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.classic.spi.LoggingEvent;
 import ch.qos.logback.core.Appender;
+
 import xxxxxx.yyyyyy.zzzzzz.domain.service.errortest.MockTestService;
 
 /**
