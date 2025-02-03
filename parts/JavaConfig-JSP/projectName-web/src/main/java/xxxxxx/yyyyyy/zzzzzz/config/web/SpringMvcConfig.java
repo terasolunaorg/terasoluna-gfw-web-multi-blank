@@ -178,17 +178,17 @@ public class SpringMvcConfig implements WebMvcConfigurer {
         return codeListInterceptor;
     }
 
-    // @fomatter:off
-    /*
-     * REMOVE THIS LINE IF YOU USE JPA /** Configure {@link OpenEntityManagerInViewInterceptor}
-     * bean.
-     * 
-     * @return Bean of configured {@link OpenEntityManagerInViewInterceptor} REMOVE THIS COMMENT IF
-     * YOU USE JPA/
-     * 
-     * @Bean public OpenEntityManagerInViewInterceptor openEntityManagerInViewInterceptor() { return
-     * new OpenEntityManagerInViewInterceptor(); } REMOVE THIS LINE IF YOU USE JPA
-     */
+    // @formatter:off
+    /* REMOVE THIS LINE IF YOU USE JPA
+    /**
+     * Configure {@link OpenEntityManagerInViewInterceptor} bean.
+     * @return Bean of configured {@link OpenEntityManagerInViewInterceptor}
+     *REMOVE THIS COMMENT IF YOU USE JPA/
+    @Bean
+    public OpenEntityManagerInViewInterceptor openEntityManagerInViewInterceptor() {
+        return new OpenEntityManagerInViewInterceptor();
+    }
+    REMOVE THIS LINE IF YOU USE JPA */
     // @formatter:on
 
     /**
