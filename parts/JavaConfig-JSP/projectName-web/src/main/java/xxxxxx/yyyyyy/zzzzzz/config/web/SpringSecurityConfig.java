@@ -1,9 +1,7 @@
 package xxxxxx.yyyyyy.zzzzzz.config.web;
 
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
-
 import java.util.LinkedHashMap;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDeniedException;

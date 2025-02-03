@@ -6,10 +6,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.util.List;
 import java.util.Locale;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -30,15 +28,14 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
-
-import xxxxxx.yyyyyy.zzzzzz.app.welcome.HelloController;
-
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.classic.spi.LoggingEvent;
 import ch.qos.logback.core.Appender;
 import jakarta.inject.Inject;
+
+import xxxxxx.yyyyyy.zzzzzz.app.welcome.HelloController;
 
 /**
  * Run a unit test on HelloController.

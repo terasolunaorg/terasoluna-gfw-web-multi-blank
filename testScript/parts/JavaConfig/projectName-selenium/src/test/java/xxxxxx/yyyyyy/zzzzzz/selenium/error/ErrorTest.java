@@ -2,9 +2,7 @@ package xxxxxx.yyyyyy.zzzzzz.selenium.error;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-
 import java.time.Duration;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;

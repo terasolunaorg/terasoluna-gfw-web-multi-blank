@@ -3,7 +3,6 @@ package xxxxxx.yyyyyy.zzzzzz.selenium.webdrivers;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class FirefoxDriverFactoryBean extends HeadlessWebDriverManagerFactoryBean<FirefoxDriver> {
