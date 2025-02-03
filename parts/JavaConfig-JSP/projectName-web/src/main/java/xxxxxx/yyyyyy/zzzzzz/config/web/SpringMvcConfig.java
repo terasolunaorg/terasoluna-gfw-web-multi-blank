@@ -3,7 +3,6 @@ package xxxxxx.yyyyyy.zzzzzz.config.web;
 import java.util.List;
 import java.util.Properties;
 import java.util.regex.Pattern;
-
 import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
@@ -134,7 +133,7 @@ public class SpringMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(interceptor).addPathPatterns("/**")
                 .excludePathPatterns("/resources/**");
     }
-    
+
     // @formatter:off
     /* REMOVE THIS LINE IF YOU USE JPA
     /**
@@ -178,18 +177,18 @@ public class SpringMvcConfig implements WebMvcConfigurer {
         codeListInterceptor.setCodeListIdPattern(Pattern.compile("CL_.+"));
         return codeListInterceptor;
     }
-    
+
     // @fomatter:off
-    /* REMOVE THIS LINE IF YOU USE JPA
-    /**
-     * Configure {@link OpenEntityManagerInViewInterceptor} bean.
-     * @return Bean of configured {@link OpenEntityManagerInViewInterceptor}
-     *REMOVE THIS COMMENT IF YOU USE JPA/
-    @Bean
-    public OpenEntityManagerInViewInterceptor openEntityManagerInViewInterceptor() {
-        return new OpenEntityManagerInViewInterceptor();
-    }
-    REMOVE THIS LINE IF YOU USE JPA */
+    /*
+     * REMOVE THIS LINE IF YOU USE JPA /** Configure {@link OpenEntityManagerInViewInterceptor}
+     * bean.
+     * 
+     * @return Bean of configured {@link OpenEntityManagerInViewInterceptor} REMOVE THIS COMMENT IF
+     * YOU USE JPA/
+     * 
+     * @Bean public OpenEntityManagerInViewInterceptor openEntityManagerInViewInterceptor() { return
+     * new OpenEntityManagerInViewInterceptor(); } REMOVE THIS LINE IF YOU USE JPA
+     */
     // @formatter:on
 
     /**

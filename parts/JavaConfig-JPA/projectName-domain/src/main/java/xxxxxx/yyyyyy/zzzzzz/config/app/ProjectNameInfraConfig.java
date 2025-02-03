@@ -2,9 +2,7 @@ package xxxxxx.yyyyyy.zzzzzz.config.app;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

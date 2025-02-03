@@ -5,7 +5,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,8 +21,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-
 import jakarta.inject.Inject;
+
 import xxxxxx.yyyyyy.zzzzzz.config.app.ApplicationContextConfig;
 import xxxxxx.yyyyyy.zzzzzz.config.web.SpringMvcConfig;
 import xxxxxx.yyyyyy.zzzzzz.config.web.SpringSecurityConfig;

@@ -1,7 +1,6 @@
 package xxxxxx.yyyyyy.zzzzzz.config.app;
 
 import javax.sql.DataSource;
-
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;

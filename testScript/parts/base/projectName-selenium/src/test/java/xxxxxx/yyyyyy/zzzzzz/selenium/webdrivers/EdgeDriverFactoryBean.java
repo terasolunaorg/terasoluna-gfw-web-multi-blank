@@ -2,7 +2,6 @@ package xxxxxx.yyyyyy.zzzzzz.selenium.webdrivers;
 
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class EdgeDriverFactoryBean extends HeadlessWebDriverManagerFactoryBean<EdgeDriver> {
