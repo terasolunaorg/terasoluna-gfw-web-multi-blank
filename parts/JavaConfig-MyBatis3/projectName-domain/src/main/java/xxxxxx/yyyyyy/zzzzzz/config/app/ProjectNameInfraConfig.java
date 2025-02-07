@@ -18,7 +18,7 @@ import xxxxxx.yyyyyy.zzzzzz.config.app.mybatis.MybatisConfig;
 public class ProjectNameInfraConfig {
 
     /**
-     * Configure {@link SqlSessionFactory} bean.
+     * Configure {@link SqlSessionFactoryBean} bean.
      * @param dataSource DataSource
      * @see xxxxxx.yyyyyy.zzzzzz.config.app.ProjectNameEnvConfig#dataSource()
      * @return Bean of configured {@link SqlSessionFactoryBean}
