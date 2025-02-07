@@ -1,9 +1,7 @@
 package xxxxxx.yyyyyy.zzzzzz.config.app;
 
 import java.time.Duration;
-
 import javax.sql.DataSource;
-
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
