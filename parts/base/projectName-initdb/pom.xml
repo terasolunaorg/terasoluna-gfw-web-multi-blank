@@ -46,7 +46,7 @@
                 <db.password>oracle</db.password>
                 <db.driver>oracle.jdbc.driver.OracleDriver</db.driver>
                 <db.groupId>com.oracle.database.jdbc</db.groupId>
-                <db.artifactId>ojdbc11</db.artifactId>
+                <db.artifactId>ojdbc17</db.artifactId>
                 <db.version>${ojdbc.version}</db.version>
                 <db.delimiterType>row</db.delimiterType>
             </properties>
