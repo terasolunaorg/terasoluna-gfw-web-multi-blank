@@ -164,7 +164,7 @@
         <org.apache.maven.plugins.maven-surefire-plugin.version>3.0.0-M5</org.apache.maven.plugins.maven-surefire-plugin.version>
         <!-- == Dependency Versions == -->
         <postgresql.version>42.7.4</postgresql.version>
-        <ojdbc.version>23.5.0.24.07</ojdbc.version>
+        <ojdbc.version>23.6.0.24.10</ojdbc.version>
         <!-- == Project Properties == -->
         <encoding>UTF-8</encoding>
         <java-version>1.8</java-version>
