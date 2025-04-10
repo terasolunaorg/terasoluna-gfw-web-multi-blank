@@ -281,8 +281,8 @@ public class SpringMvcConfig implements WebMvcConfigurer {
 
     /**
      * Configure {@link SystemExceptionResolver} bean.
-     * @param exceptionCodeResolver Bean defined by ApplicationContext#exceptionCodeResolver
-     * @see xxxxxx.yyyyyy.zzzzzz.config.app.ApplicationContext#exceptionCodeResolver()
+     * @param exceptionCodeResolver Bean defined by ApplicationContextConfig#exceptionCodeResolver
+     * @see xxxxxx.yyyyyy.zzzzzz.config.app.ApplicationContextConfig#exceptionCodeResolver()
      * @return Bean of configured {@link SystemExceptionResolver}
      */
     @Bean("systemExceptionResolver")
@@ -319,8 +319,8 @@ public class SpringMvcConfig implements WebMvcConfigurer {
 
     /**
      * Configure messages logging AOP.
-     * @param exceptionLogger Bean defined by ApplicationContext#exceptionLogger
-     * @see xxxxxx.yyyyyy.zzzzzz.config.app.ApplicationContext#exceptionLogger()
+     * @param exceptionLogger Bean defined by ApplicationContextConfig#exceptionLogger
+     * @see xxxxxx.yyyyyy.zzzzzz.config.app.ApplicationContextConfig#exceptionLogger()
      * @return Bean of configured {@link HandlerExceptionResolverLoggingInterceptor}
      */
     @Bean("handlerExceptionResolverLoggingInterceptor")
