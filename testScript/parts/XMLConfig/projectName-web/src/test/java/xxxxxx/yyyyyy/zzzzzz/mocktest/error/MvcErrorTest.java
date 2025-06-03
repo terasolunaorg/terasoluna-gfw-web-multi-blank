@@ -5,17 +5,17 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.QueryTimeoutException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -32,7 +32,7 @@ import xxxxxx.yyyyyy.zzzzzz.domain.service.errortest.MockTestService;
 /**
  * Run Spring Mvc error test.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextHierarchy({
         @ContextConfiguration({"classpath:META-INF/spring/applicationContext.xml",
                 "classpath:META-INF/spring/spring-security.xml",
@@ -51,7 +51,7 @@ public class MvcErrorTest {
     @Inject
     MockTestService mockTestService;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         Mockito.reset(mockTestService);
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).alwaysDo(log()).build();
@@ -159,6 +159,6 @@ public class MvcErrorTest {
                 .andExpect(view().name("common/error/transactionTokenError"));
     }
 
-    @After
+    @AfterEach
     public void tearDown() {}
 }

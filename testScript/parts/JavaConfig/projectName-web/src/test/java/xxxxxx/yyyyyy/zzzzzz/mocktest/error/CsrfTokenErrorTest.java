@@ -5,17 +5,17 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -30,7 +30,7 @@ import xxxxxx.yyyyyy.zzzzzz.config.web.SpringSecurityConfig;
 /**
  * Run test for Csrf Token error.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextHierarchy({
         @ContextConfiguration(
                 classes = {ApplicationContextConfig.class, SpringSecurityConfig.class}),
@@ -51,7 +51,7 @@ public class CsrfTokenErrorTest {
     @Value("${missingCsrfTokenError.forwardedUrl}")
     private String missingCsrfTokenErrorForwardedUrl;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).alwaysDo(log())
                 .apply(SecurityMockMvcConfigurers.springSecurity()).build();
@@ -95,6 +95,6 @@ public class CsrfTokenErrorTest {
                 .andExpect(forwardedUrl(missingCsrfTokenErrorForwardedUrl));
     }
 
-    @After
+    @AfterEach
     public void tearDown() {}
 }
