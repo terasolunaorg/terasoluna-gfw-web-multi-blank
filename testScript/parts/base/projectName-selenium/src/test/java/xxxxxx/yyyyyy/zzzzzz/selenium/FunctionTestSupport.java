@@ -1,13 +1,14 @@
 package xxxxxx.yyyyyy.zzzzzz.selenium;
 
 import java.io.File;
+import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.rules.TestName;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.TestInfo;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -44,8 +45,7 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
 
     protected WebDriverWait webDriverWait;
 
-    @Rule
-    public TestName testName = new TestName();
+    public String testName;
 
     protected File evidenceSavingDirectory;
 
@@ -59,13 +59,13 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
                 Duration.ofSeconds(defaultTimeoutSecForImplicitlyWait);
     }
 
-    @AfterClass
+    @AfterAll
     public final static void tearDownWebDrivers() {
         quitWebDrivers();
         webDriver = null;
     }
 
-    @Before
+    @BeforeEach
     public final void setUpDefaultWebDriver() {
         if (!useSetupDefaultWebDriver) {
             return;
@@ -73,7 +73,7 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         bootDefaultWebDriver();
     }
 
-    @Before
+    @BeforeEach
     public final void setUpWebDriverType() {
         if (driverType != null) {
             return;
@@ -89,8 +89,12 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         driverType = WebDriverType.DEFAULT();
     }
 
-    @Before
-    public final void logUserAgent() {
+    @BeforeEach
+    public final void logUserAgent(TestInfo testInfo) {
+        Optional<Method> testMethod = testInfo.getTestMethod();
+        if (testMethod.isPresent()) {
+            this.testName = testMethod.get().getName();
+        }
         if (webDriver instanceof RemoteWebDriver remoteWebDriver) {
             Object agent = remoteWebDriver.executeScript("return navigator.userAgent");
             if (agent != null) {
