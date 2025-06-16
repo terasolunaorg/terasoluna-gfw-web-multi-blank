@@ -8,21 +8,21 @@ import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 import java.util.List;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnit;
-import org.mockito.junit.MockitoRule;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -46,11 +46,12 @@ import xxxxxx.yyyyyy.zzzzzz.domain.service.errortest.MockTestService;
 /**
  * Run the interceptor test.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith({SpringExtension.class, MockitoExtension.class})
 @ContextHierarchy({
         @ContextConfiguration(classes = {ApplicationContextConfig.class, SpringSecurityConfig.class,
                 SpringMvcMockMvcConfig.class}),
         @ContextConfiguration(classes = {SpringMvcConfig.class})})
+@MockitoSettings(strictness = Strictness.WARN)
 @WebAppConfiguration
 public class InterceptorTest {
 
@@ -70,10 +71,7 @@ public class InterceptorTest {
     @Captor
     private ArgumentCaptor<LoggingEvent> captorLoggingEvent;
 
-    @Rule
-    public MockitoRule mockito = MockitoJUnit.rule();
-
-    @Before
+    @BeforeEach
     public void setUp() {
         Mockito.reset(mockTestService);
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).alwaysDo(log()).build();
@@ -147,6 +145,6 @@ public class InterceptorTest {
                 is("org.terasoluna.gfw.common.exception.SystemException"));
     }
 
-    @After
+    @AfterEach
     public void tearDown() {}
 }
