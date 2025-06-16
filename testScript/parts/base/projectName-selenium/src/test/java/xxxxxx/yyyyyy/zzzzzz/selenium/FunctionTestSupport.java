@@ -1,14 +1,11 @@
 package xxxxxx.yyyyyy.zzzzzz.selenium;
 
 import java.io.File;
-import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.TestInfo;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -44,8 +41,6 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     protected WebDriverOperations webDriverOperations;
 
     protected WebDriverWait webDriverWait;
-
-    public String testName;
 
     protected File evidenceSavingDirectory;
 
@@ -90,11 +85,7 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     }
 
     @BeforeEach
-    public final void logUserAgent(TestInfo testInfo) {
-        Optional<Method> testMethod = testInfo.getTestMethod();
-        if (testMethod.isPresent()) {
-            this.testName = testMethod.get().getName();
-        }
+    public final void logUserAgent() {
         if (webDriver instanceof RemoteWebDriver remoteWebDriver) {
             Object agent = remoteWebDriver.executeScript("return navigator.userAgent");
             if (agent != null) {
