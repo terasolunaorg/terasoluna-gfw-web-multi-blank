@@ -29,10 +29,10 @@ public class TestContextConfig {
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer(
             @Value("classpath*:/META-INF/spring/*.properties") Resource... resources) {
-        PropertySourcesPlaceholderConfigurer placehodler =
+        PropertySourcesPlaceholderConfigurer placeholder =
                 new PropertySourcesPlaceholderConfigurer();
-        placehodler.setLocations(resources);
-        return placehodler;
+        placeholder.setLocations(resources);
+        return placeholder;
     }
 
     /**
