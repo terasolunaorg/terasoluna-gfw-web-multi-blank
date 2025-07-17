@@ -17,8 +17,6 @@ import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.junit.jupiter.MockitoSettings;
-import org.mockito.quality.Strictness;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
@@ -48,7 +46,6 @@ import xxxxxx.yyyyyy.zzzzzz.domain.service.errortest.MockTestService;
                 "classpath:META-INF/spring/spring-security.xml",
                 "classpath:META-INF/spring/spring-mvc-mockmvc.xml"}),
         @ContextConfiguration({"classpath:META-INF/spring/spring-mvc.xml"})})
-@MockitoSettings(strictness = Strictness.WARN)
 @WebAppConfiguration
 public class InterceptorTest {
 
