@@ -3,21 +3,18 @@ package xxxxxx.yyyyyy.zzzzzz.selenium.welcome;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import java.io.IOException;
-import org.junit.After;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import jakarta.inject.Inject;
 
 /**
  * Executes the test for the application home page.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
+@SpringJUnitConfig(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
 public class HelloIT {
 
     @Inject
@@ -40,7 +37,7 @@ public class HelloIT {
     /**
      * Quits the driver, closing every associated window.
      */
-    @After
+    @AfterEach
     public void tearDown() {
         webDriver.quit();
     }

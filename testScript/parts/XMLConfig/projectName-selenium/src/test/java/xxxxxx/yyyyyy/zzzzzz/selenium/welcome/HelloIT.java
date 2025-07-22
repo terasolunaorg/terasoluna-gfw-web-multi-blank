@@ -3,19 +3,16 @@ package xxxxxx.yyyyyy.zzzzzz.selenium.welcome;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import java.io.IOException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import xxxxxx.yyyyyy.zzzzzz.selenium.FunctionTestSupport;
 
 /**
  * Executes the test for the application home page.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
+@SpringJUnitConfig(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
 public class HelloIT extends FunctionTestSupport {
 
     /**

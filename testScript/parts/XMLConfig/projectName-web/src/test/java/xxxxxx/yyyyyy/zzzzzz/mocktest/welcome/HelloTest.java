@@ -8,20 +8,18 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 import java.util.List;
 import java.util.Locale;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnit;
-import org.mockito.junit.MockitoRule;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -40,7 +38,7 @@ import xxxxxx.yyyyyy.zzzzzz.app.welcome.HelloController;
 /**
  * Run a unit test on HelloController.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith({SpringExtension.class, MockitoExtension.class})
 @ContextHierarchy({
         @ContextConfiguration({"classpath:META-INF/spring/applicationContext.xml",
                 "classpath:META-INF/spring/spring-security.xml"}),
@@ -61,10 +59,7 @@ public class HelloTest {
     @Captor
     private ArgumentCaptor<LoggingEvent> captorLoggingEvent;
 
-    @Rule
-    public MockitoRule mockito = MockitoJUnit.rule();
-
-    @Before
+    @BeforeEach
     public void setUp() {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).alwaysDo(log()).build();
     }
@@ -98,6 +93,6 @@ public class HelloTest {
                 is(true));
     }
 
-    @After
+    @AfterEach
     public void tearDown() {}
 }

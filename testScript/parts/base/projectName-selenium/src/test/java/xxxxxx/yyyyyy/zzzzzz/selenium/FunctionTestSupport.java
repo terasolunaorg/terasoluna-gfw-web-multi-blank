@@ -4,10 +4,8 @@ import java.io.File;
 import java.time.Duration;
 import java.util.HashSet;
 import java.util.Set;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.rules.TestName;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -44,9 +42,6 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
 
     protected WebDriverWait webDriverWait;
 
-    @Rule
-    public TestName testName = new TestName();
-
     protected File evidenceSavingDirectory;
 
     private boolean useSetupDefaultWebDriver = true;
@@ -59,13 +54,13 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
                 Duration.ofSeconds(defaultTimeoutSecForImplicitlyWait);
     }
 
-    @AfterClass
+    @AfterAll
     public final static void tearDownWebDrivers() {
         quitWebDrivers();
         webDriver = null;
     }
 
-    @Before
+    @BeforeEach
     public final void setUpDefaultWebDriver() {
         if (!useSetupDefaultWebDriver) {
             return;
@@ -73,7 +68,7 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         bootDefaultWebDriver();
     }
 
-    @Before
+    @BeforeEach
     public final void setUpWebDriverType() {
         if (driverType != null) {
             return;
@@ -89,7 +84,7 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         driverType = WebDriverType.DEFAULT();
     }
 
-    @Before
+    @BeforeEach
     public final void logUserAgent() {
         if (webDriver instanceof RemoteWebDriver remoteWebDriver) {
             Object agent = remoteWebDriver.executeScript("return navigator.userAgent");
