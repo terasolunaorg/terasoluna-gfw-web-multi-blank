@@ -5,8 +5,8 @@
     xsi:schemaLocation="http://www.springframework.org/schema/security https://www.springframework.org/schema/security/spring-security.xsd
                         http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <sec:http pattern="/resources/**" request-matcher="ant" security="none" />
-    <sec:http request-matcher="ant">
+    <sec:http pattern="/resources/**" security="none" />
+    <sec:http>
         <sec:form-login />
         <sec:logout />
         <sec:access-denied-handler ref="accessDeniedHandler" />
