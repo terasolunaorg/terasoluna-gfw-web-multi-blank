@@ -87,18 +87,30 @@ echo ">>>>> RENAME PROJECT NAME"
 find ./tmp/${PROJECT_NAME} -type f | xargs sed -i -e "s/projectName-web/${PROJECT_NAME}-web/g"
 
 echo ">>>>> ADD DEPENDENCIES"
+cp -f ${WORK_DIR}/${PROJECT_NAME}-selenium/pom.xml ./tmp/${PROJECT_NAME}/${PROJECT_NAME}-selenium
 cp -f ${WORK_DIR}/${PROJECT_NAME}-web/pom.xml ./tmp/${PROJECT_NAME}/${PROJECT_NAME}-web
 
 LF=$(printf '\\\012_')
 LF=${LF%_}
-DEPENDENCIES_TAG="<dependency>${LF}"
-DEPENDENCIES_TAG="${DEPENDENCIES_TAG}            <groupId>org.springframework.security<\/groupId>${LF}"
-DEPENDENCIES_TAG="${DEPENDENCIES_TAG}            <artifactId>spring-security-test<\/artifactId>${LF}"
-DEPENDENCIES_TAG="${DEPENDENCIES_TAG}            <scope>test<\/scope>${LF}"
-DEPENDENCIES_TAG="${DEPENDENCIES_TAG}        <\/dependency>${LF}"
-DEPENDENCIES_TAG="${DEPENDENCIES_TAG}        <!-- == End Unit Test == -->"
 
-sed -i -e "s/<!-- == End Unit Test == -->/${DEPENDENCIES_TAG}/" ./tmp/${PROJECT_NAME}/${PROJECT_NAME}-web/pom.xml
+ASSERTJ_DEPENDENCIES_TAG="<artifactId>junit-jupiter<\/artifactId>${LF}"
+ASSERTJ_DEPENDENCIES_TAG="${ASSERTJ_DEPENDENCIES_TAG}            <scope>test<\/scope>${LF}"
+ASSERTJ_DEPENDENCIES_TAG="${ASSERTJ_DEPENDENCIES_TAG}        <\/dependency>${LF}"
+ASSERTJ_DEPENDENCIES_TAG="${ASSERTJ_DEPENDENCIES_TAG}        <dependency>${LF}"
+ASSERTJ_DEPENDENCIES_TAG="${ASSERTJ_DEPENDENCIES_TAG}            <groupId>org.assertj<\/groupId>${LF}"
+ASSERTJ_DEPENDENCIES_TAG="${ASSERTJ_DEPENDENCIES_TAG}            <artifactId>assertj-core<\/artifactId>"
+
+sed -i -e "s/<artifactId>junit-jupiter<\/artifactId>/${ASSERTJ_DEPENDENCIES_TAG}/" ./tmp/${PROJECT_NAME}/${PROJECT_NAME}-selenium/pom.xml
+sed -i -e "s/<artifactId>junit-jupiter<\/artifactId>/${ASSERTJ_DEPENDENCIES_TAG}/" ./tmp/${PROJECT_NAME}/${PROJECT_NAME}-web/pom.xml
+
+SECURITY_DEPENDENCIES_TAG="<dependency>${LF}"
+SECURITY_DEPENDENCIES_TAG="${SECURITY_DEPENDENCIES_TAG}            <groupId>org.springframework.security<\/groupId>${LF}"
+SECURITY_DEPENDENCIES_TAG="${SECURITY_DEPENDENCIES_TAG}            <artifactId>spring-security-test<\/artifactId>${LF}"
+SECURITY_DEPENDENCIES_TAG="${SECURITY_DEPENDENCIES_TAG}            <scope>test<\/scope>${LF}"
+SECURITY_DEPENDENCIES_TAG="${SECURITY_DEPENDENCIES_TAG}        <\/dependency>${LF}"
+SECURITY_DEPENDENCIES_TAG="${SECURITY_DEPENDENCIES_TAG}        <!-- == End Unit Test == -->"
+
+sed -i -e "s/<!-- == End Unit Test == -->/${SECURITY_DEPENDENCIES_TAG}/" ./tmp/${PROJECT_NAME}/${PROJECT_NAME}-web/pom.xml
 
 echo ">>>>> COPY TMP"
 cp -fr ./tmp/${PROJECT_NAME}/* ${WORK_DIR}

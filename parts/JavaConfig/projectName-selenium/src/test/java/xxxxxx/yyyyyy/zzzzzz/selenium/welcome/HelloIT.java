@@ -1,7 +1,6 @@
 package xxxxxx.yyyyyy.zzzzzz.selenium.welcome;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.IOException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -33,7 +32,7 @@ public class HelloIT {
 
         webDriver.get(applicationContextUrl);
 
-        assertThat(webDriver.findElement(By.id("title")).getText(), is("Hello world!"));
+        assertEquals("Hello world!", webDriver.findElement(By.id("title")).getText());
     }
 
     /**
