@@ -1,6 +1,5 @@
 package xxxxxx.yyyyyy.zzzzzz.config.web;
 
-import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 import java.util.LinkedHashMap;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,7 +31,7 @@ public class SpringSecurityConfig {
      */
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return web -> web.ignoring().requestMatchers(antMatcher("/resources/**"));
+        return web -> web.ignoring().requestMatchers("/resources/**");
     }
 
     /**
@@ -48,7 +47,7 @@ public class SpringSecurityConfig {
         http.exceptionHandling(ex -> ex.accessDeniedHandler(accessDeniedHandler()));
         http.addFilterAfter(userIdMDCPutFilter(), AnonymousAuthenticationFilter.class);
         http.sessionManagement(Customizer.withDefaults());
-        http.authorizeHttpRequests(authz -> authz.requestMatchers(antMatcher("/**")).permitAll());
+        http.authorizeHttpRequests(authz -> authz.requestMatchers("/**").permitAll());
 
         return http.build();
     }
