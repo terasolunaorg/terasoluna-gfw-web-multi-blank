@@ -39,12 +39,12 @@ import xxxxxx.yyyyyy.zzzzzz.domain.service.errortest.MockTestService;
 /**
  * Run the interceptor test.
  */
-@ExtendWith({SpringExtension.class, MockitoExtension.class})
+@ExtendWith({ SpringExtension.class, MockitoExtension.class })
 @ContextHierarchy({
-        @ContextConfiguration({"classpath:META-INF/spring/applicationContext.xml",
+        @ContextConfiguration({ "classpath:META-INF/spring/applicationContext.xml",
                 "classpath:META-INF/spring/spring-security.xml",
-                "classpath:META-INF/spring/spring-mvc-mockmvc.xml"}),
-        @ContextConfiguration({"classpath:META-INF/spring/spring-mvc.xml"})})
+                "classpath:META-INF/spring/spring-mvc-mockmvc.xml" }),
+        @ContextConfiguration({ "classpath:META-INF/spring/spring-mvc.xml" }) })
 @WebAppConfiguration
 public class InterceptorTest {
 
@@ -72,6 +72,7 @@ public class InterceptorTest {
 
     /**
      * Test whether the log is output by TraceLoggingInterceptor.
+     * 
      * @throws Exception
      */
     @Test
@@ -105,11 +106,12 @@ public class InterceptorTest {
                 .isEqualTo("org.terasoluna.gfw.web.logging.TraceLoggingInterceptor");
         assertThat(events.get(2).getFormattedMessage()
                 .matches("^\\[HANDLING TIME   \\] MockTestController\\.test\\(Model\\)-> .+"))
-                        .isEqualTo(true);
+                .isTrue();
     }
 
     /**
      * Test whether the log is output by ExceptionResolverLoggingInterceptor.
+     * 
      * @throws Exception
      */
     @Test
@@ -138,5 +140,6 @@ public class InterceptorTest {
     }
 
     @AfterEach
-    public void tearDown() {}
+    public void tearDown() {
+    }
 }

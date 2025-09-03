@@ -37,11 +37,11 @@ import xxxxxx.yyyyyy.zzzzzz.app.welcome.HelloController;
 /**
  * Run a unit test on HelloController.
  */
-@ExtendWith({SpringExtension.class, MockitoExtension.class})
+@ExtendWith({ SpringExtension.class, MockitoExtension.class })
 @ContextHierarchy({
-        @ContextConfiguration({"classpath:META-INF/spring/applicationContext.xml",
-                "classpath:META-INF/spring/spring-security.xml"}),
-        @ContextConfiguration({"classpath:META-INF/spring/spring-mvc.xml"})})
+        @ContextConfiguration({ "classpath:META-INF/spring/applicationContext.xml",
+                "classpath:META-INF/spring/spring-security.xml" }),
+        @ContextConfiguration({ "classpath:META-INF/spring/spring-mvc.xml" }) })
 @WebAppConfiguration
 public class HelloTest {
 
@@ -65,6 +65,7 @@ public class HelloTest {
 
     /**
      * Run the HelloController's internal tests.
+     * 
      * @throws Exception
      */
     @Test
@@ -89,9 +90,10 @@ public class HelloTest {
         String serverTime = (String) mv.getModel().get("serverTime");
         assertThat(serverTime.matches(
                 "^[a-zA-Z]{3,9}.\\d{1,2},.\\d{4}.{0,4}\\d{1,2}:\\d{1,2}:\\d{1,2}.[AM|PM].+"))
-                        .isEqualTo(true);
+                .isTrue();
     }
 
     @AfterEach
-    public void tearDown() {}
+    public void tearDown() {
+    }
 }

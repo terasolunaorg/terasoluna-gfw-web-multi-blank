@@ -40,11 +40,10 @@ import xxxxxx.yyyyyy.zzzzzz.config.web.SpringSecurityConfig;
 /**
  * Run a unit test on HelloController.
  */
-@ExtendWith({SpringExtension.class, MockitoExtension.class})
+@ExtendWith({ SpringExtension.class, MockitoExtension.class })
 @ContextHierarchy({
-        @ContextConfiguration(
-                classes = {ApplicationContextConfig.class, SpringSecurityConfig.class}),
-        @ContextConfiguration(classes = {SpringMvcConfig.class})})
+        @ContextConfiguration(classes = { ApplicationContextConfig.class, SpringSecurityConfig.class }),
+        @ContextConfiguration(classes = { SpringMvcConfig.class }) })
 @WebAppConfiguration
 public class HelloTest {
 
@@ -68,6 +67,7 @@ public class HelloTest {
 
     /**
      * Run the HelloController's internal tests.
+     * 
      * @throws Exception
      */
     @Test
@@ -92,9 +92,10 @@ public class HelloTest {
         String serverTime = (String) mv.getModel().get("serverTime");
         assertThat(serverTime.matches(
                 "^[a-zA-Z]{3,9}.\\d{1,2},.\\d{4}.{0,4}\\d{1,2}:\\d{1,2}:\\d{1,2}.[AM|PM].+"))
-                        .isEqualTo(true);
+                .isTrue();
     }
 
     @AfterEach
-    public void tearDown() {}
+    public void tearDown() {
+    }
 }
