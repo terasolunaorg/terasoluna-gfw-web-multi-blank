@@ -1,7 +1,6 @@
 package xxxxxx.yyyyyy.zzzzzz.selenium.error;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import java.time.Duration;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -29,10 +28,11 @@ public class ErrorTest extends FunctionTestSupport {
         webDriver.get(applicationContextUrl + "/test/error/accessDeniedError");
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        assertThat(webDriver.getTitle(), is("Access Denied Error!"));
-        assertThat(webDriver.findElement(By.tagName("h1")).getText(), is("Access Denied Error!"));
-        assertThat(webDriver.findElement(By.className("error")).getText(),
-                is("[e.xx.fw.7003] Access Denied detected!"));
+        assertThat(webDriver.getTitle()).isEqualTo("Access Denied Error!");
+        assertThat(webDriver.findElement(By.tagName("h1")).getText())
+                .isEqualTo("Access Denied Error!");
+        assertThat(webDriver.findElement(By.className("error")).getText())
+                .isEqualTo("[e.xx.fw.7003] Access Denied detected!");
     }
 
     /**
@@ -45,10 +45,10 @@ public class ErrorTest extends FunctionTestSupport {
         webDriver.get(applicationContextUrl + "/test/error/businessError");
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        assertThat(webDriver.getTitle(), is("Business Error!"));
-        assertThat(webDriver.findElement(By.tagName("h1")).getText(), is("Business Error!"));
-        assertThat(webDriver.findElement(By.className("error")).getText(),
-                is("[e.xx.fw.8001] Business error occurred!"));
+        assertThat(webDriver.getTitle()).isEqualTo("Business Error!");
+        assertThat(webDriver.findElement(By.tagName("h1")).getText()).isEqualTo("Business Error!");
+        assertThat(webDriver.findElement(By.className("error")).getText())
+                .isEqualTo("[e.xx.fw.8001] Business error occurred!");
     }
 
     /**
@@ -61,10 +61,11 @@ public class ErrorTest extends FunctionTestSupport {
         webDriver.get(applicationContextUrl + "/test/error/dataAccessError");
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        assertThat(webDriver.getTitle(), is("Data Access Error!"));
-        assertThat(webDriver.findElement(By.tagName("h1")).getText(), is("Data Access Error!"));
-        assertThat(webDriver.findElement(By.className("error")).getText(),
-                is("[e.xx.fw.9002] Data Access error!"));
+        assertThat(webDriver.getTitle()).isEqualTo("Data Access Error!");
+        assertThat(webDriver.findElement(By.tagName("h1")).getText())
+                .isEqualTo("Data Access Error!");
+        assertThat(webDriver.findElement(By.className("error")).getText())
+                .isEqualTo("[e.xx.fw.9002] Data Access error!");
     }
 
     /**
@@ -77,11 +78,11 @@ public class ErrorTest extends FunctionTestSupport {
         webDriver.get(applicationContextUrl + "/test/error/invalidCsrfTokenError");
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        assertThat(webDriver.getTitle(), is("CSRF Error!"));
-        assertThat(webDriver.findElement(By.tagName("h1")).getText(),
-                is("CSRF Error! Invalid CSRF Token!"));
-        assertThat(webDriver.findElement(By.className("error")).getText(),
-                is("[e.xx.fw.7002] CSRF attack detected!"));
+        assertThat(webDriver.getTitle()).isEqualTo("CSRF Error!");
+        assertThat(webDriver.findElement(By.tagName("h1")).getText())
+                .isEqualTo("CSRF Error! Invalid CSRF Token!");
+        assertThat(webDriver.findElement(By.className("error")).getText())
+                .isEqualTo("[e.xx.fw.7002] CSRF attack detected!");
     }
 
     /**
@@ -94,11 +95,11 @@ public class ErrorTest extends FunctionTestSupport {
         webDriver.get(applicationContextUrl + "/test/error/missingCsrfTokenError");
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        assertThat(webDriver.getTitle(), is("CSRF Error!"));
-        assertThat(webDriver.findElement(By.tagName("h1")).getText(),
-                is("CSRF Error! Missing CSRF Token!"));
-        assertThat(webDriver.findElement(By.className("error")).getText(),
-                is("[e.xx.fw.7004] Missing CSRF detected!"));
+        assertThat(webDriver.getTitle()).isEqualTo("CSRF Error!");
+        assertThat(webDriver.findElement(By.tagName("h1")).getText())
+                .isEqualTo("CSRF Error! Missing CSRF Token!");
+        assertThat(webDriver.findElement(By.className("error")).getText())
+                .isEqualTo("[e.xx.fw.7004] Missing CSRF detected!");
     }
 
     /**
@@ -111,11 +112,11 @@ public class ErrorTest extends FunctionTestSupport {
         webDriver.get(applicationContextUrl + "/test/error/resourceNotFoundError");
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        assertThat(webDriver.getTitle(), is("Resource Not Found Error!"));
-        assertThat(webDriver.findElement(By.tagName("h1")).getText(),
-                is("Resource Not Found Error!"));
-        assertThat(webDriver.findElement(By.className("error")).getText(),
-                is("[e.xx.fw.5001] Resource not found."));
+        assertThat(webDriver.getTitle()).isEqualTo("Resource Not Found Error!");
+        assertThat(webDriver.findElement(By.tagName("h1")).getText())
+                .isEqualTo("Resource Not Found Error!");
+        assertThat(webDriver.findElement(By.className("error")).getText())
+                .isEqualTo("[e.xx.fw.5001] Resource not found.");
     }
 
     /**
@@ -128,10 +129,10 @@ public class ErrorTest extends FunctionTestSupport {
         webDriver.get(applicationContextUrl + "/test/error/systemError");
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        assertThat(webDriver.getTitle(), is("System Error!"));
-        assertThat(webDriver.findElement(By.tagName("h1")).getText(), is("System Error!"));
-        assertThat(webDriver.findElement(By.className("error")).getText(),
-                is("[e.xx.fw.9001] System error occurred!"));
+        assertThat(webDriver.getTitle()).isEqualTo("System Error!");
+        assertThat(webDriver.findElement(By.tagName("h1")).getText()).isEqualTo("System Error!");
+        assertThat(webDriver.findElement(By.className("error")).getText())
+                .isEqualTo("[e.xx.fw.9001] System error occurred!");
     }
 
     /**
@@ -144,11 +145,11 @@ public class ErrorTest extends FunctionTestSupport {
         webDriver.get(applicationContextUrl + "/test/error/transactionTokenError");
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        assertThat(webDriver.getTitle(), is("Transaction Token Error!"));
-        assertThat(webDriver.findElement(By.tagName("h1")).getText(),
-                is("Transaction Token Error!"));
-        assertThat(webDriver.findElement(By.className("error")).getText(),
-                is("[e.xx.fw.7001] Illegal screen flow detected!"));
+        assertThat(webDriver.getTitle()).isEqualTo("Transaction Token Error!");
+        assertThat(webDriver.findElement(By.tagName("h1")).getText())
+                .isEqualTo("Transaction Token Error!");
+        assertThat(webDriver.findElement(By.className("error")).getText())
+                .isEqualTo("[e.xx.fw.7001] Illegal screen flow detected!");
     }
 
     /**
@@ -161,11 +162,11 @@ public class ErrorTest extends FunctionTestSupport {
         webDriver.get(applicationContextUrl + "/test/error/other");
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        assertThat(webDriver.getTitle(), is("Unhandled System Error!"));
-        assertThat(webDriver.findElement(By.tagName("h1")).getText(),
-                is("Unhandled System Error!"));
-        assertThat(webDriver.findElement(By.className("error")).getText(),
-                is("Unhandled system error occurred!"));
+        assertThat(webDriver.getTitle()).isEqualTo("Unhandled System Error!");
+        assertThat(webDriver.findElement(By.tagName("h1")).getText())
+                .isEqualTo("Unhandled System Error!");
+        assertThat(webDriver.findElement(By.className("error")).getText())
+                .isEqualTo("Unhandled system error occurred!");
     }
 
 }

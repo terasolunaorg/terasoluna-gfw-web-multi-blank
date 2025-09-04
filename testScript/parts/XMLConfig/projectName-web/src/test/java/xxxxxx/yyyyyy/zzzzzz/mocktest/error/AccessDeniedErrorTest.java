@@ -1,9 +1,7 @@
 package xxxxxx.yyyyyy.zzzzzz.mocktest.error;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import java.io.IOException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,9 +21,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.test.web.servlet.assertj.MockMvcTester;
+import org.springframework.test.web.servlet.assertj.MvcTestResult;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.OncePerRequestFilter;
 import jakarta.inject.Inject;
@@ -50,7 +47,7 @@ public class AccessDeniedErrorTest {
     @Inject
     private WebApplicationContext webApplicationContext;
 
-    private MockMvc mockMvc;
+    private MockMvcTester mockMvc;
 
     @Inject
     private AccessDeniedHandler accessDeniedHandler;
@@ -65,8 +62,8 @@ public class AccessDeniedErrorTest {
                 new DefaultSecurityFilterChain(AnyRequestMatcher.INSTANCE, new TestFilter());
         TestFilterChainProxy chainProxy = new TestFilterChainProxy(chain);
 
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).alwaysDo(log())
-                .apply(SecurityMockMvcConfigurers.springSecurity(chainProxy)).build();
+        mockMvc = MockMvcTester.from(webApplicationContext, builder -> builder.alwaysDo(log())
+                .apply(SecurityMockMvcConfigurers.springSecurity(chainProxy)).build());
     }
 
     /**
@@ -77,14 +74,13 @@ public class AccessDeniedErrorTest {
     public void testAccessDeniedErrorMockMvc() throws Exception {
 
         // Mockmvc test.
-        ResultActions results = mockMvc.perform(get("/"));
+        MvcTestResult results = mockMvc.get().uri("/").exchange();
 
+        logger.debug("testAccessDeniedError#status:" + results.getResponse().getStatus());
         logger.debug(
-                "testAccessDeniedError#status:" + results.andReturn().getResponse().getStatus());
-        logger.debug("testAccessDeniedError#forwardedUrl:"
-                + results.andReturn().getResponse().getForwardedUrl());
+                "testAccessDeniedError#forwardedUrl:" + results.getResponse().getForwardedUrl());
 
-        results.andExpect(status().is(403)).andExpect(forwardedUrl(accessDeniedErrorForwardedUrl));
+        assertThat(results).hasStatus(403).hasForwardedUrl(accessDeniedErrorForwardedUrl);
     }
 
     /** Test FilterChainProxy */

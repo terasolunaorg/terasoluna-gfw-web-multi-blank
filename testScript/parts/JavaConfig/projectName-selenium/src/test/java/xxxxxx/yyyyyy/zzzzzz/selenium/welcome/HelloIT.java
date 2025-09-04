@@ -1,7 +1,6 @@
 package xxxxxx.yyyyyy.zzzzzz.selenium.welcome;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import java.io.IOException;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -22,6 +21,6 @@ public class HelloIT extends FunctionTestSupport {
     @Test
     public void testHelloWorld() throws IOException {
 
-        assertThat(webDriver.findElement(By.id("title")).getText(), is("Hello world!"));
+        assertThat(webDriver.findElement(By.id("title")).getText()).isEqualTo("Hello world!");
     }
 }

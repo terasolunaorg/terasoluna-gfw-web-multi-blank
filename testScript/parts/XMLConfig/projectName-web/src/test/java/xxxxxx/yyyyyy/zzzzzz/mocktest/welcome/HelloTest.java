@@ -1,7 +1,6 @@
 package xxxxxx.yyyyyy.zzzzzz.mocktest.welcome;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -38,11 +37,11 @@ import xxxxxx.yyyyyy.zzzzzz.app.welcome.HelloController;
 /**
  * Run a unit test on HelloController.
  */
-@ExtendWith({SpringExtension.class, MockitoExtension.class})
+@ExtendWith({ SpringExtension.class, MockitoExtension.class })
 @ContextHierarchy({
-        @ContextConfiguration({"classpath:META-INF/spring/applicationContext.xml",
-                "classpath:META-INF/spring/spring-security.xml"}),
-        @ContextConfiguration({"classpath:META-INF/spring/spring-mvc.xml"})})
+        @ContextConfiguration({ "classpath:META-INF/spring/applicationContext.xml",
+                "classpath:META-INF/spring/spring-security.xml" }),
+        @ContextConfiguration({ "classpath:META-INF/spring/spring-mvc.xml" }) })
 @WebAppConfiguration
 public class HelloTest {
 
@@ -66,6 +65,7 @@ public class HelloTest {
 
     /**
      * Run the HelloController's internal tests.
+     * 
      * @throws Exception
      */
     @Test
@@ -82,17 +82,18 @@ public class HelloTest {
         List<LoggingEvent> events = captorLoggingEvent.getAllValues();
 
         // Confirmation of log output contents
-        assertThat(events.get(0).getLevel(), is(Level.INFO));
-        assertThat(events.get(0).getFormattedMessage(),
-                is("Welcome home! The client locale is " + Locale.ENGLISH + "."));
+        assertThat(events.get(0).getLevel()).isEqualTo(Level.INFO);
+        assertThat(events.get(0).getFormattedMessage())
+                .isEqualTo("Welcome home! The client locale is " + Locale.ENGLISH + ".");
         // Confirmation of model settings
         ModelAndView mv = result.andReturn().getModelAndView();
         String serverTime = (String) mv.getModel().get("serverTime");
         assertThat(serverTime.matches(
-                "^[a-zA-Z]{3,9}.\\d{1,2},.\\d{4}.{0,4}\\d{1,2}:\\d{1,2}:\\d{1,2}.[AM|PM].+"),
-                is(true));
+                "^[a-zA-Z]{3,9}.\\d{1,2},.\\d{4}.{0,4}\\d{1,2}:\\d{1,2}:\\d{1,2}.[AM|PM].+"))
+                .isTrue();
     }
 
     @AfterEach
-    public void tearDown() {}
+    public void tearDown() {
+    }
 }

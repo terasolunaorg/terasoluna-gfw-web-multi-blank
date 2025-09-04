@@ -1,10 +1,8 @@
 package xxxxxx.yyyyyy.zzzzzz.mocktest.error;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.doThrow;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,9 +15,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.test.web.servlet.assertj.MockMvcTester;
+import org.springframework.test.web.servlet.assertj.MvcTestResult;
 import org.springframework.web.context.WebApplicationContext;
 import org.terasoluna.gfw.common.exception.BusinessException;
 import org.terasoluna.gfw.common.exception.ResourceNotFoundException;
@@ -46,7 +43,7 @@ public class MvcErrorTest {
     @Inject
     private WebApplicationContext webApplicationContext;
 
-    private MockMvc mockMvc;
+    private MockMvcTester mockMvc;
 
     @Inject
     MockTestService mockTestService;
@@ -54,7 +51,8 @@ public class MvcErrorTest {
     @BeforeEach
     public void setUp() {
         Mockito.reset(mockTestService);
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).alwaysDo(log()).build();
+        mockMvc = MockMvcTester.from(webApplicationContext,
+                builder -> builder.alwaysDo(log()).build());
     }
 
     /**
@@ -67,13 +65,14 @@ public class MvcErrorTest {
         doThrow(new BusinessException("e.xx.fw.8001")).when(mockTestService).testExecute();
 
         // Mockmvc test.
-        ResultActions results = mockMvc.perform(get("/test/mock/success"));
+        MvcTestResult results = mockMvc.get().uri("/test/mock/success").exchange();
 
-        logger.debug("testBusinessError#status:" + results.andReturn().getResponse().getStatus());
+        logger.debug("testBusinessError#status:" + results.getResponse().getStatus());
         logger.debug(
-                "testBusinessError#view:" + results.andReturn().getModelAndView().getViewName());
+                "testBusinessError#view:" + results.getMvcResult().getModelAndView().getViewName());
 
-        results.andExpect(status().is(409)).andExpect(view().name("common/error/businessError"));
+        // results.andExpect(status().is(409)).andExpect(view().name("common/error/businessError"));
+        assertThat(results).hasStatus(409).hasViewName("common/error/businessError");
     }
 
     /**
@@ -87,13 +86,12 @@ public class MvcErrorTest {
                 .testExecute();
 
         // Mockmvc test.
-        ResultActions results = mockMvc.perform(get("/test/mock/success"));
+        MvcTestResult results = mockMvc.get().uri("/test/mock/success").exchange();
 
-        logger.debug("testDataAccessError#status:" + results.andReturn().getResponse().getStatus());
-        logger.debug(
-                "testDataAccessError#view:" + results.andReturn().getModelAndView().getViewName());
+        logger.debug("testDataAccessError#view:"
+                + results.getMvcResult().getModelAndView().getViewName());
 
-        results.andExpect(status().is(500)).andExpect(view().name("common/error/dataAccessError"));
+        assertThat(results).hasStatus(500).hasViewName("common/error/dataAccessError");
     }
 
     /**
@@ -108,15 +106,13 @@ public class MvcErrorTest {
                 .testExecute();
 
         // Mockmvc test.
-        ResultActions results = mockMvc.perform(get("/test/mock/success"));
+        MvcTestResult results = mockMvc.get().uri("/test/mock/success").exchange();
 
-        logger.debug("testResourceNotFoundError#status:"
-                + results.andReturn().getResponse().getStatus());
+        logger.debug("testResourceNotFoundError#status:" + results.getResponse().getStatus());
         logger.debug("testResourceNotFoundError#view:"
-                + results.andReturn().getModelAndView().getViewName());
+                + results.getMvcResult().getModelAndView().getViewName());
 
-        results.andExpect(status().is(404))
-                .andExpect(view().name("common/error/resourceNotFoundError"));
+        assertThat(results).hasStatus(404).hasViewName("common/error/resourceNotFoundError");
     }
 
     /**
@@ -130,12 +126,12 @@ public class MvcErrorTest {
                 .testExecute();
 
         // Mockmvc test.
-        ResultActions results = mockMvc.perform(get("/test/mock/success"));
+        MvcTestResult results = mockMvc.get().uri("/test/mock/success").exchange();
 
-        logger.debug("testSystemError#status:" + results.andReturn().getResponse().getStatus());
-        logger.debug("testSystemError#view:" + results.andReturn().getModelAndView().getViewName());
+        logger.debug("testSystemError#status:" + results.getResponse().getStatus());
+        logger.debug("testSystemError#view:" + results.getMvcResult().getModelAndView().getViewName());
 
-        results.andExpect(status().is(500)).andExpect(view().name("common/error/systemError"));
+        assertThat(results).hasStatus(500).hasViewName("common/error/systemError");
     }
 
     /**
@@ -148,15 +144,12 @@ public class MvcErrorTest {
         doThrow(new InvalidTransactionTokenException()).when(mockTestService).testExecute();
 
         // Mockmvc test.
-        ResultActions results = mockMvc.perform(get("/test/mock/success"));
+        MvcTestResult results = mockMvc.get().uri("/test/mock/success").exchange();
 
-        logger.debug("testTransactionTokenError#status:"
-                + results.andReturn().getResponse().getStatus());
-        logger.debug("testTransactionTokenError#view:"
-                + results.andReturn().getModelAndView().getViewName());
+        logger.debug("testTransactionTokenError#status:" + results.getResponse().getStatus());
+        logger.debug("testTransactionTokenError#view:" + results.getMvcResult().getModelAndView().getViewName());
 
-        results.andExpect(status().is(409))
-                .andExpect(view().name("common/error/transactionTokenError"));
+        assertThat(results).hasStatus(409).hasViewName("common/error/transactionTokenError");
     }
 
     @AfterEach

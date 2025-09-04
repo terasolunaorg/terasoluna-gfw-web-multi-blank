@@ -1,10 +1,8 @@
 package xxxxxx.yyyyyy.zzzzzz.mocktest.error;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,9 +15,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.test.web.servlet.assertj.MockMvcTester;
+import org.springframework.test.web.servlet.assertj.MvcTestResult;
 import org.springframework.web.context.WebApplicationContext;
 import jakarta.inject.Inject;
 
@@ -43,7 +40,7 @@ public class CsrfTokenErrorTest {
     @Inject
     private WebApplicationContext webApplicationContext;
 
-    private MockMvc mockMvc;
+    private MockMvcTester mockMvc;
 
     @Value("${invalidCsrfTokenError.forwardedUrl}")
     private String invalidCsrfTokenErrorForwardedUrl;
@@ -53,8 +50,8 @@ public class CsrfTokenErrorTest {
 
     @BeforeEach
     public void setUp() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).alwaysDo(log())
-                .apply(SecurityMockMvcConfigurers.springSecurity()).build();
+        mockMvc = MockMvcTester.from(webApplicationContext, builder -> builder.alwaysDo(log())
+                .apply(SecurityMockMvcConfigurers.springSecurity()).build());
     }
 
     /**
@@ -65,15 +62,13 @@ public class CsrfTokenErrorTest {
     public void testInvalidCsrfTokenError() throws Exception {
 
         // Mockmvc test.
-        ResultActions results = mockMvc.perform(post("/").with(csrf().useInvalidToken()));
+        MvcTestResult results = mockMvc.post().uri("/").with(csrf().useInvalidToken()).exchange();
 
-        logger.debug("testInvalidCsrfTokenError#status:"
-                + results.andReturn().getResponse().getStatus());
+        logger.debug("testInvalidCsrfTokenError#status:" + results.getResponse().getStatus());
         logger.debug("testInvalidCsrfTokenError#forwardedUrl:"
-                + results.andReturn().getResponse().getForwardedUrl());
+                + results.getResponse().getForwardedUrl());
 
-        results.andExpect(status().is(403))
-                .andExpect(forwardedUrl(invalidCsrfTokenErrorForwardedUrl));
+        assertThat(results).hasStatus(403).hasForwardedUrl(invalidCsrfTokenErrorForwardedUrl);
     }
 
     /**
@@ -84,15 +79,13 @@ public class CsrfTokenErrorTest {
     public void testMissingCsrfTokenError() throws Exception {
 
         // Mockmvc test.
-        ResultActions results = mockMvc.perform(post("/"));
+        MvcTestResult results = mockMvc.post().uri("/").exchange();
 
-        logger.debug("testMissingCsrfTokenError#status:"
-                + results.andReturn().getResponse().getStatus());
+        logger.debug("testMissingCsrfTokenError#status:" + results.getResponse().getStatus());
         logger.debug("testMissingCsrfTokenError#forwardedUrl:"
-                + results.andReturn().getResponse().getForwardedUrl());
+                + results.getResponse().getForwardedUrl());
 
-        results.andExpect(status().is(403))
-                .andExpect(forwardedUrl(missingCsrfTokenErrorForwardedUrl));
+        assertThat(results).hasStatus(403).hasForwardedUrl(missingCsrfTokenErrorForwardedUrl);
     }
 
     @AfterEach

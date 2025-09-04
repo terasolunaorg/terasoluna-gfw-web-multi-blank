@@ -1,7 +1,6 @@
 package xxxxxx.yyyyyy.zzzzzz.mocktest.interceptor;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -40,12 +39,12 @@ import xxxxxx.yyyyyy.zzzzzz.domain.service.errortest.MockTestService;
 /**
  * Run the interceptor test.
  */
-@ExtendWith({SpringExtension.class, MockitoExtension.class})
+@ExtendWith({ SpringExtension.class, MockitoExtension.class })
 @ContextHierarchy({
-        @ContextConfiguration({"classpath:META-INF/spring/applicationContext.xml",
+        @ContextConfiguration({ "classpath:META-INF/spring/applicationContext.xml",
                 "classpath:META-INF/spring/spring-security.xml",
-                "classpath:META-INF/spring/spring-mvc-mockmvc.xml"}),
-        @ContextConfiguration({"classpath:META-INF/spring/spring-mvc.xml"})})
+                "classpath:META-INF/spring/spring-mvc-mockmvc.xml" }),
+        @ContextConfiguration({ "classpath:META-INF/spring/spring-mvc.xml" }) })
 @WebAppConfiguration
 public class InterceptorTest {
 
@@ -73,6 +72,7 @@ public class InterceptorTest {
 
     /**
      * Test whether the log is output by TraceLoggingInterceptor.
+     * 
      * @throws Exception
      */
     @Test
@@ -89,29 +89,29 @@ public class InterceptorTest {
         verify(mockAppender, times(3)).doAppend(captorLoggingEvent.capture());
         List<LoggingEvent> events = captorLoggingEvent.getAllValues();
 
-        assertThat(events.get(0).getLevel(), is(Level.TRACE));
-        assertThat(events.get(0).getLoggerName(),
-                is("org.terasoluna.gfw.web.logging.TraceLoggingInterceptor"));
-        assertThat(events.get(0).getFormattedMessage(),
-                is("[START CONTROLLER] MockTestController.test(Model)"));
+        assertThat(events.get(0).getLevel()).isEqualTo(Level.TRACE);
+        assertThat(events.get(0).getLoggerName())
+                .isEqualTo("org.terasoluna.gfw.web.logging.TraceLoggingInterceptor");
+        assertThat(events.get(0).getFormattedMessage())
+                .isEqualTo("[START CONTROLLER] MockTestController.test(Model)");
 
-        assertThat(events.get(1).getLevel(), is(Level.TRACE));
-        assertThat(events.get(1).getLoggerName(),
-                is("org.terasoluna.gfw.web.logging.TraceLoggingInterceptor"));
-        assertThat(events.get(1).getFormattedMessage(), is(
-                "[END CONTROLLER  ] MockTestController.test(Model)-> view=welcome/home, model={}"));
+        assertThat(events.get(1).getLevel()).isEqualTo(Level.TRACE);
+        assertThat(events.get(1).getLoggerName())
+                .isEqualTo("org.terasoluna.gfw.web.logging.TraceLoggingInterceptor");
+        assertThat(events.get(1).getFormattedMessage()).isEqualTo(
+                "[END CONTROLLER  ] MockTestController.test(Model)-> view=welcome/home, model={}");
 
-        assertThat(events.get(2).getLevel(), is(Level.TRACE));
-        assertThat(events.get(2).getLoggerName(),
-                is("org.terasoluna.gfw.web.logging.TraceLoggingInterceptor"));
-        assertThat(
-                events.get(2).getFormattedMessage().matches(
-                        "^\\[HANDLING TIME   \\] MockTestController\\.test\\(Model\\)-> .+"),
-                is(true));
+        assertThat(events.get(2).getLevel()).isEqualTo(Level.TRACE);
+        assertThat(events.get(2).getLoggerName())
+                .isEqualTo("org.terasoluna.gfw.web.logging.TraceLoggingInterceptor");
+        assertThat(events.get(2).getFormattedMessage()
+                .matches("^\\[HANDLING TIME   \\] MockTestController\\.test\\(Model\\)-> .+"))
+                .isTrue();
     }
 
     /**
      * Test whether the log is output by ExceptionResolverLoggingInterceptor.
+     * 
      * @throws Exception
      */
     @Test
@@ -131,14 +131,15 @@ public class InterceptorTest {
         verify(mockAppender, times(1)).doAppend(captorLoggingEvent.capture());
         LoggingEvent event = captorLoggingEvent.getValue();
 
-        assertThat(event.getLevel(), is(Level.ERROR));
-        assertThat(event.getLoggerName(),
-                is("org.terasoluna.gfw.common.exception.ExceptionLogger"));
-        assertThat(event.getFormattedMessage(), is("[e.xx.fw.9001] SystemError Test."));
-        assertThat(event.getThrowableProxy().getClassName(),
-                is("org.terasoluna.gfw.common.exception.SystemException"));
+        assertThat(event.getLevel()).isEqualTo(Level.ERROR);
+        assertThat(event.getLoggerName())
+                .isEqualTo("org.terasoluna.gfw.common.exception.ExceptionLogger");
+        assertThat(event.getFormattedMessage()).isEqualTo("[e.xx.fw.9001] SystemError Test.");
+        assertThat(event.getThrowableProxy().getClassName())
+                .isEqualTo("org.terasoluna.gfw.common.exception.SystemException");
     }
 
     @AfterEach
-    public void tearDown() {}
+    public void tearDown() {
+    }
 }
