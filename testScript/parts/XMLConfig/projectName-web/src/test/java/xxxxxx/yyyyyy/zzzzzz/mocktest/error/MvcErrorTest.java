@@ -71,7 +71,6 @@ public class MvcErrorTest {
         logger.debug(
                 "testBusinessError#view:" + results.getMvcResult().getModelAndView().getViewName());
 
-        // results.andExpect(status().is(409)).andExpect(view().name("common/error/businessError"));
         assertThat(results).hasStatus(409).hasViewName("common/error/businessError");
     }
 
