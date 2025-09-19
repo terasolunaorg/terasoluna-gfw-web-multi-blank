@@ -49,8 +49,6 @@
         </constructor-arg>
     </bean>
 
-    <bean id="webSecurityExpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
-
     <!-- Put UserID into MDC -->
     <bean id="userIdMDCPutFilter" class="org.terasoluna.gfw.security.web.logging.UserIdMDCPutFilter" />
 
