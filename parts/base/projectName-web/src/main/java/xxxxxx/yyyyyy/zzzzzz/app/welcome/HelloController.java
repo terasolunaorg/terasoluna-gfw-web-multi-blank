@@ -1,7 +1,8 @@
 package xxxxxx.yyyyyy.zzzzzz.app.welcome;
 
-import java.text.DateFormat;
-import java.util.Date;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,11 +25,12 @@ public class HelloController {
     public String home(Locale locale, Model model) {
         logger.info("Welcome home! The client locale is {}.", locale);
 
-        Date date = new Date();
-        DateFormat dateFormat =
-                DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+        ZonedDateTime dateTime = ZonedDateTime.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+                .ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.LONG)
+                .withLocale(locale);
 
-        String formattedDate = dateFormat.format(date);
+        String formattedDate = dateTime.format(dateTimeFormatter);
 
         model.addAttribute("serverTime", formattedDate);
 
