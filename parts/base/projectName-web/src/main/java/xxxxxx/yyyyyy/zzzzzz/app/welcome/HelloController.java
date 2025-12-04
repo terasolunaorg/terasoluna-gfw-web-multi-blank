@@ -1,9 +1,9 @@
 package xxxxxx.yyyyyy.zzzzzz.app.welcome;
 
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.Locale;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -25,10 +25,9 @@ public class HelloController {
     public String home(Locale locale, Model model) {
         logger.info("Welcome home! The client locale is {}.", locale);
 
-        ZonedDateTime dateTime = ZonedDateTime.now();
+        LocalDateTime dateTime = LocalDateTime.now();
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter
-                .ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.LONG)
-                .withLocale(locale);
+                .ofPattern("MMMM d, yyyy h:mm:ss a", locale);
 
         String formattedDate = dateTime.format(dateTimeFormatter);
 
