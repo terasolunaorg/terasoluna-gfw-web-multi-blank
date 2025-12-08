@@ -2,8 +2,8 @@ package xxxxxx.yyyyyy.zzzzzz.app.welcome;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Locale;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -26,10 +26,13 @@ public class HelloController {
         logger.info("Welcome home! The client locale is {}.", locale);
 
         LocalDateTime dateTime = LocalDateTime.now();
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter
-                .ofPattern("MMMM d, yyyy h:mm:ss a", locale);
+        DateTimeFormatter dateFormatter =
+                DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withLocale(locale);
+        DateTimeFormatter timeFormatter =
+                DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM).withLocale(locale);
 
-        String formattedDate = dateTime.format(dateTimeFormatter);
+        String formattedDate =
+                dateTime.format(dateFormatter) + " " + dateTime.format(timeFormatter);
 
         model.addAttribute("serverTime", formattedDate);
 
