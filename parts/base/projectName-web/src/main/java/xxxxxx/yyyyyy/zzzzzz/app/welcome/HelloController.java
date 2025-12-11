@@ -26,13 +26,10 @@ public class HelloController {
         logger.info("Welcome home! The client locale is {}.", locale);
 
         LocalDateTime dateTime = LocalDateTime.now();
-        DateTimeFormatter dateFormatter =
-                DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withLocale(locale);
-        DateTimeFormatter timeFormatter =
-                DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM).withLocale(locale);
+        DateTimeFormatter formatter = DateTimeFormatter
+                .ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.MEDIUM).withLocale(Locale.ENGLISH);
 
-        String formattedDate =
-                dateTime.format(dateFormatter) + " " + dateTime.format(timeFormatter);
+        String formattedDate = dateTime.format(formatter);
 
         model.addAttribute("serverTime", formattedDate);
 
