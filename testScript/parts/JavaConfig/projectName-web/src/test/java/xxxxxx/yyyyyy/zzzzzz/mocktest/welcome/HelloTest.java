@@ -91,7 +91,7 @@ public class HelloTest {
         ModelAndView mv = result.andReturn().getModelAndView();
         String serverTime = (String) mv.getModel().get("serverTime");
         assertThat(serverTime.matches(
-                "^[a-zA-Z]{3,9}.\\d{1,2},.\\d{4}.{0,4}\\d{1,2}:\\d{1,2}:\\d{1,2}.[AM|PM].+"))
+                "^[a-zA-Z]{3,9}.\\d{1,2},.\\d{4},.\\d{1,2}:\\d{1,2}:\\d{1,2}.(AM|PM)$"))
                 .isTrue();
     }
 
