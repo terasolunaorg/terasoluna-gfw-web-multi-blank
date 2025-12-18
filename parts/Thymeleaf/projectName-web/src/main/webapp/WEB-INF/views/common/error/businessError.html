@@ -10,7 +10,7 @@
             <h1>Business Error!</h1>
             <div class="error">
                 <span th:text="${#strings.isEmpty(exceptionCode)} ? #{e.xx.fw.8001} : |[${exceptionCode}] #{${exceptionCode}}|">[e.xx.fw.8001] Business error occurred!</span>
-                <div th:if="{not #lists.isEmpty(resultMessages)}" class="alert alert-error" th:class="|alert alert-${resultMessages.type}|">
+                <div th:if="${not #lists.isEmpty(resultMessages)}" class="alert alert-error" th:class="|alert alert-${resultMessages.type}|">
                     <ul>
                         <li th:each="message : ${resultMessages}" th:text="${message.code} != null ? ${#messages.msgWithParams(message.code, message.args)} : ${message.text}">error detail message</li>
                     </ul>
