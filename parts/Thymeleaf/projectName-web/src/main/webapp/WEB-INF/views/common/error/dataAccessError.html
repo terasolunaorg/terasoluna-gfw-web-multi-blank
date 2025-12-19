@@ -11,7 +11,7 @@
             <div class="error">
                 <span th:text="${#strings.isEmpty(exceptionCode)} ? #{e.xx.fw.9002} : |[${exceptionCode}] #{e.xx.fw.9002}|">[e.xx.fw.9002] Data Access error!</span>
             </div>
-            <div th:if="${not #lists.isEmpty(resultMessages)}" class="alert alert-error" th:class="|alert alert-${resultMessages.type}|">
+            <div th:if="${resultMessages} != null" class="alert alert-error" th:class="|alert alert-${resultMessages.type}|">
                 <ul>
                     <li th:each="message : ${resultMessages}" th:text="${message.code} != null ? ${#messages.msgWithParams(message.code, message.args)} : ${message.text}">error detail message</li>
                 </ul>
