@@ -82,7 +82,6 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>${org.apache.maven.plugins.maven-failsafe-plugin.version}</version>
                     <executions>
                         <execution>
                             <goals>
@@ -94,12 +93,10 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${org.apache.maven.plugins.maven-surefire-plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>${org.codehaus.mojo.build-helper-maven-plugin.version}</version>
                     <executions>
                         <execution>
                             <id>add-source</id>
@@ -132,7 +129,6 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>${org.apache.maven.plugins.maven-war-plugin.version}</version>
                     <configuration>
                         <archive>
                             <addMavenDescriptor>false</addMavenDescriptor>
@@ -186,11 +182,6 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <!-- == Maven Plugin Versions == -->
-        <org.apache.maven.plugins.maven-war-plugin.version>3.4.0</org.apache.maven.plugins.maven-war-plugin.version>
-        <org.codehaus.mojo.build-helper-maven-plugin.version>3.6.0</org.codehaus.mojo.build-helper-maven-plugin.version>
-        <org.apache.maven.plugins.maven-failsafe-plugin.version>3.5.2</org.apache.maven.plugins.maven-failsafe-plugin.version>
-        <org.apache.maven.plugins.maven-surefire-plugin.version>3.5.2</org.apache.maven.plugins.maven-surefire-plugin.version>
         <!-- == Dependency Versions == -->
         <postgresql.version>42.7.8</postgresql.version>
         <ojdbc.version>23.9.0.25.07</ojdbc.version>
