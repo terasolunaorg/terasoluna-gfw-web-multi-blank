@@ -112,12 +112,13 @@ public class ProjectNameEnvConfig {
 
     /**
      * Configuration to set up database during initialization.
+     * @param dataSource DataSource to be initialized
      * @return Bean of configured {@link DataSourceInitializer}
      */
     @Bean
-    public DataSourceInitializer dataSourceInitializer() {
+    public DataSourceInitializer dataSourceInitializer(DataSource dataSource) {
         DataSourceInitializer bean = new DataSourceInitializer();
-        bean.setDataSource(dataSource());
+        bean.setDataSource(dataSource);
 
         ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
         databasePopulator.addScript(new ClassPathResource("/database/" + database + "-schema.sql"));
@@ -147,12 +148,13 @@ public class ProjectNameEnvConfig {
     /* REMOVE THIS LINE IF YOU USE MyBatis3
     /**
      * Configure {@link TransactionManager} bean.
+     * @param dataSource DataSource used for transaction management
      * @return Bean of configured {@link DataSourceTransactionManager}
      *REMOVE THIS COMMENT IF YOU USE MyBatis3/
     @Bean("transactionManager")
-    public TransactionManager transactionManager() {
+    public TransactionManager transactionManager(DataSource dataSource) {
         DataSourceTransactionManager bean = new DataSourceTransactionManager();
-        bean.setDataSource(dataSource());
+        bean.setDataSource(dataSource);
         bean.setRollbackOnCommitFailure(true);
         return bean;
     }
