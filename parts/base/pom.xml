@@ -183,7 +183,7 @@
     </dependencyManagement>
     <properties>
         <!-- == Dependency Versions == -->
-        <postgresql.version>42.7.8</postgresql.version>
+        <postgresql.version>42.7.9</postgresql.version>
         <ojdbc.version>23.9.0.25.07</ojdbc.version>
         <!-- == Project Properties == -->
         <encoding>UTF-8</encoding>
