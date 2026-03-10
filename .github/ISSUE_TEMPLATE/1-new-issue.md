@@ -23,14 +23,6 @@ assignees: ""
 
 -   5.x.x.RELEASE
 
-## Fix repositories
-
-> Repositories to fix with this issue.
-
--   [ ] terasoluna-gfw-web-multi-blank
--   [ ] m-j
--   [ ] m-t
-
 ## Issue links
 
 > Links to related issues.
