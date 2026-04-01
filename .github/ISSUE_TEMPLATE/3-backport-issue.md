@@ -11,11 +11,3 @@ assignees: ""
 > Links to the original issues.
 
 -   Backport #XXX
-
-## Fix repositories
-
-> Repositories to fix with this issue.
-
--   [ ] terasoluna-gfw-web-multi-blank
--   [ ] m-j
--   [ ] m-t
