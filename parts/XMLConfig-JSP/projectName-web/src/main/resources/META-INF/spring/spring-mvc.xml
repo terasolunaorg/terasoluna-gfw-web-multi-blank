@@ -15,6 +15,9 @@
         location="classpath*:/META-INF/spring/*.properties" />
 
     <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.FormHttpMessageConverter" />
+        </mvc:message-converters>
         <mvc:argument-resolvers>
             <bean
                 class="org.springframework.data.web.PageableHandlerMethodArgumentResolver" />
