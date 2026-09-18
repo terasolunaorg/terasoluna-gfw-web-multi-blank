@@ -141,9 +141,6 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <configuration>
-                        <source>${java-version}</source>
-                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -187,6 +184,6 @@
         <ojdbc.version>23.26.0.0.0</ojdbc.version>
         <!-- == Project Properties == -->
         <encoding>UTF-8</encoding>
-        <java-version>17</java-version>
+        <maven.compiler.release>${java.specification.version}</maven.compiler.release>
     </properties>
 </project>
