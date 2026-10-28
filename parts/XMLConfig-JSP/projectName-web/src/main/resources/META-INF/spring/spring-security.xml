@@ -15,6 +15,8 @@
         <sec:intercept-url pattern="/**" access="permitAll" />
     </sec:http>
 
+    <sec:authentication-manager />
+
     <!-- CSRF Protection -->
     <bean id="accessDeniedHandler"
         class="org.springframework.security.web.access.DelegatingAccessDeniedHandler">
