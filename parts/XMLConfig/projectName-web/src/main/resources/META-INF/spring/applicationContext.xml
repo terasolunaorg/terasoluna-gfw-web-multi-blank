@@ -40,6 +40,7 @@
         <property name="basenames">
             <list>
                 <value>i18n/application-messages</value>
+                <value>i18n/domain-messages</value>
             </list>
         </property>
     </bean>
