@@ -30,6 +30,18 @@ if [ ! -d "${WORK_DIR}/${PROJECT_NAME}-web" ]; then
     exit -102
 fi
 
+DOMAIN_MESSAGES="${WORK_DIR}/${PROJECT_NAME}-domain/src/main/resources/i18n/domain-messages.properties"
+if [ ! -f "${DOMAIN_MESSAGES}" ]; then
+    echo "[Error] Domain messages file does not exist: ${DOMAIN_MESSAGES}" >&2
+    exit 1
+fi
+
+if grep -E '^[[:space:]]*test\.domain\.message([[:space:]]|=|:|$)' "${DOMAIN_MESSAGES}" |
+        grep -Fxqv 'test.domain.message=domain test message'; then
+    echo "[Error] Test message key already exists with a different value: ${DOMAIN_MESSAGES}" >&2
+    exit 1
+fi
+
 if [ -e "${WORK_DIR}/${PROJECT_NAME}-web/src/main/resources/META-INF/spring/applicationContext.xml" ]; then
     CONFIG_TYPE="XMLConfig"
 else
@@ -102,6 +114,11 @@ sed -i -e "s/<!-- == End Unit Test == -->/${DEPENDENCIES_TAG}/" ./tmp/${PROJECT_
 
 echo ">>>>> COPY TMP"
 cp -fr ./tmp/${PROJECT_NAME}/* ${WORK_DIR}
+
+echo ">>>>> ADD DOMAIN TEST MESSAGE"
+if ! grep -Fxq 'test.domain.message=domain test message' "${DOMAIN_MESSAGES}"; then
+    printf '\ntest.domain.message=domain test message\n' >> "${DOMAIN_MESSAGES}"
+fi
 
 echo ">>>>> END"
 
