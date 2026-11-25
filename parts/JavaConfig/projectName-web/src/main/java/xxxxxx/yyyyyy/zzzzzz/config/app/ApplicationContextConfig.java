@@ -67,7 +67,7 @@ public class ApplicationContextConfig {
     @Bean("messageSource")
     public MessageSource messageSource() {
         ResourceBundleMessageSource bean = new ResourceBundleMessageSource();
-        bean.setBasenames("i18n/application-messages");
+        bean.setBasenames("i18n/application-messages", "i18n/domain-messages");
         return bean;
     }
 
